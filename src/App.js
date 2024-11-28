@@ -1,9 +1,11 @@
 import './App.css';
+import NavigationBar from './Components/NavigationBar';
+
 
 function App() {
   return (
-    <div className="App">
-      <h1 className='text-3xl text-red-600'>Welcome to react js</h1>
+    <div className="App w-full">
+      <NavigationBar />
     </div>
   );
 }
