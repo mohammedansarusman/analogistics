@@ -29,6 +29,7 @@ const NavigationBar = () => {
       </div>
       <div className="w-[60%] flex items-center justify-end gap-5 px-6">
         <ul className="hidden lg:text-white lg:flex lg:justify-evenly lg:w-[70%] lg:font-bold">
+          <li>Home</li>
           <li>People</li>
           <li>Fleet</li>
           <li>Trip</li>
