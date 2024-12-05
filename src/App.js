@@ -1,16 +1,28 @@
 import './App.css';
 import NavigationBar from './Components/NavigationBar';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import NavigationBarSmall from './Components/NavigationBarSmall';
+import { changeBar } from './Store/navigationSlice';
+import { useEffect } from 'react';
 
 
 
 function App() {
+  const dispatch = useDispatch();
   const toggleBar = useSelector((store)=>store.navigation.bar)
+  useEffect(()=>{
+    const handleSize = ()=>{
+      window.innerWidth>=1024 && dispatch(changeBar(false))
+    }
+    window.addEventListener('resize',handleSize);
+    return()=>{window.addEventListener('resize',handleSize)}
+  },[])
+  
   return (
     <div className={`App w-full h-[100vh] absolute ${toggleBar ? 'bg-gray-300' : 'bg-white'}`}>
       <NavigationBar />
-      {toggleBar && <NavigationBarSmall />}
+      {/* Here the hamburger menubar clicked then navigation bar will pop-up */}
+      {toggleBar && <NavigationBarSmall />} 
     </div>
   );
 }

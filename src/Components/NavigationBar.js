@@ -12,7 +12,6 @@ const NavigationBar = () => {
   const dispatch = useDispatch();
   
   const handleHamburgerButton = () => {
-    console.log("clicked hamburger button")
     dispatch(changeBar(true))    
   }
   
