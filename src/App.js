@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import NavigationBarSmall from './Components/NavigationBarSmall';
 import { changeBar } from './Store/navigationSlice';
 import { useEffect } from 'react';
-
+import { Outlet } from 'react-router-dom';
 
 
 function App() {
@@ -19,10 +19,11 @@ function App() {
   },[])
   
   return (
-    <div className={`App w-full h-[100vh] absolute ${toggleBar ? 'bg-gray-300' : 'bg-white'}`}>
+    <div className={`App w-full h-[100vh]  ${toggleBar ? 'bg-gray-300' : 'bg-white'}`}>
       <NavigationBar />
       {/* Here the hamburger menubar clicked then navigation bar will pop-up */}
       {toggleBar && <NavigationBarSmall />} 
+      <Outlet />  {/* This component will render the route component based on the current URL */}
     </div>
   );
 }

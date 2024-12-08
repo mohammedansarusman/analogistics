@@ -8,6 +8,8 @@ import logoImage from "../Images/fleetflow.webp"
 import { useDispatch } from "react-redux";
 import { changeBar } from "../Store/navigationSlice";
 import { useState } from "react";
+import MenuNavigation from "./MenuNavigation";
+import { Link } from "react-router-dom";
 // Parent componenet - <App />
 
 
@@ -49,8 +51,9 @@ const NavigationBar = () => {
 
   return (
     // {/* Navigation bar */}
-    <div className="bg-slate-950 opacity-85 h-[100px] flex items-center fixed w-[100%]">
+    <div className="bg-slate-950 opacity-85 h-[100px] flex items-center relative z-10 w-[100%]">
       <div className="w-[40%] flex items-center gap-3 px-5 ">
+        {/* render if the screen width is small */}
         <GiHamburgerMenu
           className="cursor-pointer text-white size-6 hover:bg-gray-500 lg:hidden"
           onClick={handleHamburgerButton}
@@ -60,29 +63,48 @@ const NavigationBar = () => {
       </div>
       <nav className="w-[60%] flex items-center justify-end gap-5 px-6 py-3">
         <div className="hidden lg:text-white lg:flex lg:justify-evenly lg:w-[70%] lg:font-bold">
-          <div className="p-2">Home</div>
+          <Link to="/">
+            <div className="p-2">Home</div>
+          </Link> 
           <div 
             onMouseEnter={handlePeople}
             onMouseLeave={handleMouseLeave}
             className="flex hover:text-cyan-500 relative cursor-pointer p-2">People <IoMdArrowDropdown size={25} />
-            {showDropdown.people && 
-              <div className="bg-white absolute top-10 left-1/2 transform -translate-x-1/2 w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300">
-                {/* <h1 className="hover:bg-gray-500">Register</h1>
-                <h1 className="hover:bg-gray-500">Edit</h1> */}
+            { showDropdown.people && 
+              <div className="bg-white absolute 
+                                top-10 left-1/2 transform -translate-x-1/2 
+                                w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300
+                                text-black pt-4 flex justify-center
+                                ">
+                <MenuNavigation />
               </div>}
           </div>
           <div 
             onMouseEnter = { handleFleet}
             onMouseLeave={handleMouseLeave}
-            className="flex items-center hover:text-cyan-500 relative p-2 ">Fleet <IoMdArrowDropdown size={25} 
+            className="flex items-center hover:text-cyan-500 relative cursor-pointer p-2 ">Fleet <IoMdArrowDropdown size={25} 
           />
-            {showDropdown.fleet && <div className="bg-white absolute top-10 left-1/2 transform -translate-x-1/2 w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300"></div>}
+            { showDropdown.fleet && 
+              <div className="bg-white absolute 
+                                top-10 left-1/2 transform -translate-x-1/2 
+                                w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300
+                                text-black pt-4 flex justify-center
+                              ">
+                  <MenuNavigation />                
+                </div> }
           </div>
           <div 
             onMouseEnter={ handleTrip }
             onMouseLeave={handleMouseLeave}
             className="flex items-center hover:text-cyan-500 relative p-2">Trip <IoMdArrowDropdown size={25} />
-            {showDropdown.trip && <div className="bg-white absolute top-10 left-1/2 transform -translate-x-1/2 w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300"></div>}
+            { showDropdown.trip && 
+              <div className="bg-white absolute 
+                                top-10 left-1/2 transform -translate-x-1/2 
+                                w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300
+                                text-black pt-4 flex justify-center
+                                ">
+                    <MenuNavigation />              
+              </div> }
           </div>
         </div>
         <div className="flex gap-5 justify-end lg:w-[30%]">
