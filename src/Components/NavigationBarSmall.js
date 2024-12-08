@@ -5,6 +5,7 @@ import { changeBar } from "../Store/navigationSlice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import MenuNavigation from "./MenuNavigation";
+import { Link } from "react-router-dom";
 
 // Parent componenet - <App />
 const NavigationBarSmall = () => {
@@ -49,7 +50,7 @@ const NavigationBarSmall = () => {
             </div>
             <div className="flex flex-col items-center pt-7 text-gray-500 text-md gap-2 font-semibold">
                 <div className="w-[90%] flex justify-start py-1 pl-2 rounded-md hover:bg-gray-100" onClick={handleHome}>
-                    <h1>Home</h1>
+                    <Link to="/"><h1>Home</h1></Link>
                 </div>
                 <div
                     className="w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100"
