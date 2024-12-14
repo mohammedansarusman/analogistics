@@ -20,8 +20,6 @@ const appRouter = createBrowserRouter([
     ]
   },
   
-  
-  // Add more routes here if needed
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
