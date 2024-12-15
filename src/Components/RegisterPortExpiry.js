@@ -3,34 +3,35 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import {useDateValidity} from './CustomHooks/useDateValidity'
-import { addRTAExpiry } from "../Store/registrationSlice";
+import { addPortExpiry } from "../Store/registrationSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-const RegisterRTAExpiry = () => {
-  const dispatch = useDispatch();
-  const rtaExpiry = useSelector((store)=>store.registration.rtaExpiry);
-  const [interactedName, setInteractedName] = useState(false);
 
-  const handleDateChangeRTA = (date) => {
-    dispatch(addRTAExpiry(date));  // dispatch action to update the state in the store.
+const RegisterPortExpiry = () => {
+  const dispatch = useDispatch();
+  const portExpiry = useSelector((store)=>store.registration.portExpiry);
+  const handleDateChangePort = (date) => {
+    dispatch(addPortExpiry(date));  // dispatch action to update the state in the store.
   };
+  const [interactedName, setInteractedName] = useState(false);
   const handleBlur = () => {
     setInteractedName(true);
   };
-  const message = useDateValidity(rtaExpiry);
+  const message = useDateValidity(portExpiry)
+
 
   return (
     <div className="flex flex-col items-start w-1/2">
-      <label for="rtaExpiry" className="font-bold opacity-80">
-        RTA Expiry<span className="text-red-500">*</span>
+      <label for="portExpiry" className="font-bold opacity-80">
+        Port Expiry<span className="text-red-500">*</span>
       </label>
       <DatePicker
-        selected={rtaExpiry}
-        onChange={handleDateChangeRTA}
-        onBlur = {handleBlur}
+        selected={portExpiry}
+        onChange={handleDateChangePort}
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
-        value = { rtaExpiry}
+        value={portExpiry}
+        onBlur={handleBlur}
         className=" text-black border-2 border-gray-300 pl-2"
       />
       <div className="h-[20px]">
@@ -40,4 +41,4 @@ const RegisterRTAExpiry = () => {
   );
 };
 
-export default RegisterRTAExpiry;
+export default RegisterPortExpiry;

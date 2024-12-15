@@ -6,30 +6,33 @@ import React, {useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {useDateValidity} from './CustomHooks/useDateValidity'
+import { addVisaExpiry } from "../Store/registrationSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const RegisterVisaExpiry = () => {
-  const [selectedDateVisa, setSelectedDateVisa] = useState(null);
+  const dispatch = useDispatch();
+  const visaExpiry =  useSelector((store)=>store.registration.visaExpiry);
   const [interactedName, setInteractedName] = useState(false);
   const handleDateChangeVisa = (date) => {
-    setSelectedDateVisa(date);
+    dispatch(addVisaExpiry(date));  // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
     setInteractedName(true);
   };
-  const message = useDateValidity(selectedDateVisa);
+  const message = useDateValidity(visaExpiry);
   return (
     <div className="flex flex-col items-start w-1/2">
-      <label for="visaExpiry" className="font-bold opacity-80">
-        Visa Expiry
+      <label htmlFor="visaExpiry" className="font-bold opacity-80">
+        Visa Expiry<span className="text-red-500">*</span>
       </label>
       <DatePicker
-        selected={selectedDateVisa}
+        selected={visaExpiry}
         onChange={handleDateChangeVisa}
-        value = {selectedDateVisa}
+        value = {visaExpiry}
         onBlur={handleBlur}
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
-        className=" text-black border-2 border-gray-300"
+        className=" text-black border-2 border-gray-300 pl-2"
       />
       <div className="h-[20px]">
         {interactedName && <p className="text-red-500 text-xs">{message}</p>}

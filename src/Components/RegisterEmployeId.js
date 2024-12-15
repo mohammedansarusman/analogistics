@@ -1,12 +1,15 @@
 import React,{useState} from "react";
 import { useIdValidity } from "./CustomHooks/useIdValidity";
+import { useSelector, useDispatch } from "react-redux";
+import { addEmployeId } from "../Store/registrationSlice";
 
 const RegisterEmployeId = () => {
-    const [empId, setEmpId] = useState("");
+    const dispatch = useDispatch();
+    const employeId = useSelector((store)=>store.registration.employeId);
     const [interactedName, setInteractedName] = useState(false);
-    const message = useIdValidity(empId);
+    const message = useIdValidity(employeId);
     const handleId = (e) => {
-        setEmpId(e.target.value);
+        dispatch(addEmployeId(e.target.value));  // dispatch action to update the state in the store.
     };
     const handleBlur = () => {
         setInteractedName(true);
@@ -21,7 +24,7 @@ const RegisterEmployeId = () => {
         type="text"
         id="empid"
         name="empid"
-        value={empId}
+        value={employeId}
         onChange={handleId}
         onBlur={handleBlur}
         placeholder="e00000"
