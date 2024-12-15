@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { changeBar } from "../Store/navigationSlice";
 import { useDispatch } from "react-redux";
 // import { addDays, isWeekend } from 'date-fns'
@@ -8,6 +8,7 @@ import DatePickerFirePort from "./DatePickerFirePort";
 import RegisterName from "./RegisterName";
 import RegisterMiddleName from "./RegisterMiddleName";
 import RegisterLastName from "./RegisterLastName";
+import RegisterEmployeId from "./RegisterEmployeId";
 
 const PeopleRegister = () => {
   const dispatch = useDispatch();
@@ -25,17 +26,8 @@ const PeopleRegister = () => {
           <RegisterMiddleName />
           {/* Laste Name field */}
           <RegisterLastName />
-          <div className="w-full flex flex-col items-start">
-            <label htmlFor="empid" className="block font-bold opacity-80">
-              Employee ID
-            </label>
-            <input
-              type="text"
-              id="empid"
-              name="empid"
-              className="block w-full text-black border-2 border-gray-300 pl-2"
-            />
-          </div>
+          {/* Employee id field */}
+          <RegisterEmployeId />
           {/* passport and visa expiry date picker component */}
           <DatePickerPassVisa />
           {/* OHC and RTA expiry */}
