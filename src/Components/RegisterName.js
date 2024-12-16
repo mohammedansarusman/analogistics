@@ -8,6 +8,8 @@ const RegisterName = () => {
   const firstName = useSelector((store)=>store.registration.firstName);
   const [interactedName, setInteractedName] = useState(false);
   const message = useNameValidity(firstName);
+  
+
   const handleName = (e) => {
     dispatch(addFirstName(e.target.value));  // dispatch action to update the state in the store.
   };

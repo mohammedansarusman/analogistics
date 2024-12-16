@@ -12,6 +12,7 @@ const registrationSlice = createSlice({
     rtaExpiry: null,
     fireExpiry: null,
     portExpiry: null,
+    warning: false,
   },
   reducers: {
     addFirstName: (state, action) => {
@@ -44,6 +45,9 @@ const registrationSlice = createSlice({
     addPortExpiry: (state, action) => {
       state.portExpiry = action.payload;
     },
+    addWarning:(state, action) => {
+      state.warning = action.payload;
+    },
   },
 });
 
@@ -59,4 +63,5 @@ export const {
   addRTAExpiry,
   addFireExpiry,
   addPortExpiry,
+  addWarning,
 } = registrationSlice.actions;
