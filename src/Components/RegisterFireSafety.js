@@ -2,21 +2,21 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
 import { useDateValidity } from "./CustomHooks/useDateValidity";
-import { addFireExpiry } from "../Store/registrationSlice";
+import { addFireExpiry, addValidFireExpiry } from "../Store/registrationSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const RegisterFireSafety = () => {
   const dispatch = useDispatch();
+
   const fireExpiry = useSelector((store) => store.registration.fireExpiry);
-  const [interactedName, setInteractedName] = useState(false);
+  const flagFire = useDispatch((store)=>store.registration.validFireExpiry)
 
   const handleDateChangeFireNSafety = (date) => {
     dispatch(addFireExpiry(date)); // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
-    setInteractedName(true);
+    dispatch(addValidFireExpiry(true)); 
   };
   const message = useDateValidity(fireExpiry);
 
@@ -35,7 +35,7 @@ const RegisterFireSafety = () => {
         className=" text-black border-2 border-gray-300 pl-2"
       />
       <div className="h-[20px]">
-        {interactedName && <p className="text-red-500 text-xs">{message}</p>}
+        {flagFire && <p className="text-red-500 text-xs">{message}</p>}
       </div>
     </div>
   );

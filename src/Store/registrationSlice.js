@@ -13,6 +13,15 @@ const registrationSlice = createSlice({
     fireExpiry: null,
     portExpiry: null,
     warning: false,
+    validFirstName: false,
+    validLastName: false,
+    validEmployeId: false,
+    validPassportExpiry: false,
+    validVisaExpiry: false,
+    validOHCExpiry: false,
+    validRTAExpiry: false,
+    validFireExpiry: false,
+    validPortExpiry: false,
   },
   reducers: {
     addFirstName: (state, action) => {
@@ -48,20 +57,41 @@ const registrationSlice = createSlice({
     addWarning:(state, action) => {
       state.warning = action.payload;
     },
+    addValidFirstName:(state, action) =>{
+      state.validFirstName = action.payload;
+    },
+    addValidLastName:(state,action)=>{
+      state.validLastName = action.payload;
+    },
+    addValidEmployeId:(state, action) => {
+      state.validEmployeId = action.payload;
+    },
+    addValidPassportExpiry:(state, action) => {
+      state.validPassportExpiry = action.payload;
+    },
+    addValidVisaExpiry:(state, action) => {
+      state.validVisaExpiry = action.payload;
+    },
+    addValidOHCExpiry:(state, action) => {
+      state.validOHCExpiry = action.payload;
+    },
+    addValidRTAExpiry:(state, action) => {
+      state.validRTAExpiry = action.payload;
+    },
+    addValidFireExpiry:(state, action) => {
+      state.validFireExpiry = action.payload;
+    },
+    addValidPortExpiry:(state, action) => {
+      state.validPortExpiry = action.payload;
+    },
   },
 });
 
 export default registrationSlice.reducer;
 export const {
-  addFirstName,
-  addMiddleName,
-  addLastName,
-  addEmployeId,
-  addPassportExpiry,
-  addVisaExpiry,
-  addOHCExpiry,
-  addRTAExpiry,
-  addFireExpiry,
-  addPortExpiry,
-  addWarning,
+  addFirstName, addMiddleName, addLastName,addEmployeId,
+  addPassportExpiry,addVisaExpiry,addOHCExpiry,addRTAExpiry,
+  addFireExpiry,addPortExpiry,addWarning,addValidFirstName,
+  addValidLastName,addValidEmployeId,addValidPassportExpiry,
+  addValidVisaExpiry,addValidOHCExpiry,addValidRTAExpiry, addValidFireExpiry, addValidPortExpiry
 } = registrationSlice.actions;

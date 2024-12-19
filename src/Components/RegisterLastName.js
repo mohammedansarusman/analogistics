@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNameValidity } from "./CustomHooks/useNameValidity";
 import { useDispatch, useSelector } from "react-redux";
-import { addLastName } from "../Store/registrationSlice";
+import { addLastName, addValidLastName } from "../Store/registrationSlice";
 
 const RegisterLastName = () => {
   const dispatch = useDispatch();
+  const flagLastName = useSelector((store)=>store.registration.validLastName)
   const lastName = useSelector((store)=>store.registration.lastName)
-  const [interactedName, setInteractedName] = useState(false);
   const message = useNameValidity(lastName);
   const handleName = (e) => {
     dispatch(addLastName(e.target.value))
   };
   const handleBlur = () => {
-    setInteractedName(true);
+    dispatch(addValidLastName(true));
   };
 
   return (
@@ -30,7 +30,7 @@ const RegisterLastName = () => {
         className="block w-full text-black border-2 border-gray-300 pl-2"
       />
       <div className="h-[20px]">
-        {interactedName && <p className="text-red-500 text-xs">{message}</p>}
+        {flagLastName && <p className="text-red-500 text-xs">{message}</p>}
       </div>
     </div>
   );

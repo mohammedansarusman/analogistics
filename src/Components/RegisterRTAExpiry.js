@@ -1,21 +1,20 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
 import {useDateValidity} from './CustomHooks/useDateValidity'
-import { addRTAExpiry } from "../Store/registrationSlice";
+import { addRTAExpiry, addValidRTAExpiry } from "../Store/registrationSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const RegisterRTAExpiry = () => {
   const dispatch = useDispatch();
   const rtaExpiry = useSelector((store)=>store.registration.rtaExpiry);
-  const [interactedName, setInteractedName] = useState(false);
+  const flagRTA = useSelector((store)=>store.registration.validRTAExpiry)
 
   const handleDateChangeRTA = (date) => {
     dispatch(addRTAExpiry(date));  // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
-    setInteractedName(true);
+    dispatch(addValidRTAExpiry(true));
   };
   const message = useDateValidity(rtaExpiry);
 
@@ -34,7 +33,7 @@ const RegisterRTAExpiry = () => {
         className=" text-black border-2 border-gray-300 pl-2"
       />
       <div className="h-[20px]">
-        {interactedName && <p className="text-red-500 text-xs">{message}</p>}
+        {flagRTA && <p className="text-red-500 text-xs">{message}</p>}
       </div>
     </div>
   );

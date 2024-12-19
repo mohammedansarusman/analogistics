@@ -1,23 +1,22 @@
 // parent component  - <DatePickerPassVisa />
 // purpose of this component - the VISA EXPIRY FIELD is created and its validation method.
-
-
-import React, {useState} from "react";
+import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {useDateValidity} from './CustomHooks/useDateValidity'
-import { addVisaExpiry } from "../Store/registrationSlice";
+import { useDateValidity } from "./CustomHooks/useDateValidity";
+import { addVisaExpiry, addValidVisaExpiry } from "../Store/registrationSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const RegisterVisaExpiry = () => {
   const dispatch = useDispatch();
-  const visaExpiry =  useSelector((store)=>store.registration.visaExpiry);
-  const [interactedName, setInteractedName] = useState(false);
+  const visaExpiry = useSelector((store) => store.registration.visaExpiry);
+  const flagVisa = useSelector((store) => store.registration.validVisaExpiry);
+
   const handleDateChangeVisa = (date) => {
-    dispatch(addVisaExpiry(date));  // dispatch action to update the state in the store.
+    dispatch(addVisaExpiry(date)); // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
-    setInteractedName(true);
+    dispatch(addValidVisaExpiry(true));
   };
   const message = useDateValidity(visaExpiry);
   return (
@@ -28,14 +27,14 @@ const RegisterVisaExpiry = () => {
       <DatePicker
         selected={visaExpiry}
         onChange={handleDateChangeVisa}
-        value = {visaExpiry}
+        value={visaExpiry}
         onBlur={handleBlur}
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
         className=" text-black border-2 border-gray-300 pl-2"
       />
       <div className="h-[20px]">
-        {interactedName && <p className="text-red-500 text-xs">{message}</p>}
+        {flagVisa && <p className="text-red-500 text-xs">{message}</p>}
       </div>
     </div>
   );

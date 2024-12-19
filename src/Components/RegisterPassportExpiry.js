@@ -1,23 +1,23 @@
 // parent component  - <DatePickerPassVisa />
 // purpose of this component - the passport expiry field is created and its validation method.
  
-import React, {useState} from "react";
+import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {useDateValidity} from './CustomHooks/useDateValidity'
-import { addPassportExpiry } from "../Store/registrationSlice";
+import { addPassportExpiry, addValidPassportExpiry } from "../Store/registrationSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const RegisterPassportExpiry = () => {
   const dispatch = useDispatch();
   const passportExpiry = useSelector((store)=>store.registration.passportExpiry);
-  const [interactedName, setInteractedName] = useState(false);
+  const flagPassport = useSelector((store)=>store.registration.validPassportExpiry);
 
   const handleDateChange = (date) => {
     dispatch(addPassportExpiry(date));  // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
-    setInteractedName(true);
+    dispatch(addValidPassportExpiry(true));
   };
   const message = useDateValidity(passportExpiry)
   return (
@@ -35,7 +35,7 @@ const RegisterPassportExpiry = () => {
         className=" text-black border-2 border-gray-300 pl-2"
       />
       <div className="h-[20px]">
-        {interactedName && <p className="text-red-500 text-xs">{message}</p>}
+        {flagPassport && <p className="text-red-500 text-xs">{message}</p>}
       </div>
     </div>
   );

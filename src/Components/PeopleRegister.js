@@ -11,17 +11,12 @@ import RegisterLastName from "./RegisterLastName";
 import RegisterEmployeId from "./RegisterEmployeId";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import {
-  addFirstName,
-  addMiddleName,
-  addLastName,
-  addEmployeId,
-  addPassportExpiry,
-  addVisaExpiry,
-  addOHCExpiry,
-  addFireExpiry,
-} from "../Store/registrationSlice";
-import { addPortExpiry, addRTAExpiry } from "../Store/registrationSlice";
+import { addFirstName, addMiddleName, addLastName, addEmployeId,
+         addPassportExpiry, addVisaExpiry,addOHCExpiry,addFireExpiry,} from "../Store/registrationSlice";
+
+import { addPortExpiry, addRTAExpiry, addValidFirstName, addValidLastName, 
+         addValidEmployeId, addValidPassportExpiry, addValidVisaExpiry, addValidOHCExpiry,
+         addValidRTAExpiry, addValidFireExpiry, addValidPortExpiry } from "../Store/registrationSlice";
 const PeopleRegister = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -71,8 +66,19 @@ const PeopleRegister = () => {
       setMessage(true); // Show success message.
       setTimeout(() => {
         setMessage(false);
+
       }, 3000);
       handleReset();
+      dispatch(addValidFirstName(false));
+      dispatch(addValidLastName(false));
+      dispatch(addValidEmployeId(false));
+      dispatch(addValidPassportExpiry(false));
+      dispatch(addValidVisaExpiry(false));
+      dispatch(addValidOHCExpiry(false));
+      dispatch(addValidRTAExpiry(false));
+      dispatch(addValidFireExpiry(false));
+      dispatch(addValidPortExpiry(false));
+
     }
   };
   const handleClose = () => {
@@ -89,9 +95,8 @@ const PeopleRegister = () => {
         <header className="w-full h-[70px] text-3xl bg-cyan-500 text-white flex justify-center items-center ">
           <h1>Employee Registration</h1>
         </header>
-        <form
+        <div
           className="flex flex-col items-start w-[90%]  border-2 border-cyan-500 p-5 rounded-xl mt-[50px]"
-          onSubmit={handleSave}
         >
           {/* First name field */}
           <RegisterName />
@@ -109,7 +114,7 @@ const PeopleRegister = () => {
           <DatePickerFirePort />
           <div className="flex justify-center w-full gap-2">
             <button
-              type="submit"
+              onClick={handleSave}
               className="bg-cyan-500 px-[20px] py-[10px] rounded-full text-white font-bold"
             >
               Save
@@ -121,7 +126,7 @@ const PeopleRegister = () => {
               Close
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

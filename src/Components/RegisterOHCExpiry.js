@@ -1,21 +1,20 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
 import {useDateValidity} from './CustomHooks/useDateValidity'
 import { useDispatch, useSelector } from "react-redux";
-import { addOHCExpiry } from "../Store/registrationSlice";
+import { addOHCExpiry, addValidOHCExpiry } from "../Store/registrationSlice";
 
 const RegisterOHCExpiry = () => {
   const dispatch = useDispatch();
+  const flagOHC = useSelector((store)=>store.registration.validOHCExpiry)
   const ohcExpiry = useSelector((store)=>store.registration.ohcExpiry);
-  const [interactedName, setInteractedName] = useState(false);
 
   const handleDateChangeOHC = (date) => {
     dispatch(addOHCExpiry(date));  // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
-    setInteractedName(true);
+    dispatch(addValidOHCExpiry(true));
   };
   const message = useDateValidity(ohcExpiry);
   return (
@@ -33,7 +32,7 @@ const RegisterOHCExpiry = () => {
         className=" text-black border-2 border-gray-300 pl-2"
       />
       <div className="h-[20px]">
-        {interactedName && <p className="text-red-500 text-xs">{message}</p>}
+        {flagOHC && <p className="text-red-500 text-xs">{message}</p>}
       </div>
     </div>
   );

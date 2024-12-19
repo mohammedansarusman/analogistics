@@ -1,18 +1,18 @@
-import React,{useState} from "react";
+import React from "react";
 import { useIdValidity } from "./CustomHooks/useIdValidity";
 import { useSelector, useDispatch } from "react-redux";
-import { addEmployeId } from "../Store/registrationSlice";
+import { addEmployeId, addValidEmployeId } from "../Store/registrationSlice";
 
 const RegisterEmployeId = () => {
     const dispatch = useDispatch();
     const employeId = useSelector((store)=>store.registration.employeId);
-    const [interactedName, setInteractedName] = useState(false);
+    const flagEmployeId = useSelector((store)=>store.registration.validEmployeId);
     const message = useIdValidity(employeId);
     const handleId = (e) => {
         dispatch(addEmployeId(e.target.value));  // dispatch action to update the state in the store.
     };
     const handleBlur = () => {
-        setInteractedName(true);
+      dispatch(addValidEmployeId("true"));
     };
 
   return (
@@ -31,7 +31,7 @@ const RegisterEmployeId = () => {
         className="block w-full text-black border-2 border-gray-300 pl-2"
       />
       <div className="h-[20px]">
-        {interactedName && <p className="text-red-500 text-xs">{message}</p>}
+        {flagEmployeId && <p className="text-red-500 text-xs">{message}</p>}
       </div>
     </div>
   );
