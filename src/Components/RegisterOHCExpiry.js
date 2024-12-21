@@ -11,7 +11,7 @@ const RegisterOHCExpiry = () => {
   const ohcExpiry = useSelector((store)=>store.registration.ohcExpiry);
 
   const handleDateChangeOHC = (date) => {
-    dispatch(addOHCExpiry(date));  // dispatch action to update the state in the store.
+    dispatch(addOHCExpiry(date.getTime()));  // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
     dispatch(addValidOHCExpiry(true));

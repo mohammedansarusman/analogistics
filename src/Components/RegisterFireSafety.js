@@ -10,13 +10,13 @@ const RegisterFireSafety = () => {
   const dispatch = useDispatch();
 
   const fireExpiry = useSelector((store) => store.registration.fireExpiry);
-  const flagFire = useDispatch((store)=>store.registration.validFireExpiry)
+  const flagFire = useSelector((store) => store.registration.validFireExpiry);
 
   const handleDateChangeFireNSafety = (date) => {
-    dispatch(addFireExpiry(date)); // dispatch action to update the state in the store.
+    dispatch(addFireExpiry(date.getTime())); // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
-    dispatch(addValidFireExpiry(true)); 
+    dispatch(addValidFireExpiry(true));
   };
   const message = useDateValidity(fireExpiry);
 

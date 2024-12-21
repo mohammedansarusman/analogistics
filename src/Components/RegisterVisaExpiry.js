@@ -13,7 +13,7 @@ const RegisterVisaExpiry = () => {
   const flagVisa = useSelector((store) => store.registration.validVisaExpiry);
 
   const handleDateChangeVisa = (date) => {
-    dispatch(addVisaExpiry(date)); // dispatch action to update the state in the store.
+    dispatch(addVisaExpiry(date.getTime())); // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
     dispatch(addValidVisaExpiry(true));

@@ -14,7 +14,7 @@ const RegisterPassportExpiry = () => {
   const flagPassport = useSelector((store)=>store.registration.validPassportExpiry);
 
   const handleDateChange = (date) => {
-    dispatch(addPassportExpiry(date));  // dispatch action to update the state in the store.
+    dispatch(addPassportExpiry(date.getTime()));  // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
     dispatch(addValidPassportExpiry(true));

@@ -14,3 +14,7 @@ const navigationSlice = createSlice({
 
 export default navigationSlice.reducer;
 export const { changeBar } = navigationSlice.actions;
+
+
+// Usage: This slice is using to activate the navigation slider. when the screen is mobile view the user wants to experience 
+// a small navigation slider. if the bar's value is true then the mobile view navigation will activate.

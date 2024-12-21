@@ -11,7 +11,7 @@ const RegisterRTAExpiry = () => {
   const flagRTA = useSelector((store)=>store.registration.validRTAExpiry)
 
   const handleDateChangeRTA = (date) => {
-    dispatch(addRTAExpiry(date));  // dispatch action to update the state in the store.
+    dispatch(addRTAExpiry(date.getTime()));  // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
     dispatch(addValidRTAExpiry(true));
