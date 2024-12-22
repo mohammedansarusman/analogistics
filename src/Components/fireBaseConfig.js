@@ -15,5 +15,3 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export default app;
-console.log("firebaseconfig", firebaseConfig);
-console.log("url;", firebaseConfig.databaseURL);

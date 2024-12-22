@@ -64,7 +64,7 @@ const NavigationBar = () => {
       <nav className="w-[60%] flex items-center justify-end gap-5 px-6 py-3">
         <div className="hidden lg:text-white lg:flex lg:justify-evenly lg:w-[70%] lg:font-bold">
           <Link to="/">
-            <div className="p-2">Home</div>
+            <div className="p-2 hover:text-cyan-500">Home</div>
           </Link> 
           <div 
             onMouseEnter={handlePeople}

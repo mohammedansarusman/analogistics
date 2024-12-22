@@ -20,7 +20,7 @@ const RegisterName = () => {
 
     return (
       <div className="w-full flex flex-col items-start gap-[5px]">
-        <label htmlFor="firstName" className="block font-bold opacity-80">
+        <label htmlFor="firstName" className="font-bold opacity-80">
           First Name<span className="text-red-500">*</span>
         </label>
         <input
@@ -30,7 +30,7 @@ const RegisterName = () => {
           value={firstName}
           onChange={handleName}
           onBlur={handleBlur}
-          className="block w-full text-black border-2 border-gray-300 pl-2 bg-white"
+          className="w-full text-black border-2 border-gray-300 pl-2 bg-white"
         />
         <div className="h-[20px]">
           {flagFirstName && <p className="text-red-500 text-xs">{message}</p>}

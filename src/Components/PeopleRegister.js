@@ -17,8 +17,8 @@ const PeopleRegister = () => {
   const [message, setMessage] = useState(false);
   dispatch(changeBar(false));
   return (
-    <div className="w-[100%] absolute left-0">
-      <div className="flex flex-col items-center pb-5 relative">
+    <div className="w-full absolute left-0">
+      <div className="w-full flex flex-col items-center pb-5 relative">
         { message &&  <RegisterSuccessMessage /> }
         <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7">
           <h1>Employee Registration</h1>
@@ -26,14 +26,18 @@ const PeopleRegister = () => {
         <div
           className="flex flex-col items-start w-[90%]  border-2 border-cyan-500 p-5 rounded-xl mt-[30px]"
         >
-          {/* First name field */}
-          <RegisterName />
-          {/* Middle name field */}
-          <RegisterMiddleName />
-          {/* Laste Name field */}
-          <RegisterLastName />
-          {/* Employee id field */}
-          <RegisterEmployeId />
+          <div className="w-full lg:flex lg:gap-5 lg:items-center">
+            {/* First name field */}
+            <RegisterName />
+            {/* Middle name field */}
+            <RegisterMiddleName />
+          </div>
+          <div className="w-full lg:flex lg:gap-5 lg:items-center">
+            {/* Laste Name field */}
+            <RegisterLastName />
+            {/* Employee id field */}
+            <RegisterEmployeId />
+          </div>
           {/* passport and visa expiry date picker component */}
           <DatePickerPassVisa />
           {/* OHC and RTA expiry */}
@@ -41,7 +45,7 @@ const PeopleRegister = () => {
           {/* Fire and Safety and Port Expiry */}
           <DatePickerFirePort />
           {/* Save and Close Button */}
-          <RegisterSaveClose dataMessage = {setMessage} />
+          <RegisterSaveClose dataMessage = {setMessage} /> 
         </div>
       </div>
     </div>

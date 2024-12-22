@@ -8,7 +8,7 @@ export const useNameValidity = (empName) =>{
         console.log("checking")
         return "Name should not be empty.";
     }
-    else if(!/^[a-zA-Z]+$/.test(empName))
+    else if(!/^[a-zA-Z\s]+$/.test(empName))
     {
         return "Name should only contain alphabetic characters.";
     }
@@ -17,3 +17,4 @@ export const useNameValidity = (empName) =>{
         return "";
     }
 }
+

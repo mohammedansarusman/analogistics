@@ -48,6 +48,17 @@ const RegisterSaveClose = (props) => {
     dispatch(addPortExpiry(null));
     dispatch(addRTAExpiry(null));
   };
+  const handleValidationMessage = () => {
+    dispatch(addValidFirstName(false));
+    dispatch(addValidLastName(false));
+    dispatch(addValidEmployeId(false));
+    dispatch(addValidPassportExpiry(false));
+    dispatch(addValidVisaExpiry(false));
+    dispatch(addValidOHCExpiry(false));
+    dispatch(addValidRTAExpiry(false));
+    dispatch(addValidFireExpiry(false));
+    dispatch(addValidPortExpiry(false));
+  }
 
   const handleSave = () => {
     
@@ -67,14 +78,6 @@ const RegisterSaveClose = (props) => {
         fire: fireExpiry,
         port: portExpiry,
       })
-      // Reset form and show success message.
-      dispatch(addFirstName(""));
-      dispatch(addMiddleName(""));
-      dispatch(addLastName(""));
-      dispatch(addEmployeId(""));
-      dispatch(addPassportExpiry(null));
-      dispatch(addVisaExpiry(null));
-      dispatch(addOHCExpiry(null));
       
       dataMessage(true); // Show success message.
       setTimeout(() => {
@@ -82,30 +85,26 @@ const RegisterSaveClose = (props) => {
       }, 3000);
 
       handleReset();
-      dispatch(addValidFirstName(false));
-      dispatch(addValidLastName(false));
-      dispatch(addValidEmployeId(false));
-      dispatch(addValidPassportExpiry(false));
-      dispatch(addValidVisaExpiry(false));
-      dispatch(addValidOHCExpiry(false));
-      dispatch(addValidRTAExpiry(false));
-      dispatch(addValidFireExpiry(false));
-      dispatch(addValidPortExpiry(false));
+      handleValidationMessage();
     }
   };
   const handleClose = () => {
-    navigate("/");
+    // Reset form data and validation state.
+      handleReset();
+      //  reset validation message
+      handleValidationMessage();
+      navigate("/");
   };
   return (
     <div className="flex justify-center w-full gap-2">
       <button
         onClick={handleSave}
-        className="bg-cyan-500 px-[20px] py-[10px] rounded-full text-white font-bold"
+        className="bg-cyan-500 px-[20px] py-[10px] rounded-full text-white font-bold hover:bg-cyan-600"
       >
         Save
       </button>
       <button
-        className="bg-cyan-500 px-[20px] py-[10px] rounded-full text-white font-bold"
+        className="bg-cyan-500 px-[20px] py-[10px] rounded-full text-white font-bold hover:bg-cyan-600"
         onClick={handleClose}
       >
         Close
