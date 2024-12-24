@@ -33,7 +33,7 @@ const RegisterSaveClose = (props) => {
   const rtaExpiry = useSelector((store) => store.registration.rtaExpiry);
   const fireExpiry = useSelector((store) => store.registration.fireExpiry);
   const portExpiry = useSelector((store) => store.registration.portExpiry);
-  const isFormValid = firstName && middleName && lastName && employeId && passportExpiry && visaExpiry &&
+  const isFormValid = firstName && lastName && employeId && passportExpiry && visaExpiry &&
                         ohcExpiry && rtaExpiry && fireExpiry && portExpiry;
 
   const handleReset = () => {
