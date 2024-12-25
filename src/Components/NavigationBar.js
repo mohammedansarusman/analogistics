@@ -51,7 +51,7 @@ const NavigationBar = () => {
 
   return (
     // {/* Navigation bar */}
-    <div className="bg-slate-950 opacity-85 h-[100px] flex items-center relative z-10 w-[100%]">
+    <div className="bg-gray-800 h-[100px] flex items-center relative w-[100%] z-20">
       <div className="w-[40%] flex items-center gap-3 px-5 ">
         {/* render if the screen width is small */}
         <GiHamburgerMenu
@@ -71,7 +71,7 @@ const NavigationBar = () => {
             onMouseLeave={handleMouseLeave}
             className="flex hover:text-cyan-500 relative cursor-pointer p-2">People <IoMdArrowDropdown size={25} />
             { showDropdown.people && 
-              <div className="bg-white absolute 
+              <div className="bg-white absolute
                                 top-10 left-1/2 transform -translate-x-1/2 
                                 w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300
                                 text-black pt-4 flex justify-center

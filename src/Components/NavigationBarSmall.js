@@ -37,6 +37,8 @@ const NavigationBarSmall = () => {
         setTripMenu(false);
         setPeopleMenu(false);
         setFleetMenu(false);
+        dispatch(changeBar(false));
+
     };
     return (
         <div className="w-[350px] h-[100%] bg-white relative left-0 top-0 flex flex-col">
@@ -53,7 +55,7 @@ const NavigationBarSmall = () => {
                     <Link to="/"><h1>Home</h1></Link>
                 </div>
                 <div
-                    className="w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100"
+                    className="w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100 cursor-pointer"
                     onClick={handlePeople}
                 >
                     <h1>People</h1>
@@ -61,7 +63,7 @@ const NavigationBarSmall = () => {
                 </div>
                 {peopleMenu && <MenuNavigation />}
                 <div
-                    className="w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100"
+                    className="w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100 cursor-pointer"
                     onClick={handleFleet}
                 >
                     <h1>Fleet</h1>
@@ -69,7 +71,7 @@ const NavigationBarSmall = () => {
                 </div>
                 {fleetMenu && <MenuNavigation />}
                 <div
-                    className="w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100"
+                    className="w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100 cursor-pointer"
                     onClick={handleTrip}
                 >
                     <h1>Trip</h1>

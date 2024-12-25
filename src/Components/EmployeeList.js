@@ -66,11 +66,18 @@ const EmployeeList = () => {
                 </h1>
               </div>
             </div>
+            {/* Action Button - update and delete options */}
+            <div className="flex justify-between items-center w-[90%] h-[30px]  mt-3 mb-5 gap-2">
+              <button className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-cyan-600 hover:bg-cyan-700">
+                Update
+              </button>
+              <button className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-red-600 hover:bg-red-700">
+                Delete
+              </button>
+            </div>
           </div>
           );
         })}
-        {/* <h1>{employeeData}</h1> */}
-        {console.log("data:", employeeData)}
       </div>
     </div>
   );
