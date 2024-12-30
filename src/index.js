@@ -8,6 +8,7 @@ import appStore from './Store/appStore';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import PeopleRegister from './Components/PeopleRegister';
 import EmployeeList from './Components/EmployeeList';
+import PeopleUpdate from './Components/PeopleUpdate';
 
 const appRouter = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/people/employeeList",
         element: <EmployeeList />,
+      },
+      {
+        path: "/people/update",
+        element: <PeopleUpdate />,
       },
     ]
   },

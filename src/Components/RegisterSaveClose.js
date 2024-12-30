@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import app from './fireBaseConfig';
-import {getDatabase, ref, set, push} from 'firebase/database'
+import {getDatabase, ref, set, push} from 'firebase/database';
+import { useEffect } from "react";
+
 
 // import { useState } from "react";
 
@@ -17,7 +19,16 @@ import { addPortExpiry,addRTAExpiry,
 import React from "react";
 
 const RegisterSaveClose = (props) => {
-    const {dataMessage} = props;
+  
+  const {dataMessage} = props;
+  useEffect(()=>{
+    return()=>{
+      setTimeout(() => {
+        dataMessage(false);
+      }, 3000);
+    }
+
+  },[dataMessage])
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -83,18 +94,20 @@ const RegisterSaveClose = (props) => {
       setTimeout(() => {
         dataMessage(false);
       }, 3000);
-
+      
       handleReset();
       handleValidationMessage();
+      
     }
   };
   const handleClose = () => {
     // Reset form data and validation state.
       handleReset();
-      //  reset validation message
+      //  reset validation message to blank
       handleValidationMessage();
       navigate("/");
   };
+
   return (
     <div className="flex justify-center w-full gap-2">
       <button
