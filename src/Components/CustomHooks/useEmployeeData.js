@@ -1,11 +1,16 @@
 import app from "../fireBaseConfig";
 import { getDatabase, ref, get } from "firebase/database";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+
 
 const useEmployeeData = () => {
     const [empData, setEmpData] = useState([]);
+  const deleteCount = useSelector((store)=>store.registration.deleteCount);
+
     
     const fetchData = async() =>{
+        console.log("testing employee data fetch")
         const db = getDatabase(app);
         const employeeRef = ref(db, "register/employe");  
         const snapshot = await get(employeeRef);
@@ -25,7 +30,7 @@ const useEmployeeData = () => {
     }
     useEffect(()=>{
       fetchData();
-    },[]);  // Only re-fetch when the component mounts or when the state changes.
+    },[deleteCount]);  // Only re-fetch when the component mounts or when the state changes.
   
   return empData;
 };

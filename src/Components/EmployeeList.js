@@ -1,12 +1,13 @@
 import React from "react";
 import useEmployeeData from "./CustomHooks/useEmployeeData";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeBar } from "../Store/navigationSlice";
 import EmployeeDetails from "./EmployeeDetails";
 
 const EmployeeList = () => {
   // const currentDate = new Date();
   const dispatch = useDispatch();
+  const deleteCount = useSelector((store)=>store.registration.deleteCount);
   dispatch(changeBar(false));
 
   const employeeData = useEmployeeData();

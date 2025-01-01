@@ -12,15 +12,17 @@ import { addOHCExpiry } from "../Store/registrationSlice";
 import { addRTAExpiry } from "../Store/registrationSlice";
 import { addPortExpiry } from "../Store/registrationSlice";
 import { addFireExpiry } from "../Store/registrationSlice";
-
-
+import { addFireBaseId } from "../Store/registrationSlice";
+import { addDeleteCount } from "../Store/registrationSlice";
+import app from "./fireBaseConfig";
+import { getDatabase, ref, remove } from "firebase/database";
 const EmployeeDetails = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { first, middle, last, id, passport, ohc, fire, visa, rta, port, firebaseId } = props.data;
   const currentDate = new Date();
   // const [firbaseId] = useState(firebaseId);
-  const handleUpdate = (first) =>{
+  const handleUpdate = () =>{
       dispatch(addFirstName(first));
       dispatch(addMiddleName(middle));
       dispatch(addLastName(last));
@@ -31,9 +33,15 @@ const EmployeeDetails = (props) => {
       dispatch(addRTAExpiry(rta));
       dispatch(addPortExpiry(port));
       dispatch(addFireExpiry(fire));
-
-      // ()=>console.log("name:",firebaseId,first)
-      navigate('/people/update');
+      dispatch(addFireBaseId(firebaseId));
+      navigate('/people/update/');
+  }
+  const handleDelete = (firbaseId) => {
+    dispatch(addDeleteCount((prevState) => prevState + 1));
+    const db = getDatabase(app);
+    const employeeRef = ref(db, `register/employe/${firebaseId}`);
+    remove(employeeRef);
+    // navigate('/people/list/');
   }
 
   return (
@@ -124,7 +132,9 @@ const EmployeeDetails = (props) => {
         >
           Update
         </button>
-        <button className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-red-600 hover:bg-red-700">
+        <button className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-red-600 hover:bg-red-700"
+                onClick={handleDelete}
+        >
           Delete
         </button>
       </div>

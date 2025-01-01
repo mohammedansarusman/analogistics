@@ -24,7 +24,7 @@ const appRouter = createBrowserRouter([
         element: <EmployeeList />,
       },
       {
-        path: "/people/update",
+        path: "/people/update/",
         element: <PeopleUpdate />,
       },
     ]

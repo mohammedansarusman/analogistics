@@ -22,6 +22,8 @@ const registrationSlice = createSlice({
     validRTAExpiry: false,
     validFireExpiry: false,
     validPortExpiry: false,
+    fireBaseId:"",
+    deleteCount:0,
   },
   reducers: {
     addFirstName: (state, action) => {
@@ -84,6 +86,12 @@ const registrationSlice = createSlice({
     addValidPortExpiry:(state, action) => {
       state.validPortExpiry = action.payload;
     },
+    addFireBaseId:(state, action) => {
+      state.fireBaseId = action.payload;
+    },
+    addDeleteCount:(state, action) => {
+      state.deleteCount = state.deleteCount+1;
+    },
   },
 });
 
@@ -93,5 +101,5 @@ export const {
   addPassportExpiry,addVisaExpiry,addOHCExpiry,addRTAExpiry,
   addFireExpiry,addPortExpiry,addWarning,addValidFirstName,
   addValidLastName,addValidEmployeId,addValidPassportExpiry,
-  addValidVisaExpiry,addValidOHCExpiry,addValidRTAExpiry, addValidFireExpiry, addValidPortExpiry
+  addValidVisaExpiry,addValidOHCExpiry,addValidRTAExpiry, addValidFireExpiry, addValidPortExpiry,addFireBaseId,addDeleteCount
 } = registrationSlice.actions;

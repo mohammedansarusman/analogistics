@@ -3,7 +3,7 @@ export const useNameValidity = (empName) =>{
     {
         return "Name should not exceed 20 characters.";
     }
-    else if(empName.trim() === "")
+    else if(empName.trim === "")
     {   
         console.log("checking")
         return "Name should not be empty.";
