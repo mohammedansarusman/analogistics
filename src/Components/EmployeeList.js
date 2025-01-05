@@ -3,6 +3,7 @@ import useEmployeeData from "./CustomHooks/useEmployeeData";
 import { useDispatch, useSelector } from "react-redux";
 import { changeBar } from "../Store/navigationSlice";
 import EmployeeDetails from "./EmployeeDetails";
+import SearchBar from "./SearchBar";
 
 const EmployeeList = () => {
   // const currentDate = new Date();
@@ -14,11 +15,15 @@ const EmployeeList = () => {
   if (employeeData === "" || employeeData.length === 0) {
     return null;
   }
+  
   return (
     <div className="w-full absolute left-0">
       <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7">
         <h1>Employee List</h1>
       </header>
+      <div className="w-full flex justify-center mt-[10px]">
+        <SearchBar employeeRecords = {employeeData}/>
+      </div>
       <div className="flex flex-col items-center">
           {
             employeeData.map((emp) => {

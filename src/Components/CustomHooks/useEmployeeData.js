@@ -10,7 +10,6 @@ const useEmployeeData = () => {
 
     
     const fetchData = async() =>{
-        console.log("testing employee data fetch")
         const db = getDatabase(app);
         const employeeRef = ref(db, "register/employe");  
         const snapshot = await get(employeeRef);
