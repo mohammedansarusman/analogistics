@@ -1,14 +1,16 @@
 import React, {useState} from 'react'
 import { FaSearch } from "react-icons/fa";
+import { addFilterEmployeeRecords } from '../Store/registrationSlice';
+
+import { useDispatch } from 'react-redux';
 
 
 const SearchBar = (props) => {
+  const dispatch = useDispatch();
   const {employeeRecords} = props;
   const [fmlName, setFmlName] = useState("");
-  console.log("props",props);
   const handleChange = (e) => {
     setFmlName(e.target.value);
-    
   }
   const handleSearch = () => {
     const data = employeeRecords.filter(
@@ -16,8 +18,7 @@ const SearchBar = (props) => {
                               record.middle.toLowerCase().includes(fmlName.toLocaleLowerCase()) ||  
                               record.last.toLowerCase().includes(fmlName.toLowerCase())
     )  
-    console.log("Search result",data);
-    console.log("hello");
+    dispatch(addFilterEmployeeRecords(data));  
   }
   return (
     <div className='w-[90%] h-[50px] border-2 border-gray rounded-md flex justify-around items-center'>
@@ -28,7 +29,7 @@ const SearchBar = (props) => {
           onChange={handleChange}
           value={fmlName}
         />
-        <FaSearch onClick={handleSearch}/>
+        <FaSearch onClick={handleSearch} className='cursor-pointer'/>
     </div>
   )
 }
