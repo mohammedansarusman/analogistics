@@ -24,8 +24,8 @@ const registrationSlice = createSlice({
     validPortExpiry: false,
     fireBaseId:"",
     deleteCount:0,
-    employeeRecords:"",
-    filterEmployeeRecords:"",
+    employeeRecords:[],
+    filterEmployeeRecords:[],
   },
   reducers: {
     addFirstName: (state, action) => {
