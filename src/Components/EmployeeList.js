@@ -8,7 +8,7 @@ import ContenLoading from "./ContenLoading";
 import { FaListUl } from "react-icons/fa";
 import { FaSortAmountDownAlt } from "react-icons/fa";
 import { FaSortAmountUp } from "react-icons/fa";
-import { changeDisplay } from "../Store/navigationSlice";
+import { changeDisplay, changeSort } from "../Store/navigationSlice";
 import { SlGrid } from "react-icons/sl";
 
 
@@ -23,9 +23,18 @@ const EmployeeList = () => {
   );
   const deleteCount = useSelector((store) => store.registration.deleteCount);
   const display = useSelector((store) => store.navigation.displayEmployees);
+  const displaySort = useSelector((store) => store.navigation.sortEmployees);
+  
   useEffect(()=>{
     dispatch(changeBar(false));
   },[dispatch])
+
+  const handleLayout = ()=>{
+    display === "grid" ? dispatch(changeDisplay("list")) : dispatch(changeDisplay("grid"))
+  }
+  const handleSort = () =>{
+    displaySort === "ascending" ? dispatch(changeSort('descending')) : dispatch(changeSort('ascending'))
+  }
 
   if (employeeData === "" || employeeData.length === 0) {
     return <ContenLoading />;
@@ -40,30 +49,26 @@ const EmployeeList = () => {
         <div className="w-full flex justify-center lg:w-[30%]">
           <SearchBar employeeRecords={employeeData} />
         </div>
+        {/* List or Grid  */}
         <div
           className="hidden text-gray-500 text-xl cursor-pointer p-2 
-                        md:block 
-                        lg:block
-                        hover:font-bold hover:bg-gray-500 hover:p-2 hover:text-white hover:rounded-full
-                       transition-all duration-500 ease-in-out"
-          onClick={() =>
-            display === "grid"
-              ? dispatch(changeDisplay("list"))
-              : dispatch(changeDisplay("grid"))
-          }
+                     md:block 
+                     lg:block
+                     hover:font-bold hover:bg-gray-500 hover:p-2 hover:text-white hover:rounded-full
+                     transition-all duration-500 ease-in-out"
+          onClick={ handleLayout }
         >
           {display === "grid" ? <FaListUl /> : <SlGrid />}
-          {/* <FaListUl /> */}
-          {/* <SlGrid /> */}
         </div>
+        {/* Sort Ascending and descending order of names */}
         <div
           className="text-gray-500 text-xl cursor-pointer p-2
                         hover:font-bold hover:bg-gray-500 hover:p-2 hover:text-white hover:rounded-full
                         transition-all duration-500 ease-in-out"
+          onClick={handleSort}
         >
-          <FaSortAmountUp />
+          {displaySort === 'ascending' ? <FaSortAmountDownAlt /> : <FaSortAmountUp />}
         </div>
-        {/* <FaSortAmountDownAlt /> */}
       </div>
 
       <div
