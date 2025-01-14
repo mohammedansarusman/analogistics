@@ -10,6 +10,7 @@ import { FaSortAmountDownAlt } from "react-icons/fa";
 import { FaSortAmountUp } from "react-icons/fa";
 import { changeDisplay, changeSort } from "../Store/navigationSlice";
 import { SlGrid } from "react-icons/sl";
+import { addFilterEmployeeRecords } from "../Store/registrationSlice";
 
 
 const EmployeeList = () => {
@@ -34,6 +35,12 @@ const EmployeeList = () => {
   }
   const handleSort = () =>{
     displaySort === "ascending" ? dispatch(changeSort('descending')) : dispatch(changeSort('ascending'))
+    const updatedName = filteredData.map((person)=>({...person,fullName:person.first+" "+person.middle+" "+person.last}))
+    displaySort === "descending" 
+      ? updatedName.sort((a,b)=>a.fullName.localeCompare(b.fullName))
+      : updatedName.sort((a,b)=>b.fullName.localeCompare(a.fullName))
+    console.log(updatedName);
+    dispatch(addFilterEmployeeRecords(updatedName));
   }
 
   if (employeeData === "" || employeeData.length === 0) {
@@ -72,7 +79,7 @@ const EmployeeList = () => {
       </div>
 
       <div
-        className={`flex  justify-center items-center bg-red-200 ${
+        className={`flex  justify-center items-center ${
           display === "list" ? "flex-col" : "flex-wrap"
         }`}
       >
