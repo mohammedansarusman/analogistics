@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import appStore from './Store/appStore';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import PeopleRegister from './Components/PeopleRegister';
+import FleetRegister from './Components/FleetComponents/FleetRegister';
 import EmployeeList from './Components/EmployeeList';
 import PeopleUpdate from './Components/PeopleUpdate';
 
@@ -26,6 +27,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/people/update/",
         element: <PeopleUpdate />,
+      },
+      {
+        path:"/fleet/register",
+        element: <FleetRegister />,
       },
     ]
   },

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import MenuNavigation from "./MenuNavigation";
 import { Link } from "react-router-dom";
+import FleetMenuNavigation from "./FleetComponents/FleetMenuNavigation";
 
 // Parent componenet - <App />
 const NavigationBarSmall = () => {
@@ -42,9 +43,10 @@ const NavigationBarSmall = () => {
     };
     return (
         <div className="w-[350px] h-[100%] bg-white absolute left-0 top-0 flex flex-col z-30">
+{/* Header in side navigation bar */}
             <div className="bg-slate-950 opacity-85 h-[70px] flex items-center justify-around text-white">
                 <h1 className="text-3xl font-semibold">FleetFlow</h1>
-                {/* CLOSE BUTTON X */}
+{/* CLOSE BUTTON X */}
                 <AiOutlineClose
                     size={26}
                     className="hover:bg-slate-700"
@@ -52,9 +54,11 @@ const NavigationBarSmall = () => {
                 />
             </div>
             <div className="flex flex-col items-center pt-7 text-gray-500 text-md gap-2 font-semibold">
+{/* Home menu in side navigation bar */}
                 <div className="w-[90%] flex justify-start py-1 pl-2 rounded-md hover:bg-gray-100" onClick={handleHome}>
                     <Link to="/"><h1>Home</h1></Link>
                 </div>
+{/* People menu in side navigation bar */}
                 <div
                     className="w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100 cursor-pointer"
                     onClick={handlePeople}
@@ -63,6 +67,7 @@ const NavigationBarSmall = () => {
                     {!peopleMenu ? <MdKeyboardArrowRight size={20} /> : <MdKeyboardArrowDown size={20} />}
                 </div>
                 {peopleMenu && <MenuNavigation />}
+{/* Fleet menu in side navigation bar */}
                 <div
                     className="w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100 cursor-pointer"
                     onClick={handleFleet}
@@ -70,7 +75,8 @@ const NavigationBarSmall = () => {
                     <h1>Fleet</h1>
                     {!fleetMenu ? <MdKeyboardArrowRight size={20}/> : <MdKeyboardArrowDown size={20}/>}
                 </div>
-                {fleetMenu && <MenuNavigation />}
+                {fleetMenu && <FleetMenuNavigation />}
+{/* Trip menu in side navigation bar */}
                 <div
                     className="w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100 cursor-pointer"
                     onClick={handleTrip}
