@@ -34,6 +34,7 @@ const RegisterRTAExpiry = () => {
       />
       <div className="h-[20px]">
         {flagRTA && <p className="text-red-500 text-xs">{message}</p>}
+        {/* if any message from custom hook that can see here */}
       </div>
     </div>
   );

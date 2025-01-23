@@ -18,7 +18,7 @@ const RegisterVehicleType = () => {
         
         <Select 
             options={vehicleTypes}
-            className='w-full px-3 py-2 text-black text-start '
+            className='w-full px-1 py-2 text-black text-start '
             placeholder="Search Vehicle Type"
             value={selectedOption}  // value prop should be an object of the selected option
             onChange={handleChange}

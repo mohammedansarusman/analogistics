@@ -5,6 +5,10 @@ import RegisterPlateNo from "./RegisterPlateNo";
 import RegisterChassisNo from "./RegisterChassisNo";
 import RegisterVehicleType from "./RegisterVehicleType";
 import RegisterManufacturer from "./RegisterManufacturer";
+import RegisterRegistrationExpiry from "./RegisterRegistrationExpiry";
+import RegisterInsuranceExpiry from "./RegisterInsuranceExpiry";
+import RegisterAdvertisementExpiry from "./RegisterAdvertisementExpiry";
+import RegisterISOExpiry from "./RegisterISOExpiry";
 
 const FleetRegister = () => {
   const dispatch = useDispatch();
@@ -31,14 +35,19 @@ const FleetRegister = () => {
           <RegisterManufacturer />
 
           {/* Registration Expiry */}
+          <RegisterRegistrationExpiry />
 
           {/* Insurance Expiry */}
+          <RegisterInsuranceExpiry />
 
           {/* Advertisement Expiry */}
+          <RegisterAdvertisementExpiry />
 
           {/* ISO certification Expiry */}
+          <RegisterISOExpiry />
 
           {/* Spare key availability */}
+          
 
           {/* Save and close button */}
 
