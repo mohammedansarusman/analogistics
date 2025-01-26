@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDateValidity } from "../CustomHooks/useDateValidity";
 import { useSelector, useDispatch } from "react-redux";
-import './fleetStyle.css';
+import "./fleetStyle.css";
 import {
   addISOExpiry,
   addValidISOExpiry,
@@ -13,9 +13,7 @@ const RegisterISOExpiry = () => {
   const selectedDate = useSelector(
     (store) => store.fleetRegistration.ISOExpiry
   );
-  const flag = useSelector(
-    (store) => store.fleetRegistration.validISOExpiry
-  );
+  const flag = useSelector((store) => store.fleetRegistration.validISOExpiry);
   const message = useDateValidity(selectedDate);
   const dispatch = useDispatch();
   const handleDateChange = (date) => {
