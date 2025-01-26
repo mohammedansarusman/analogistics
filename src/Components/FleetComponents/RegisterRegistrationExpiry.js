@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDateValidity } from "../CustomHooks/useDateValidity";
 import { useSelector, useDispatch } from "react-redux";
+import './fleetStyle.css'
 import {
   addRegistrationExpiry,
   addValidRegistrationExpiry,
@@ -34,7 +35,8 @@ const RegisterRegistrationExpiry = () => {
         onBlur={handleBlur}
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
-        className=" text-black  pl-2"
+        className=" text-black  pl-2 w-full"
+        wrapperClassName="date-picker-style"
       />
       <div className="w-full h-[1px] bg-gray-500"></div>
 

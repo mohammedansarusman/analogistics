@@ -9,6 +9,7 @@ import RegisterRegistrationExpiry from "./RegisterRegistrationExpiry";
 import RegisterInsuranceExpiry from "./RegisterInsuranceExpiry";
 import RegisterAdvertisementExpiry from "./RegisterAdvertisementExpiry";
 import RegisterISOExpiry from "./RegisterISOExpiry";
+import RegisterSpareKey from "./RegisterSpareKey";
 
 const FleetRegister = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ const FleetRegister = () => {
           <RegisterISOExpiry />
 
           {/* Spare key availability */}
+          <RegisterSpareKey />
           
 
           {/* Save and close button */}

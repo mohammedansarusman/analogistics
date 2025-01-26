@@ -10,9 +10,24 @@ const fleetRegistrationSlice = createSlice({
     validAdvertisementExpiry: false,
     ISOExpiry: null,
     validISOExpiry: false,
-    
+    plateNo: "",
+    validPlateNo: false,
+    chassisNo: "",
+    validChassisNo: false,
   },
   reducers: {
+    addPlateNo: (state, action) =>{
+      state.plateNo = action.payload;
+    },
+    addValidPlateNo: (state, action) =>{
+      state.validPlateNo = action.payload;
+    },
+    addChassisNo: (state,action) =>{
+      state.chassisNo = action.payload;
+    },
+    addValidChassisNo: (state, action) =>{
+      state.validChassisNo = action.payload;
+    },
     addRegistrationExpiry: (state, action) => {
       state.registrationExpiry = action.payload;
     },
@@ -36,12 +51,14 @@ const fleetRegistrationSlice = createSlice({
     },
     addValidISOExpiry: (state, action) => {
         state.validISOExpiry = action.payload;
-    },    
+    },   
   },
 });
 
 export default fleetRegistrationSlice.reducer;
 export const {
+  addPlateNo,
+  addValidPlateNo,
   addRegistrationExpiry,
   addValidRegistrationExpiry,
   addInsuranceExpiry,
@@ -50,4 +67,6 @@ export const {
   addValidAdvertisementExpiry,
   addISOExpiry,
   addValidISOExpiry,
+  addChassisNo,
+  addValidChassisNo,
 } = fleetRegistrationSlice.actions;
