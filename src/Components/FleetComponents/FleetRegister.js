@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { changeBar } from "../../Store/navigationSlice";
 import RegisterPlateNo from "./RegisterPlateNo";
@@ -10,9 +10,12 @@ import RegisterInsuranceExpiry from "./RegisterInsuranceExpiry";
 import RegisterAdvertisementExpiry from "./RegisterAdvertisementExpiry";
 import RegisterISOExpiry from "./RegisterISOExpiry";
 import RegisterSpareKey from "./RegisterSpareKey";
+import RegisterFleetSaveReset from "./RegisterFleetSaveReset";
 
 const FleetRegister = () => {
   const dispatch = useDispatch();
+  const [message, setMessage] = useState(false);
+
   dispatch(changeBar(false)); // the side navigation bar will close once the fleet registration click.
   return (
     <div className="w-full absolute left-0">
@@ -23,37 +26,55 @@ const FleetRegister = () => {
         </header>
         {/* Fleet registration  form - plate , chassis, vehicle type etc .. */}
         <div className="flex flex-col items-start w-[90%]  border-2 border-cyan-500 p-5 rounded-xl mt-[30px]">
-          {/* Plate number */}
-          <RegisterPlateNo />
-
-          {/* Chassis number */}
-          <RegisterChassisNo />
-
-          {/* Vehicle type */}
-          <RegisterVehicleType />
-
-          {/* Manufacturer */}
-          <RegisterManufacturer />
-
-          {/* Registration Expiry */}
-          <RegisterRegistrationExpiry />
-
-          {/* Insurance Expiry */}
-          <RegisterInsuranceExpiry />
-
-          {/* Advertisement Expiry */}
-          <RegisterAdvertisementExpiry />
-
-          {/* ISO certification Expiry */}
-          <RegisterISOExpiry />
-
-          {/* Spare key availability */}
-          <RegisterSpareKey />
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              {/* Plate number */}
+              <RegisterPlateNo />
+            </div>
+            <div className="lg:w-[45%]">
+              {/* Chassis number */}
+              <RegisterChassisNo /> 
+            </div>
+          </div>
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              {/* Vehicle type */}
+              <RegisterVehicleType />
+            </div>
+            <div className="lg:w-[45%]">
+              {/* Manufacturer */}
+              <RegisterManufacturer />
+            </div>
+          </div>
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              {/* Registration Expiry */}
+              <RegisterRegistrationExpiry />
+            </div>
+            <div className="lg:w-[45%]">
+              {/* Insurance Expiry */}
+              <RegisterInsuranceExpiry />
+            </div>
+          </div>
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              {/* Advertisement Expiry */}
+              <RegisterAdvertisementExpiry />
+            </div>
+            <div className="lg:w-[45%]">
+              {/* ISO certification Expiry */}
+              <RegisterISOExpiry />
+            </div>
+          </div>
+          <div className="w-full lg:flex lg:justify-start">
+            <div className="lg:w-[45%]">
+              {/* Spare key availability */}
+              <RegisterSpareKey />
+            </div>
+          </div>
           
-
           {/* Save and close button */}
-
-          
+          <RegisterFleetSaveReset dataMessage={setMessage} />
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ const RegisterISOExpiry = () => {
   const message = useDateValidity(selectedDate);
   const dispatch = useDispatch();
   const handleDateChange = (date) => {
-    dispatch(addISOExpiry(date));
+    dispatch(addISOExpiry(date.getTime()));
   };
   const handleBlur = () => {
     dispatch(addValidISOExpiry(true));

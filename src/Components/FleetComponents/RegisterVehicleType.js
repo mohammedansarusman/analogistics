@@ -16,7 +16,7 @@ const RegisterVehicleType = () => {
     dispatch(addValidVehicleType(true));
   };
   const handleChange = (e) => {
-    dispatch(addVehicleType(e));
+    dispatch(addVehicleType(e.label));
   };
   const message = useVehicleTypeValidity(vehicleType);
   return (
