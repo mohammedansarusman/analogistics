@@ -20,6 +20,8 @@ const fleetRegistrationSlice = createSlice({
     validISOExpiry: false,
     spareKey: "",
     validSpareKey: false,
+    fleetRecord:"",
+    filterFleetRecord:"",
   },
   reducers: {
     addPlateNo: (state, action) => {
@@ -76,6 +78,12 @@ const fleetRegistrationSlice = createSlice({
     addValidSpareKey: (state, action) => {
       state.validSpareKey = action.payload;
     },
+    addFleetRecord: (state, action) => {
+      state.fleetRecord = action.payload;
+    },
+    addFilterFleetRecord: (state, action) => {
+      state.filterFleetRecord = action.payload;
+    },
   },
 });
 
@@ -99,4 +107,6 @@ export const {
   addValidChassisNo,
   addSpareKey,
   addValidSpareKey,
+  addFleetRecord,
+  addFilterFleetRecord,
 } = fleetRegistrationSlice.actions;

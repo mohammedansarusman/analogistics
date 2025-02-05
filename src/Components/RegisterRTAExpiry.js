@@ -11,7 +11,7 @@ const RegisterRTAExpiry = () => {
   const flagRTA = useSelector((store)=>store.registration.validRTAExpiry)
 
   const handleDateChangeRTA = (date) => {
-    dispatch(addRTAExpiry(date.getTime()));  // dispatch action to update the state in the store.
+    date && dispatch(addRTAExpiry(date.getTime()));  // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
     dispatch(addValidRTAExpiry(true));
@@ -19,7 +19,7 @@ const RegisterRTAExpiry = () => {
   const message = useDateValidity(rtaExpiry);
 
   return (
-    <div className="flex flex-col items-start w-1/2">
+    <div className="flex flex-col items-start w-1/2 gap-1">
       <label for="rtaExpiry" className="font-bold opacity-80">
         RTA Expiry<span className="text-red-500">*</span>
       </label>
@@ -30,7 +30,7 @@ const RegisterRTAExpiry = () => {
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
         value = { rtaExpiry}
-        className=" text-black border-2 border-gray-300 pl-2"
+        className="w-full text-black border border-gray-300 border-1 outline-none pl-2 bg-white rounded-md h-[40px] focus:ring-1 focus:ring-gray-300 focus:ring-offset-4"
       />
       <div className="h-[20px]">
         {flagRTA && <p className="text-red-500 text-xs">{message}</p>}

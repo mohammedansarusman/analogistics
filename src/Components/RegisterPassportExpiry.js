@@ -14,14 +14,14 @@ const RegisterPassportExpiry = () => {
   const flagPassport = useSelector((store)=>store.registration.validPassportExpiry);
 
   const handleDateChange = (date) => {
-    dispatch(addPassportExpiry(date.getTime()));  // dispatch action to update the state in the store.
+    date && dispatch(addPassportExpiry(date.getTime()));  // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
     dispatch(addValidPassportExpiry(true));
   };
   const message = useDateValidity(passportExpiry)
   return (
-    <div className="flex flex-col items-start w-1/2">
+    <div className="flex flex-col items-start w-1/2 gap-1">
       <label for="passExpiry" className="font-bold opacity-80">
         Passport Expiry<span className="text-red-500">*</span>
       </label>
@@ -32,7 +32,7 @@ const RegisterPassportExpiry = () => {
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
         onBlur={handleBlur}
-        className=" text-black border-2 border-gray-300 pl-2"
+        className="w-full text-black border border-gray-300 border-1 outline-none pl-2 bg-white rounded-md h-[40px] focus:ring-1 focus:ring-gray-300 focus:ring-offset-4"
       />
       <div className="h-[20px]">
         {flagPassport && <p className="text-red-500 text-xs">{message}</p>}

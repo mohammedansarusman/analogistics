@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import PeopleRegister from './Components/PeopleRegister';
 import FleetRegister from './Components/FleetComponents/FleetRegister';
 import EmployeeList from './Components/EmployeeList';
+import FleetList from './Components/FleetComponents/FleetList';
 import PeopleUpdate from './Components/PeopleUpdate';
 
 const appRouter = createBrowserRouter([
@@ -32,6 +33,10 @@ const appRouter = createBrowserRouter([
         path:"/fleet/register",
         element: <FleetRegister />,
       },
+      {
+        path: "/fleet/fleetList",
+        element: <FleetList />,
+      }
     ]
   },
   

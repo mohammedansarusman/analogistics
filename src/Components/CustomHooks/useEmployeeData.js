@@ -18,17 +18,16 @@ const useEmployeeData = () => {
       if(snapshot.exists()){
         const empRecord = snapshot.val();
         const empArray = Object.entries(empRecord); // key and pair will convert as array
-        // console.log(empArray);
         const data = empArray.map((employees)=>{
           return {firebaseId: employees[0],...employees[1]};
         })   
-        dispatch(addEmployeeRecords(data));  // dispatching the employee data to the store.  // dispatching the employee data to the store.  // dispatching the employee data to the store.   // dispatching the employee data to the store.   // dispatching the employee data to the store.   // dispatching the employee data to the store.   // dispatching the employee data to
+        dispatch(addEmployeeRecords(data));  
         dispatch(addFilterEmployeeRecords(data));
       }
   }
   useEffect(()=>{
     fetchData();
-  },[deleteCount]);  // Only re-fetch when the component mounts or when the state changes.
+  },[deleteCount]); 
   
   
 };

@@ -20,7 +20,7 @@ const RegisterMiddleName = () => {
         name="middleName"
         value={middleName}
         onChange={handleName}
-        className="block w-full text-black border-2 border-gray-300 pl-2"
+        className="w-full text-black border border-gray-300 border-1 outline-none pl-2 bg-white rounded-md h-[40px] focus:ring-1 focus:ring-gray-300 focus:ring-offset-4"
       />
       <div className="h-[20px]">
       </div>

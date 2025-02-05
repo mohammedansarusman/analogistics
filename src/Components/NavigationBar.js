@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { changeBar } from "../Store/navigationSlice";
 import { useState } from "react";
 import MenuNavigation from "./MenuNavigation";
+import FleetMenuNavigation from "./FleetComponents/FleetMenuNavigation";
 import { Link } from "react-router-dom";
 // Parent componenet - <App />
 
@@ -66,6 +67,7 @@ const NavigationBar = () => {
           <Link to="/">
             <div className="p-2 hover:text-cyan-500">Home</div>
           </Link> 
+          {/* People menu from Navigation bar */}
           <div 
             onMouseEnter={handlePeople}
             onMouseLeave={handleMouseLeave}
@@ -79,6 +81,7 @@ const NavigationBar = () => {
                 <MenuNavigation />
               </div>}
           </div>
+          {/* Fleet menu from Navigation bar */}
           <div 
             onMouseEnter = { handleFleet}
             onMouseLeave={handleMouseLeave}
@@ -90,7 +93,7 @@ const NavigationBar = () => {
                                 w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300
                                 text-black pt-4 flex justify-center
                               ">
-                  <MenuNavigation />                
+                  <FleetMenuNavigation />              
                 </div> }
           </div>
           <div 
@@ -103,7 +106,7 @@ const NavigationBar = () => {
                                 w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300
                                 text-black pt-4 flex justify-center
                                 ">
-                    <MenuNavigation />              
+                  <FleetMenuNavigation />              
               </div> }
           </div>
         </div>

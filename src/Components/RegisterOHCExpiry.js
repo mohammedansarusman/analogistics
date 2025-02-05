@@ -11,14 +11,14 @@ const RegisterOHCExpiry = () => {
   const ohcExpiry = useSelector((store)=>store.registration.ohcExpiry);
 
   const handleDateChangeOHC = (date) => {
-    dispatch(addOHCExpiry(date.getTime()));  // dispatch action to update the state in the store.
+    date && dispatch(addOHCExpiry(date.getTime()));  // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
     dispatch(addValidOHCExpiry(true));
   };
   const message = useDateValidity(ohcExpiry);
   return (
-    <div className="flex flex-col items-start w-1/2">
+    <div className="flex flex-col items-start w-1/2 gap-1">
       <label for="ohcExpiry" className="font-bold opacity-80">
         OHC Expiry<span className="text-red-500">*</span>
       </label>
@@ -29,7 +29,7 @@ const RegisterOHCExpiry = () => {
         onBlur={handleBlur}
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
-        className=" text-black border-2 border-gray-300 pl-2"
+        className="w-full text-black border border-gray-300 border-1 outline-none pl-2 bg-white rounded-md h-[40px] focus:ring-1 focus:ring-gray-300 focus:ring-offset-4"
       />
       <div className="h-[20px]">
         {flagOHC && <p className="text-red-500 text-xs">{message}</p>}

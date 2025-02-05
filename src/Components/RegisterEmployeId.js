@@ -16,7 +16,7 @@ const RegisterEmployeId = () => {
     };
 
   return (
-    <div className="w-full flex flex-col items-start">
+    <div className="w-full flex flex-col items-start gap-1">
       <label htmlFor="empid" className="block font-bold opacity-80">
         Employee ID<span className="text-red-500">*</span>
       </label>
@@ -28,7 +28,7 @@ const RegisterEmployeId = () => {
         onChange={handleId}
         onBlur={handleBlur}
         placeholder="e00000"
-        className="block w-full text-black border-2 border-gray-300 pl-2"
+        className="w-full text-black border border-gray-300 border-1 outline-none pl-2 bg-white rounded-md h-[40px] focus:ring-1 focus:ring-gray-300 focus:ring-offset-4"
       />
       <div className="h-[20px]">
         {flagEmployeId && <p className="text-red-500 text-xs">{message}</p>}

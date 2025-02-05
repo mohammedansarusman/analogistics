@@ -13,14 +13,14 @@ const RegisterVisaExpiry = () => {
   const flagVisa = useSelector((store) => store.registration.validVisaExpiry);
 
   const handleDateChangeVisa = (date) => {
-    dispatch(addVisaExpiry(date.getTime())); // dispatch action to update the state in the store.
+    date && dispatch(addVisaExpiry(date.getTime())); // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
     dispatch(addValidVisaExpiry(true));
   };
   const message = useDateValidity(visaExpiry);
   return (
-    <div className="flex flex-col items-start w-1/2">
+    <div className="flex flex-col items-start w-1/2 gap-1">
       <label htmlFor="visaExpiry" className="font-bold opacity-80">
         Visa Expiry<span className="text-red-500">*</span>
       </label>
@@ -31,7 +31,7 @@ const RegisterVisaExpiry = () => {
         onBlur={handleBlur}
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
-        className=" text-black border-2 border-gray-300 pl-2"
+        className="w-full text-black border border-gray-300 border-1 outline-none pl-2 bg-white rounded-md h-[40px] focus:ring-1 focus:ring-gray-400 focus:ring-offset-4"
       />
       <div className="h-[20px]">
         {flagVisa && <p className="text-red-500 text-xs">{message}</p>}

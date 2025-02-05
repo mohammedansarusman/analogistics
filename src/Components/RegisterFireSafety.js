@@ -13,7 +13,7 @@ const RegisterFireSafety = () => {
   const flagFire = useSelector((store) => store.registration.validFireExpiry);
 
   const handleDateChangeFireNSafety = (date) => {
-    dispatch(addFireExpiry(date.getTime())); // dispatch action to update the state in the store.
+    date && dispatch(addFireExpiry(date.getTime())); // dispatch action to update the state in the store.
   };
   const handleBlur = () => {
     dispatch(addValidFireExpiry(true));
@@ -21,7 +21,7 @@ const RegisterFireSafety = () => {
   const message = useDateValidity(fireExpiry);
 
   return (
-    <div className="flex flex-col items-start w-1/2">
+    <div className="flex flex-col items-start w-1/2 gap-1">
       <label for="fireNsafetyExpiry" className="font-bold opacity-80">
         Fire & Safety Expiry<span className="text-red-500">*</span>
       </label>
@@ -32,7 +32,7 @@ const RegisterFireSafety = () => {
         onBlur={handleBlur}
         placeholderText="DD/MM/YYYY"
         dateFormat="dd-MM-yyyy"
-        className=" text-black border-2 border-gray-300 pl-2"
+        className="w-full text-black border border-gray-300 border-1 outline-none pl-2 bg-white rounded-md h-[40px] focus:ring-1 focus:ring-gray-300 focus:ring-offset-4"
       />
       <div className="h-[20px]">
         {flagFire && <p className="text-red-500 text-xs">{message}</p>}
