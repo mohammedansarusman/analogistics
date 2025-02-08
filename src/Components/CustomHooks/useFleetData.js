@@ -19,7 +19,6 @@ const useFleetData = () => {
             const data = fleetArray.map((fleet)=>{
                 return {firebaseId: fleet[0],...fleet[1]};
             });
-            console.log("data", data);
             dispatch(addFleetRecord(data));
             dispatch(addFilterFleetRecord(data));
         }

@@ -1,0 +1,62 @@
+import React from "react";
+import { format } from "date-fns";
+
+
+const FleetDetails = (props) => {
+  const {
+    chassis,
+    insurance,
+    iso,
+    manufacturer,
+    plate,
+    rta,
+    spare,
+    vehicle,
+    advertisement,
+  } = props.data;
+  const currentDate = new Date();
+
+  console.log("props", props.data);
+  return (
+    <div className="flex flex-col items-center py-2 mt-2 opacity-70 md:w-1/2 lg:w-1/3">
+      <div className="w-[90%] bg-cyan-100 flex flex-col transition-all duration-1000 hover:bg-cyan-200 rounded-tl-lg rounded-tr-lg">
+        <div className="flex justify-between items-center px-2">
+          <p className="font-light">{vehicle.label}</p>
+          <p className="text-xl">{plate}</p>
+        </div>
+        <div className="flex justify-between items-center px-2">
+          <p className="text-xl">{manufacturer}</p>
+          <p className="font-light">{chassis}</p>
+        </div>
+      </div>
+      <div className="w-[90%] bg-gray-200 flex py-2 mt-2 px-2 ">
+        <div className="w-[50%] flex flex-col items-start">
+          <p className="text-sm">Registration</p>
+          <p className={`text-md font-semibold ${new Date(rta) > new Date(currentDate) ? "text-black": "text-red-500"}`}>
+            {format(new Date(rta),"dd-MM-yyyy")}
+          </p>
+          <p className="text-sm">Insurance</p>
+          <p className={`text-md font-semibold ${new Date(insurance) > new Date(currentDate) ? "text-black": "text-red-500"}`}>
+            {format(new Date(insurance),"dd-MM-yyyy")}
+          </p>
+        </div>
+        <div className="w-[50%] flex flex-col items-end">
+          <p className="text-sm">Advertisement</p>
+          <p className={`text-md font-semibold ${new Date(advertisement) > new Date(currentDate) ? "text-black": "text-red-500"}`}>
+            {format(new Date(advertisement),"dd-MM-yyyy")}
+          </p>
+          <p className="text-sm">ISO</p>
+          <p className={`text-md font-semibold ${new Date(iso) > new Date(currentDate) ? "text-black": "text-red-500"}`}>
+            {format(new Date(iso),"dd-MM-yyyy")}
+          </p>
+        </div>
+      </div>
+      <div className = 'w-[90%] bg-gray-200 rounded-bl-lg rounded-br-lg'>
+        <p className="text-sm">Spare Key</p>
+        <p className="font-semibold">{spare}</p>
+      </div>
+    </div>
+  );
+};
+
+export default FleetDetails;
