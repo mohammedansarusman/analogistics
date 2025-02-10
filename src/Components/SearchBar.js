@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import { FaSearch } from "react-icons/fa";
 import { addFilterEmployeeRecords } from '../Store/registrationSlice';
-
 import { useDispatch } from 'react-redux';
 
-
+// parent component
 const SearchBar = (props) => {
   const dispatch = useDispatch();
   const {employeeRecords} = props;

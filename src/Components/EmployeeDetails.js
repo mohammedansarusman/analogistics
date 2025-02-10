@@ -19,30 +19,42 @@ import { getDatabase, ref, remove } from "firebase/database";
 const EmployeeDetails = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { first, middle, last, id, passport, ohc, fire, visa, rta, port, firebaseId } = props.data;
+  const {
+    first,
+    middle,
+    last,
+    id,
+    passport,
+    ohc,
+    fire,
+    visa,
+    rta,
+    port,
+    firebaseId,
+  } = props.data;
   const currentDate = new Date();
   // const [firbaseId] = useState(firebaseId);
-  const handleUpdate = () =>{
-      dispatch(addFirstName(first));
-      dispatch(addMiddleName(middle));
-      dispatch(addLastName(last));
-      dispatch(addEmployeId(id));
-      dispatch(addPassportExpiry(passport));
-      dispatch(addVisaExpiry(visa));
-      dispatch(addOHCExpiry(ohc));
-      dispatch(addRTAExpiry(rta));
-      dispatch(addPortExpiry(port));
-      dispatch(addFireExpiry(fire));
-      dispatch(addFireBaseId(firebaseId));
-      navigate('/people/update/');
-  }
+  const handleUpdate = () => {
+    dispatch(addFirstName(first));
+    dispatch(addMiddleName(middle));
+    dispatch(addLastName(last));
+    dispatch(addEmployeId(id));
+    dispatch(addPassportExpiry(passport));
+    dispatch(addVisaExpiry(visa));
+    dispatch(addOHCExpiry(ohc));
+    dispatch(addRTAExpiry(rta));
+    dispatch(addPortExpiry(port));
+    dispatch(addFireExpiry(fire));
+    dispatch(addFireBaseId(firebaseId));
+    navigate("/people/update/");
+  };
   const handleDelete = (firbaseId) => {
     dispatch(addDeleteCount((prevState) => prevState + 1));
     const db = getDatabase(app);
     const employeeRef = ref(db, `register/employe/${firebaseId}`);
     remove(employeeRef);
     // navigate('/people/list/');
-  }
+  };
 
   return (
     <div className="w-full flex flex-col items-center py-5 relative">
@@ -125,15 +137,15 @@ const EmployeeDetails = (props) => {
         </div>
       </div>
       <div className="flex justify-between items-center w-[90%] h-[30px]  mt-3 mb-5 gap-2">
-        <button className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-cyan-600 hover:bg-cyan-700"
-                onClick={
-                  handleUpdate
-                }
+        <button
+          className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-cyan-600 hover:bg-cyan-700"
+          onClick={handleUpdate}
         >
           Update
         </button>
-        <button className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-red-600 hover:bg-red-700"
-                onClick={handleDelete}
+        <button
+          className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-red-600 hover:bg-red-700"
+          onClick={handleDelete}
         >
           Delete
         </button>

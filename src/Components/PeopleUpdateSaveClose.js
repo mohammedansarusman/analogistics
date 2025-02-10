@@ -91,7 +91,6 @@ const PeopleUpdateSaveClose = (props) => {
         fire: fireExpiry,
         port: portExpiry,
       })
-      console.log("fire base id",fireBaseId);
       dataMessage(true); // Show success message.
       setTimeout(() => {
         dataMessage(false);

@@ -15,8 +15,6 @@ const FleetDetails = (props) => {
     advertisement,
   } = props.data;
   const currentDate = new Date();
-
-  console.log("props", props.data);
   return (
     <div className="flex flex-col items-center py-2 mt-2 opacity-70 md:w-1/2 lg:w-1/3">
       <div className="w-[90%] bg-cyan-100 flex flex-col transition-all duration-1000 hover:bg-cyan-200 rounded-tl-lg rounded-tr-lg">
@@ -54,6 +52,20 @@ const FleetDetails = (props) => {
       <div className = 'w-[90%] bg-gray-200 rounded-bl-lg rounded-br-lg'>
         <p className="text-sm">Spare Key</p>
         <p className="font-semibold">{spare}</p>
+      </div>
+      <div className="flex justify-between items-center w-[90%] h-[30px]  mt-3 mb-5 gap-2">
+        <button
+          className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-cyan-600 hover:bg-cyan-700"
+          // onClick={handleUpdate}
+        >
+          Update
+        </button>
+        <button
+          className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-red-600 hover:bg-red-700"
+          // onClick={handleDelete}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
