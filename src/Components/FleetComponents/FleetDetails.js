@@ -1,22 +1,43 @@
 import React from "react";
 import { format } from "date-fns";
+import { changeFleetDisplay} from "../../Store/navigationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { 
+  addPlateNo, addVehicleType, addManufacturer, addRegistrationExpiry, addInsuranceExpiry,
+  addAdvertisementExpiry, addISOExpiry, addChassisNo, addSpareKey
+ } from "../../Store/fleetRegistrationSlice";
+
 
 
 const FleetDetails = (props) => {
-  const {
-    chassis,
-    insurance,
-    iso,
-    manufacturer,
-    plate,
-    rta,
-    spare,
-    vehicle,
-    advertisement,
+  const dispatch = useDispatch();
+  const layout = useSelector((store) => store.navigation.displayFleet);
+  const navigate = useNavigate();
+  
+
+  const { chassis,insurance,iso,
+    manufacturer,plate,rta,
+    spare,vehicle,advertisement,
   } = props.data;
+
+  const handleUpdate = () => {
+    dispatch(addPlateNo(plate));
+    dispatch(addVehicleType(vehicle));
+    dispatch(addManufacturer(manufacturer));
+    dispatch(addRegistrationExpiry(rta));
+    dispatch(addInsuranceExpiry(insurance));
+    dispatch(addAdvertisementExpiry(advertisement));
+    dispatch(addISOExpiry(iso));
+    dispatch(addChassisNo(chassis));
+    dispatch(addSpareKey(spare));
+    navigate("/fleet/register/");
+  } 
+
   const currentDate = new Date();
   return (
-    <div className="flex flex-col items-center py-2 mt-2 opacity-70 md:w-1/2 lg:w-1/3">
+    <div className={`flex flex-col items-center py-2 mt-2 opacity-70 ${layout === 'grid' ? "md:w-[70%]" : "md:w-1/2 lg:w-1/3"}`}>
       <div className="w-[90%] bg-cyan-100 flex flex-col transition-all duration-1000 hover:bg-cyan-200 rounded-tl-lg rounded-tr-lg">
         <div className="flex justify-between items-center px-2">
           <p className="font-light">{vehicle.label}</p>
@@ -56,7 +77,7 @@ const FleetDetails = (props) => {
       <div className="flex justify-between items-center w-[90%] h-[30px]  mt-3 mb-5 gap-2">
         <button
           className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-cyan-600 hover:bg-cyan-700"
-          // onClick={handleUpdate}
+          onClick={handleUpdate}
         >
           Update
         </button>

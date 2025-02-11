@@ -6,10 +6,10 @@ import EmployeeDetails from "./EmployeeDetails";
 import SearchBar from "./SearchBar";
 import ContenLoading from "./ContenLoading";
 import { FaListUl } from "react-icons/fa";
+import { SlGrid } from "react-icons/sl";
 import { FaSortAmountDownAlt } from "react-icons/fa";
 import { FaSortAmountUp } from "react-icons/fa";
 import { changeDisplay, changeSort } from "../Store/navigationSlice";
-import { SlGrid } from "react-icons/sl";
 import { addFilterEmployeeRecords } from "../Store/registrationSlice";
 
 
