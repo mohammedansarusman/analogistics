@@ -11,7 +11,7 @@ import FleetRegister from './Components/FleetComponents/FleetRegister';
 import EmployeeList from './Components/EmployeeList';
 import FleetList from './Components/FleetComponents/FleetList';
 import PeopleUpdate from './Components/PeopleUpdate';
-
+import FleetUpdate from './Components/FleetComponents/FleetUpdate';
 const appRouter = createBrowserRouter([
   {
     path: '/',
@@ -36,7 +36,11 @@ const appRouter = createBrowserRouter([
       {
         path: "/fleet/fleetList",
         element: <FleetList />,
-      }
+      },
+      {
+        path: "/fleet/update/",
+        element: <FleetUpdate />,
+      },
     ]
   },
   

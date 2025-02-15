@@ -49,7 +49,7 @@ const FleetList = () => {
         ) : null}
         {/* Display fleet data */}
         {filteredData.map((fleet) => (
-          <FleetDetails key={fleet.plate} data={fleet} />
+          <FleetDetails key={fleet.firebaseId} data={fleet} />
         ))}
       </div>
     </div>

@@ -6,14 +6,18 @@ import { addFirstName, addValidFirstName } from "../Store/registrationSlice";
 const RegisterName = () => {
   const dispatch = useDispatch();
   const firstName = useSelector((store)=>store.registration.firstName);
+  // validFirstName - is a redux state variable,the default value is false. the use of this-
+  // state, when the useNameValidity custom hook will execute then return one message that will output in dom,
+  // state became true.
   const flagFirstName = useSelector((store)=>store.registration.validFirstName);
   const message = useNameValidity(firstName);
   
 
   const handleName = (e) => {
-    dispatch(addFirstName(e.target.value));  // dispatch action to update the state in the store.
+    dispatch(addFirstName(e.target.value));
   };
   const handleBlur = () => {
+    dispatch(addFirstName(firstName.toLowerCase().replace(/\b\w/g,(char) => char.toUpperCase())));
     dispatch(addValidFirstName(true));  
   };
 

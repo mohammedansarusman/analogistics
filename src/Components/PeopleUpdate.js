@@ -10,7 +10,7 @@ import RegisterLastName from "./RegisterLastName";
 import RegisterEmployeId from "./RegisterEmployeId";
 import RegisterSuccessMessage from "./RegisterSuccessMessage";
 import { useState } from "react";
-import PeopleRegisterSaveClose from "./PeopleUpdateSaveClose";
+import PeopleUpdateSaveClose from "./PeopleUpdateSaveClose";
 
 const PeopleUpdate = () => {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const PeopleUpdate = () => {
           {/* Fire and Safety and Port Expiry */}
           <DatePickerFirePort />
           {/* Save and Close Button */}
-          <PeopleRegisterSaveClose dataMessage = {setMessage} /> 
+          <PeopleUpdateSaveClose dataMessage = {setMessage} /> 
         </div>
       </div>
     </div>

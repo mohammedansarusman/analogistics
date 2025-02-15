@@ -1,4 +1,5 @@
-export const useIdValidity = (empId)=>{
+export const useIdValidity = (empId,empRecords)=>{
+    console.log("emp reocrs", empRecords)
     if(empId>6){
         return "Employee ID should not exceed 6 digits.";
     }

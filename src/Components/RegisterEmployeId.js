@@ -3,11 +3,12 @@ import { useIdValidity } from "./CustomHooks/useIdValidity";
 import { useSelector, useDispatch } from "react-redux";
 import { addEmployeId, addValidEmployeId } from "../Store/registrationSlice";
 
-const RegisterEmployeId = () => {
+const RegisterEmployeId = (props) => {
+  const { id } = props.data;
     const dispatch = useDispatch();
     const employeId = useSelector((store)=>store.registration.employeId);
     const flagEmployeId = useSelector((store)=>store.registration.validEmployeId);
-    const message = useIdValidity(employeId);
+    const message = useIdValidity(employeId,props.data);
     const handleId = (e) => {
         dispatch(addEmployeId(e.target.value));  // dispatch action to update the state in the store.
     };

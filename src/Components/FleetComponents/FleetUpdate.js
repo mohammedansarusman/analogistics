@@ -1,0 +1,84 @@
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { changeBar } from "../../Store/navigationSlice";
+import RegisterPlateNo from "./RegisterPlateNo";
+import RegisterChassisNo from "./RegisterChassisNo";
+import RegisterVehicleType from "./RegisterVehicleType";
+import RegisterManufacturer from "./RegisterManufacturer";
+import RegisterRegistrationExpiry from "./RegisterRegistrationExpiry";
+import RegisterInsuranceExpiry from "./RegisterInsuranceExpiry";
+import RegisterAdvertisementExpiry from "./RegisterAdvertisementExpiry";
+import RegisterISOExpiry from "./RegisterISOExpiry";
+import RegisterSpareKey from "./RegisterSpareKey";
+import FleetUpdateSaveClose from "./FleetUpdateSaveClose";
+
+const FleetUpdate = () => {
+  const dispatch = useDispatch();
+  const [message, setMessage] = useState(false);
+
+  dispatch(changeBar(false)); // the side navigation bar will close once the fleet registration click.
+  return (
+    <div className="w-full absolute left-0">
+      <div className="w-full flex flex-col items-center pb-5 relative">
+        {/* Heading - update fleet details */}
+        <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7">
+          <h1>Fleet Updation</h1>
+        </header>
+        {/* Fleet updation  form - plate , chassis, vehicle type etc .. */}
+        <div className="flex flex-col items-start w-[90%]  border-2 border-cyan-500 p-5 rounded-xl mt-[30px]">
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              {/* Plate number */}
+              <RegisterPlateNo />
+            </div>
+            <div className="lg:w-[45%]">
+              {/* Chassis number */}
+              <RegisterChassisNo /> 
+            </div>
+          </div>
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              {/* Vehicle type */}
+              <RegisterVehicleType />
+            </div>
+            <div className="lg:w-[45%]">
+              {/* Manufacturer */}
+              <RegisterManufacturer />
+            </div>
+          </div>
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              {/* Registration Expiry */}
+              <RegisterRegistrationExpiry />
+            </div>
+            <div className="lg:w-[45%]">
+              {/* Insurance Expiry */}
+              <RegisterInsuranceExpiry />
+            </div>
+          </div>
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              {/* Advertisement Expiry */}
+              <RegisterAdvertisementExpiry />
+            </div>
+            <div className="lg:w-[45%]">
+              {/* ISO certification Expiry */}
+              <RegisterISOExpiry />
+            </div>
+          </div>
+          <div className="w-full lg:flex lg:justify-start">
+            <div className="lg:w-[45%]">
+              {/* Spare key availability */}
+              <RegisterSpareKey />
+            </div>
+          </div>
+          
+          {/* Save and close button */}
+          <FleetUpdateSaveClose dataMessage={setMessage} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FleetUpdate;

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { 
   addPlateNo, addVehicleType, addManufacturer, addRegistrationExpiry, addInsuranceExpiry,
-  addAdvertisementExpiry, addISOExpiry, addChassisNo, addSpareKey
+  addAdvertisementExpiry, addISOExpiry, addChassisNo, addSpareKey, addFireBaseId
  } from "../../Store/fleetRegistrationSlice";
 
 
@@ -19,9 +19,10 @@ const FleetDetails = (props) => {
 
   const { chassis,insurance,iso,
     manufacturer,plate,rta,
-    spare,vehicle,advertisement,
+    spare,vehicle,advertisement, firebaseId
   } = props.data;
-
+  
+  console.log("props.dat",props.data)
   const handleUpdate = () => {
     dispatch(addPlateNo(plate));
     dispatch(addVehicleType(vehicle));
@@ -32,7 +33,8 @@ const FleetDetails = (props) => {
     dispatch(addISOExpiry(iso));
     dispatch(addChassisNo(chassis));
     dispatch(addSpareKey(spare));
-    navigate("/fleet/register/");
+    dispatch(addFireBaseId(firebaseId));
+    navigate("/fleet/update/");
   } 
 
   const currentDate = new Date();
@@ -40,6 +42,7 @@ const FleetDetails = (props) => {
     <div className={`flex flex-col items-center py-2 mt-2 opacity-70 ${layout === 'grid' ? "md:w-[70%]" : "md:w-1/2 lg:w-1/3"}`}>
       <div className="w-[90%] bg-cyan-100 flex flex-col transition-all duration-1000 hover:bg-cyan-200 rounded-tl-lg rounded-tr-lg">
         <div className="flex justify-between items-center px-2">
+          {console.log("label",vehicle.label)}
           <p className="font-light">{vehicle.label}</p>
           <p className="text-xl">{plate}</p>
         </div>

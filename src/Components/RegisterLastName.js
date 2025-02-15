@@ -12,6 +12,7 @@ const RegisterLastName = () => {
     dispatch(addLastName(e.target.value))
   };
   const handleBlur = () => {
+    dispatch(addLastName(lastName.toLowerCase().replace(/\b\w/g,(char) => char.toUpperCase())))
     dispatch(addValidLastName(true));
   };
 
