@@ -15,6 +15,7 @@ import useEmployeeData from './CustomHooks/useEmployeeData'
 
 const PeopleRegister = () => {
   const dispatch = useDispatch();
+  // the reason behind calling  useEmployeeData here is to use check the employee id in the <RegisterEmployeeId /> component
   useEmployeeData();
   const employeeData = useSelector(
     (store) => store.registration.employeeRecords

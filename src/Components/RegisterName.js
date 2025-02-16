@@ -1,7 +1,7 @@
 import React from "react";
 import { useNameValidity } from "./CustomHooks/useNameValidity";
 import { useSelector, useDispatch } from "react-redux";
-import { addFirstName, addValidFirstName } from "../Store/registrationSlice";
+import { addFirstName, addValidFirstName, addSaveFirstName } from "../Store/registrationSlice";
 
 const RegisterName = () => {
   const dispatch = useDispatch();
@@ -11,6 +11,8 @@ const RegisterName = () => {
   // state became true.
   const flagFirstName = useSelector((store)=>store.registration.validFirstName);
   const message = useNameValidity(firstName);
+  // save buttton will work once the saveFirstName state is true
+  message === null ? dispatch(addSaveFirstName(true)) : dispatch(addSaveFirstName(false)); 
   
 
   const handleName = (e) => {

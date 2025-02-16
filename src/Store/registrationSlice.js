@@ -14,8 +14,11 @@ const registrationSlice = createSlice({
     portExpiry: null,
     warning: false,
     validFirstName: false,
+    saveFirstName: false,
     validLastName: false,
+    saveLastName: false,
     validEmployeId: false,
+    saveEmployeId: false,
     validPassportExpiry: false,
     validVisaExpiry: false,
     validOHCExpiry: false,
@@ -100,6 +103,15 @@ const registrationSlice = createSlice({
     addFilterEmployeeRecords:(state, action) => {
       state.filterEmployeeRecords = action.payload;
     },
+    addSaveFirstName:(state,action) =>{
+      state.saveFirstName = action.payload;
+    },
+    addSaveLastName:(state,action) =>{
+      state.saveLastName = action.payload;
+    },
+    addSaveEmployeId:(state,action) => {
+      state.saveEmployeId = action.payload;
+    },
   },
 });
 
@@ -110,5 +122,5 @@ export const {
   addFireExpiry,addPortExpiry,addWarning,addValidFirstName,
   addValidLastName,addValidEmployeId,addValidPassportExpiry,
   addValidVisaExpiry,addValidOHCExpiry,addValidRTAExpiry, addValidFireExpiry, addValidPortExpiry,addFireBaseId,addDeleteCount,
-  addEmployeeRecords,addFilterEmployeeRecords
+  addEmployeeRecords,addFilterEmployeeRecords,addSaveFirstName, addSaveLastName, addSaveEmployeId
 } = registrationSlice.actions;

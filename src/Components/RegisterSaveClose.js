@@ -44,7 +44,13 @@ const RegisterSaveClose = (props) => {
   const rtaExpiry = useSelector((store) => store.registration.rtaExpiry);
   const fireExpiry = useSelector((store) => store.registration.fireExpiry);
   const portExpiry = useSelector((store) => store.registration.portExpiry);
-  const isFormValid = firstName && lastName && employeId && passportExpiry && visaExpiry &&
+  
+  //  the starting approved variable are true then only the save will work. 
+  const approvedFirstName = useSelector((store) => store.registration.saveFirstName);
+  const approvedLastName = useSelector((store) => store.registration.saveLastName);
+  const approvedEmployeId = useSelector((store) => store.registration.saveEmployeId);
+
+  const isFormValid = approvedFirstName && approvedLastName && approvedEmployeId && passportExpiry && visaExpiry &&
                         ohcExpiry && rtaExpiry && fireExpiry && portExpiry;
 
   const handleReset = () => {
@@ -70,7 +76,7 @@ const RegisterSaveClose = (props) => {
     dispatch(addValidFireExpiry(false));
     dispatch(addValidPortExpiry(false));
   }
-
+console.log("isform",isFormValid);
   const handleSave = () => {
     
     if (isFormValid) {

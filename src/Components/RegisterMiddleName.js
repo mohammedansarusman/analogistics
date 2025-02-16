@@ -11,7 +11,6 @@ const RegisterMiddleName = () => {
   };
   const handleBlur = () => {
     dispatch(addMiddleName(middleName.toLowerCase().replace(/\b\w/g,(char) => char.toUpperCase())))
-    // add validation logic here
   };
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">

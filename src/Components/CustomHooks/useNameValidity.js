@@ -3,7 +3,7 @@ export const useNameValidity = (empName) =>{
     {
         return "Name should not exceed 20 characters.";
     }
-    else if(empName.trim === "")
+    else if(empName.trim === null || empName.length === 0)
     {   
         return "Name should not be empty.";
     }
@@ -13,7 +13,7 @@ export const useNameValidity = (empName) =>{
     }
     else
     {
-        return "";
+        return null;
     }
 }
 

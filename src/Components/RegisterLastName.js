@@ -1,13 +1,15 @@
 import React from "react";
 import { useNameValidity } from "./CustomHooks/useNameValidity";
 import { useDispatch, useSelector } from "react-redux";
-import { addLastName, addValidLastName } from "../Store/registrationSlice";
+import { addLastName, addValidLastName, addSaveLastName } from "../Store/registrationSlice";
 
 const RegisterLastName = () => {
   const dispatch = useDispatch();
   const flagLastName = useSelector((store)=>store.registration.validLastName)
   const lastName = useSelector((store)=>store.registration.lastName)
   const message = useNameValidity(lastName);
+  message === null ? dispatch(addSaveLastName(true)) : dispatch(addSaveLastName(false)); 
+  
   const handleName = (e) => {
     dispatch(addLastName(e.target.value))
   };
