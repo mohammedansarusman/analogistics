@@ -1,6 +1,6 @@
 import React from "react";
 import { changeBar } from "../Store/navigationSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DatePickerPassVisa from "./DatePickerPassVisa";
 import DatePickerOHCRTA from "./DatePickerOHCRTA";
 import DatePickerFirePort from "./DatePickerFirePort";
@@ -11,9 +11,15 @@ import RegisterEmployeId from "./RegisterEmployeId";
 import RegisterSuccessMessage from "./RegisterSuccessMessage";
 import { useState } from "react";
 import PeopleUpdateSaveClose from "./PeopleUpdateSaveClose";
+import useEmployeeData from './CustomHooks/useEmployeeData'
+
 
 const PeopleUpdate = () => {
   const dispatch = useDispatch();
+  useEmployeeData();
+  const employeeData = useSelector(
+    (store) => store.registration.employeeRecords
+  );
   const [message, setMessage] = useState(false);
   dispatch(changeBar(false));
   return (
@@ -34,7 +40,7 @@ const PeopleUpdate = () => {
             {/* Laste Name field */}
             <RegisterLastName />
             {/* Employee id field */}
-            <RegisterEmployeId />
+            <RegisterEmployeId data = {employeeData}/>
           </div>
           {/* passport and visa expiry date picker component */}
           <DatePickerPassVisa />

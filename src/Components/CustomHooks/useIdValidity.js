@@ -1,5 +1,4 @@
 export const useIdValidity = (empId,empRecords)=>{
-    console.log("emp reocrs", empRecords)
     const data = empRecords.filter((record)=>record.id.includes(empId))
     if(data.length > 0){
         return "Employee ID already exists.";

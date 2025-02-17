@@ -45,8 +45,15 @@ const PeopleUpdateSaveClose = (props) => {
   const fireExpiry = useSelector((store) => store.registration.fireExpiry);
   const portExpiry = useSelector((store) => store.registration.portExpiry);
   const fireBaseId = useSelector((store) => store.registration.fireBaseId); 
-  const isFormValid = firstName && lastName && employeId && passportExpiry && visaExpiry &&
+  
+  const approvedFirstName = useSelector((store) => store.registration.saveFirstName);
+  const approvedLastName = useSelector((store) => store.registration.saveLastName);
+  const approvedEmployeId = useSelector((store) => store.registration.saveEmployeId);
+
+  const isFormValid = approvedFirstName && approvedLastName && approvedEmployeId && passportExpiry && visaExpiry &&
                         ohcExpiry && rtaExpiry && fireExpiry && portExpiry;
+  
+
 
   const handleReset = () => {
     dispatch(addFirstName(""));
