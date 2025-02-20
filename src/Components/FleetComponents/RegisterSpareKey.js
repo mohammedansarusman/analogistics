@@ -7,7 +7,7 @@ const RegisterSpareKey = () => {
   const dispatch = useDispatch();
   const spareKey = useSelector((store) => store.fleetRegistration.spareKey);
   const flag = useSelector((store) => store.fleetRegistration.validSpareKey);
-  const handleChange = (e) => dispatch(addSpareKey(e.target.value));
+  const handleChange = (e) => dispatch(addSpareKey(e.target.value.toUpperCase()));
   const handleBlur = () => dispatch(addValidSpareKey(true));
   const message = useTextValidity(spareKey);
   return (

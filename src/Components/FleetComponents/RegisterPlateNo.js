@@ -1,21 +1,23 @@
 import React from 'react'
-import {useTextValidity} from '../CustomHooks/useTextValidity'
+import {usePlateValidity} from '../CustomHooks/usePlateValidity'
 import { useSelector, useDispatch } from 'react-redux';
-import { addPlateNo, addValidPlateNo } from '../../Store/fleetRegistrationSlice';
+import { addPlateNo, addValidPlateNo, addSavePlateNo } from '../../Store/fleetRegistrationSlice';
 
 
-const RegisterPlateNo = () => {
+const RegisterPlateNo = (props) => {
+  const { data } = props;
   const dispatch = useDispatch();
   const plate = useSelector((store)=>store.fleetRegistration.plateNo);
   const flag = useSelector((store)=>store.fleetRegistration.validPlateNo);
   const handlePlate=(e)=>{
-    dispatch(addPlateNo(e.target.value));
+    dispatch(addPlateNo(e.target.value.toUpperCase()));
   };
   const handleBlur=()=>{
     dispatch(addValidPlateNo(true));
   };
-  const message = useTextValidity(plate);
-
+  const message = usePlateValidity(plate,data);
+  message === null? dispatch(addSavePlateNo(true)): dispatch(addSavePlateNo(false));
+  
 
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">

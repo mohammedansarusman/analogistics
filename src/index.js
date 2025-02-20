@@ -48,11 +48,11 @@ const appRouter = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
       <Provider store = {appStore}>
         <RouterProvider router={appRouter}/>
       </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 

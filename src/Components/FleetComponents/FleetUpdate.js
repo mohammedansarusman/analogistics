@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeBar } from "../../Store/navigationSlice";
 import RegisterPlateNo from "./RegisterPlateNo";
 import RegisterChassisNo from "./RegisterChassisNo";
@@ -11,11 +11,15 @@ import RegisterAdvertisementExpiry from "./RegisterAdvertisementExpiry";
 import RegisterISOExpiry from "./RegisterISOExpiry";
 import RegisterSpareKey from "./RegisterSpareKey";
 import FleetUpdateSaveClose from "./FleetUpdateSaveClose";
+import useFleetData from '../CustomHooks/useFleetData'
+
 
 const FleetUpdate = () => {
   const dispatch = useDispatch();
-  const [message, setMessage] = useState(false);
+  const records = useSelector((store)=>store.fleetRegistration.fleetRecord)
 
+  const [message, setMessage] = useState(false);
+  useFleetData(); 
   dispatch(changeBar(false)); // the side navigation bar will close once the fleet registration click.
   return (
     <div className="w-full absolute left-0">
@@ -29,11 +33,11 @@ const FleetUpdate = () => {
           <div className="w-full lg:flex lg:justify-between">
             <div className="lg:w-[45%]">
               {/* Plate number */}
-              <RegisterPlateNo />
+              <RegisterPlateNo data = { records }/>
             </div>
             <div className="lg:w-[45%]">
               {/* Chassis number */}
-              <RegisterChassisNo /> 
+              <RegisterChassisNo data = { records }/> 
             </div>
           </div>
           <div className="w-full lg:flex lg:justify-between">

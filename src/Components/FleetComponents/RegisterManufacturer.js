@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addManufacturer,
-  addValidManufacturer,
+  addValidManufacturer, addSaveManufacturer
 } from "../../Store/fleetRegistrationSlice";
 import { useTextValidity } from "../CustomHooks/useTextValidity";
 
@@ -14,9 +14,11 @@ const RegisterManufacturer = () => {
   const flag = useSelector(
     (store) => store.fleetRegistration.validManufacturer
   );
-  const handleChange = (e) => dispatch(addManufacturer(e.target.value));
+  const handleChange = (e) => dispatch(addManufacturer(e.target.value.toUpperCase()));
   const handleBlur = () => dispatch(addValidManufacturer(true));
   const message = useTextValidity(manufacturer);
+  message === null? dispatch(addSaveManufacturer(true)) : dispatch(addSaveManufacturer(false));
+
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">
       <label htmlFor="manufacture" className="font-bold opacity-80">

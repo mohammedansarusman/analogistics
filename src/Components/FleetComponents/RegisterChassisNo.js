@@ -1,17 +1,19 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addChassisNo, addValidChassisNo } from '../../Store/fleetRegistrationSlice'
+import { addChassisNo, addValidChassisNo, addSaveChassisNo } from '../../Store/fleetRegistrationSlice'
 import { useChassisValidity } from '../CustomHooks/useChassisValidity'
 
-const RegisterChassisNo = () => {
+const RegisterChassisNo = (props) => {
+  const { data } = props;
   const dispatch = useDispatch();
   const chassisNo = useSelector((store)=>store.fleetRegistration.chassisNo);
   const flag = useSelector((store)=>store.fleetRegistration.validChassisNo);
 
-  const handleChange = (e)=> dispatch(addChassisNo(e.target.value))
+  const handleChange = (e)=> dispatch(addChassisNo(e.target.value.toUpperCase()))
   const handleBlur = ()=> dispatch(addValidChassisNo(true))
 
-  const message = useChassisValidity(chassisNo);
+  const message = useChassisValidity(chassisNo, data);
+  message === null ? dispatch(addSaveChassisNo(true)) : dispatch(addSaveChassisNo(false));
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">
         <label htmlFor="chassisNo" className="font-bold opacity-80">

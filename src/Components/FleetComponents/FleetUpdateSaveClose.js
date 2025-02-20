@@ -19,7 +19,7 @@ import {
     addValidVehicleType, addValidManufacturer,
     addValidRegistrationExpiry, addValidInsuranceExpiry,
     addValidAdvertisementExpiry, addValidISOExpiry,
-    addValidSpareKey
+    addValidSpareKey, a
 } from "../../Store/fleetRegistrationSlice";
 
 const FleetUpdateSaveClose = (props) => {
@@ -47,7 +47,11 @@ const FleetUpdateSaveClose = (props) => {
   const spare = useSelector((store)=>store.fleetRegistration.spareKey);
   const firebase = useSelector((store)=>store.fleetRegistration.fireBaseId);
 
-  const isFormValid = plate && chassis && vehicle && manufacturer && rta && insurance && advertisement && iso && spare;
+  const approvedPlateNo = useSelector((store)=>store.fleetRegistration.savePlateNo);
+  const approvedChassisNo = useSelector((store)=>store.fleetRegistration.saveChassisNo);
+  const approvedManufacturer = useSelector((store)=>store.fleetRegistration.saveManufacturer);
+
+  const isFormValid = approvedPlateNo && approvedChassisNo && vehicle && approvedManufacturer && rta && insurance && advertisement && iso && spare;
   
   const handleReset = () => {
     dispatch(addPlateNo(""));

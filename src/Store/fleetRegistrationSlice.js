@@ -23,6 +23,9 @@ const fleetRegistrationSlice = createSlice({
     fleetRecord:"",
     filterFleetRecord:"",
     fireBaseId:"",
+    savePlateNo:false,
+    saveChassisNo:false,
+    saveManufacturer:false,
   },
   reducers: {
     addPlateNo: (state, action) => {
@@ -88,6 +91,15 @@ const fleetRegistrationSlice = createSlice({
     addFireBaseId: (state, action) => {
       state.fireBaseId = action.payload;
     },
+    addSavePlateNo:(state,action)=>{
+      state.savePlateNo = action.payload;
+    },
+    addSaveChassisNo:(state,action)=>{
+      state.saveChassisNo = action.payload;
+    },
+    addSaveManufacturer:(state,action)=>{
+      state.saveManufacturer = action.payload;
+    },
   },
 });
 
@@ -114,4 +126,7 @@ export const {
   addFleetRecord,
   addFilterFleetRecord,
   addFireBaseId,
+  addSavePlateNo,
+  addSaveChassisNo,
+  addSaveManufacturer,
 } = fleetRegistrationSlice.actions;

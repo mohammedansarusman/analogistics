@@ -46,7 +46,11 @@ const RegisterFleetSaveReset = (props) => {
   const iso = useSelector((store)=>store.fleetRegistration.ISOExpiry);
   const spare = useSelector((store)=>store.fleetRegistration.spareKey);
 
-  const isFormValid = plate && chassis && vehicle && manufacturer && rta && insurance && advertisement && iso && spare;
+  const approvedPlateNo = useSelector((store)=>store.fleetRegistration.savePlateNo);
+  const approvedChassisNo = useSelector((store)=>store.fleetRegistration.saveChassisNo);
+  const approvedManufacturer = useSelector((store)=>store.fleetRegistration.saveManufacturer);
+
+  const isFormValid = approvedPlateNo && approvedChassisNo && vehicle && approvedManufacturer && rta && insurance && advertisement && iso && spare;
   
   const handleReset = () => {
     dispatch(addPlateNo(""));
