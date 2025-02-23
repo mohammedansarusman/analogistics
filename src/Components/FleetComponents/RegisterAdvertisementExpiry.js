@@ -19,7 +19,7 @@ const RegisterAdvertisementExpiry = () => {
   const message = useDateValidity(selectedDate);
   const dispatch = useDispatch();
   const handleDateChange = (date) => {
-    dispatch(addAdvertisementExpiry(date.getTime()));
+    date && dispatch(addAdvertisementExpiry(date.getTime()));
   };
   const handleBlur = () => {
     dispatch(addValidAdvertisementExpiry(true));

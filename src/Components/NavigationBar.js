@@ -52,7 +52,7 @@ const NavigationBar = () => {
 
   return (
     // {/* Navigation bar */}
-    <div className="bg-gray-800 h-[100px] flex items-center relative w-[100%] z-20">
+    <div className="bg-gray-800 h-[100px] flex items-center fixed w-[100%] z-20 ">
       <div className="w-[40%] flex items-center gap-3 px-5 ">
         {/* render if the screen width is small */}
         <GiHamburgerMenu

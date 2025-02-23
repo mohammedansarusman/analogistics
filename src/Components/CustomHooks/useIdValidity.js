@@ -1,6 +1,10 @@
+import { useSelector } from "react-redux";
+
 export const useIdValidity = (empId,empRecords)=>{
     const data = empRecords.filter((record)=>record.id.includes(empId))
-    if(data.length > 0){
+    const empSwitch = useSelector((store)=>store.registration.empidSwitch)
+
+    if(data.length > 0 && empSwitch){
         return "Employee ID already exists.";
     }
     if(empId>6){

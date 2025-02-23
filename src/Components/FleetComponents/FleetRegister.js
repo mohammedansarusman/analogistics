@@ -12,6 +12,7 @@ import RegisterISOExpiry from "./RegisterISOExpiry";
 import RegisterSpareKey from "./RegisterSpareKey";
 import RegisterFleetSaveReset from "./RegisterFleetSaveReset";
 import useFleetData from '../CustomHooks/useFleetData'
+import RegisterSuccessMessage from "../RegisterSuccessMessage";
 
 const FleetRegister = () => {
   const dispatch = useDispatch();
@@ -22,14 +23,15 @@ const FleetRegister = () => {
   useFleetData(); 
   dispatch(changeBar(false)); // the side navigation bar will close once the fleet registration click.
   return (
-    <div className="w-full absolute left-0">
+    <div className="w-full absolute left-0 top-[13%] lg:top-[12.3%] bg-white">
       <div className="w-full flex flex-col items-center pb-5 relative">
+        { message &&  <RegisterSuccessMessage /> }
         {/* Heading - FLEET REGISTRATION */}
         <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7">
           <h1>Fleet Registration</h1>
         </header>
         {/* Fleet registration  form - plate , chassis, vehicle type etc .. */}
-        <div className="flex flex-col items-start w-[90%]  border-2 border-cyan-500 p-5 rounded-xl mt-[30px]">
+        <div className="flex flex-col items-start w-[90%]  border-2 border-cyan-500 p-5 rounded-xl mt-[30px] ">
           <div className="w-full lg:flex lg:justify-between">
             <div className="lg:w-[45%]">
               {/* Plate number */}

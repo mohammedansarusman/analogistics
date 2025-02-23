@@ -19,7 +19,7 @@ const RegisterRegistrationExpiry = () => {
   const message = useDateValidity(selectedDate);
   const dispatch = useDispatch();
   const handleDateChange = (date) => {
-    dispatch(addRegistrationExpiry(date.getTime()));
+    date && dispatch(addRegistrationExpiry(date.getTime()));
   };
   const handleBlur = () => {
     dispatch(addValidRegistrationExpiry(true));

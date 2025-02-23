@@ -29,6 +29,7 @@ const registrationSlice = createSlice({
     deleteCount:0,
     employeeRecords:[],
     filterEmployeeRecords:[],
+    empidSwitch: true,
   },
   reducers: {
     addFirstName: (state, action) => {
@@ -112,6 +113,9 @@ const registrationSlice = createSlice({
     addSaveEmployeId:(state,action) => {
       state.saveEmployeId = action.payload;
     },
+    addEmpidSwitch:(state,action) => {
+      state.empidSwitch = action.payload;
+    },
   },
 });
 
@@ -122,5 +126,5 @@ export const {
   addFireExpiry,addPortExpiry,addWarning,addValidFirstName,
   addValidLastName,addValidEmployeId,addValidPassportExpiry,
   addValidVisaExpiry,addValidOHCExpiry,addValidRTAExpiry, addValidFireExpiry, addValidPortExpiry,addFireBaseId,addDeleteCount,
-  addEmployeeRecords,addFilterEmployeeRecords,addSaveFirstName, addSaveLastName, addSaveEmployeId
+  addEmployeeRecords,addFilterEmployeeRecords,addSaveFirstName, addSaveLastName, addSaveEmployeId, addEmpidSwitch
 } = registrationSlice.actions;

@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 import { 
   addPlateNo, addVehicleType, addManufacturer, addRegistrationExpiry, addInsuranceExpiry,
-  addAdvertisementExpiry, addISOExpiry, addChassisNo, addSpareKey, addFireBaseId
+  addAdvertisementExpiry, addISOExpiry, addChassisNo, addSpareKey, addFireBaseId, 
+  addPlateSwitch, addChassisSwitch
  } from "../../Store/fleetRegistrationSlice";
 
 
@@ -33,6 +34,8 @@ const FleetDetails = (props) => {
     dispatch(addChassisNo(chassis));
     dispatch(addSpareKey(spare));
     dispatch(addFireBaseId(firebaseId));
+    dispatch(addPlateSwitch(false));
+    dispatch(addChassisSwitch(false));
     navigate("/fleet/update/");
   } 
 

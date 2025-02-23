@@ -19,7 +19,7 @@ const RegisterInsuranceExpiry = () => {
   const message = useDateValidity(selectedDate);
   const dispatch = useDispatch();
   const handleDateChange = (date) => {
-    dispatch(addInsuranceExpiry(date.getTime()));
+    date && dispatch(addInsuranceExpiry(date.getTime()));
   };
   const handleBlur = () => {
     dispatch(addValidInsuranceExpiry(true));

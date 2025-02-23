@@ -26,6 +26,8 @@ const fleetRegistrationSlice = createSlice({
     savePlateNo:false,
     saveChassisNo:false,
     saveManufacturer:false,
+    plateSwitch:true,
+    chassisSwitch:true,
   },
   reducers: {
     addPlateNo: (state, action) => {
@@ -100,6 +102,13 @@ const fleetRegistrationSlice = createSlice({
     addSaveManufacturer:(state,action)=>{
       state.saveManufacturer = action.payload;
     },
+    addPlateSwitch:(state,action)=>{
+      state.plateSwitch = action.payload;
+    },
+    addChassisSwitch:(state,action)=>{
+      state.chassisSwitch = action.payload;
+    },
+    
   },
 });
 
@@ -129,4 +138,6 @@ export const {
   addSavePlateNo,
   addSaveChassisNo,
   addSaveManufacturer,
+  addPlateSwitch,
+  addChassisSwitch,
 } = fleetRegistrationSlice.actions;

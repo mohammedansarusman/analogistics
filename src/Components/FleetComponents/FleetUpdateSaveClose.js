@@ -19,7 +19,7 @@ import {
     addValidVehicleType, addValidManufacturer,
     addValidRegistrationExpiry, addValidInsuranceExpiry,
     addValidAdvertisementExpiry, addValidISOExpiry,
-    addValidSpareKey, a
+    addValidSpareKey, 
 } from "../../Store/fleetRegistrationSlice";
 
 const FleetUpdateSaveClose = (props) => {

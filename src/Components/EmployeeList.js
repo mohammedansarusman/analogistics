@@ -48,7 +48,7 @@ const EmployeeList = () => {
   }
 
   return (
-    <div className="w-full absolute left-0">
+    <div className="w-full absolute left-0 top-[13%] lg:top-[12.5%]">
       <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7">
         <h1>Employee List</h1>
       </header>

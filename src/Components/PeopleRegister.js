@@ -23,7 +23,7 @@ const PeopleRegister = () => {
   const [message, setMessage] = useState(false);
   dispatch(changeBar(false));
   return (
-    <div className="w-full absolute left-0">
+    <div className="w-full absolute left-0 top-[13%] lg:top-[12.3%]">
       <div className="w-full flex flex-col items-center pb-5 relative">
         { message &&  <RegisterSuccessMessage /> }
         <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7">

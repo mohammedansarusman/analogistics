@@ -42,7 +42,7 @@ const NavigationBarSmall = () => {
 
     };
     return (
-        <div className="w-[350px] h-[100%] bg-white absolute left-0 top-0 flex flex-col z-30">
+        <div className="w-[350px] h-[100%] bg-white fixed left-0 top-0 flex flex-col z-30">
 {/* Header in side navigation bar */}
             <div className="bg-slate-950 opacity-85 h-[70px] flex items-center justify-around text-white">
                 <h1 className="text-3xl font-semibold">FleetFlow</h1>

@@ -13,7 +13,7 @@ import { addRTAExpiry } from "../Store/registrationSlice";
 import { addPortExpiry } from "../Store/registrationSlice";
 import { addFireExpiry } from "../Store/registrationSlice";
 import { addFireBaseId } from "../Store/registrationSlice";
-import { addDeleteCount } from "../Store/registrationSlice";
+import { addDeleteCount, addEmpidSwitch } from "../Store/registrationSlice";
 import app from "./fireBaseConfig";
 import { getDatabase, ref, remove } from "firebase/database";
 const EmployeeDetails = (props) => {
@@ -46,6 +46,8 @@ const EmployeeDetails = (props) => {
     dispatch(addPortExpiry(port));
     dispatch(addFireExpiry(fire));
     dispatch(addFireBaseId(firebaseId));
+    dispatch(addEmpidSwitch(false));
+    // validationSwitch - turn off
     navigate("/people/update/");
   };
   const handleDelete = (firbaseId) => {

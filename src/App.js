@@ -5,6 +5,7 @@ import NavigationBarSmall from './Components/NavigationBarSmall';
 import { changeBar } from './Store/navigationSlice';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+import Dashboard from './Components/Dashboard';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <NavigationBar />
       {/* Here the hamburger menubar clicked then navigation bar will pop-up */}
       {toggleBar && <NavigationBarSmall />} 
+      <Dashboard />
       <Outlet />  {/* This component will render the route component based on the current URL */}
     </div>
   );

@@ -22,7 +22,7 @@ const FleetUpdate = () => {
   useFleetData(); 
   dispatch(changeBar(false)); // the side navigation bar will close once the fleet registration click.
   return (
-    <div className="w-full absolute left-0">
+    <div className="w-full absolute left-0 top-[13%] lg:top-[12.3%]">
       <div className="w-full flex flex-col items-center pb-5 relative">
         {/* Heading - update fleet details */}
         <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7">
