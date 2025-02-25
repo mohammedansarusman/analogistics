@@ -28,7 +28,7 @@ const FleetList = () => {
   }
 
   return (
-    <div className="w-full absolute left-0 top-[13%] lg:top-[12.3%]">
+    <div className="w-full absolute left-0 top-[13%] lg:top-[12.3%] bg-white">
       <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7">
         <h1>Fleet List</h1>
       </header>

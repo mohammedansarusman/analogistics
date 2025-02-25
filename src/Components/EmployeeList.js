@@ -48,11 +48,11 @@ const EmployeeList = () => {
   }
 
   return (
-    <div className="w-full absolute left-0 top-[13%] lg:top-[12.5%]">
-      <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7">
+    <div className="w-full absolute left-0 top-[13%] lg:top-[12.5%] bg-white">
+      <header className="w-full h-[60px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
         <h1>Employee List</h1>
       </header>
-      <div className="w-full flex justify-center items-center px-5 md:gap-4 lg:justify-end lg:gap-5  lg:items-center py-2">
+      <div className="w-full flex justify-center items-center px-5 pt-[70px] md:gap-4 lg:justify-end lg:gap-5  lg:items-center py-2">
         <div className="w-full flex justify-center lg:w-[30%]">
           <SearchBar employeeRecords={employeeData} />
         </div>
