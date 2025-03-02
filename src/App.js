@@ -20,11 +20,11 @@ function App() {
   },[])
   
   return (
-    <div className={`App w-full h-[100vh]  ${toggleBar ? 'bg-gray-300' : 'bg-white'}`}>
+    <div className={`App w-full h-[100vh] relative  ${toggleBar ? 'bg-gray-300' : 'bg-white'}`}>
       <NavigationBar />
       {/* Here the hamburger menubar clicked then navigation bar will pop-up */}
       {toggleBar && <NavigationBarSmall />} 
-      <Dashboard />
+      {/* <Dashboard /> */}
       <Outlet />  {/* This component will render the route component based on the current URL */}
     </div>
   );

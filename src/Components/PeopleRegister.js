@@ -12,9 +12,11 @@ import RegisterSuccessMessage from "./RegisterSuccessMessage";
 import { useState } from "react";
 import RegisterSaveClose from "./RegisterSaveClose";
 import useEmployeeData from './CustomHooks/useEmployeeData'
+import { useLocation } from "react-router-dom";
 
 const PeopleRegister = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   // the reason behind calling  useEmployeeData here is to use check the employee id in the <RegisterEmployeeId /> component
   useEmployeeData();
   const employeeData = useSelector(
@@ -23,14 +25,14 @@ const PeopleRegister = () => {
   const [message, setMessage] = useState(false);
   dispatch(changeBar(false));
   return (
-    <div className="w-full absolute left-0 top-[13%] lg:top-[12.3%]">
-      <div className="w-full flex flex-col items-center pb-5 relative">
+    <div className="w-full absolute left-0 top-[12.5%] lg:top-[12.3%] ">
+      <div className="w-full flex flex-col items-center pb-5 relative h-[135vh] lg:h-[100vh]">
         { message &&  <RegisterSuccessMessage /> }
-        <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7">
+        <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
           <h1>Employee Registration</h1>
         </header>
         <div
-          className="flex flex-col items-start w-[90%]  border-2 border-cyan-500 p-5 rounded-xl mt-[30px]"
+          className="flex flex-col items-start w-[90%]  border-2 border-cyan-500 p-5 rounded-xl mt-[80px]"
         >
           <div className="w-full lg:flex lg:gap-5 lg:items-center">
             {/* First name field */}

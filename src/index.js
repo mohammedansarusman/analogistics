@@ -12,6 +12,8 @@ import EmployeeList from './Components/EmployeeList';
 import FleetList from './Components/FleetComponents/FleetList';
 import PeopleUpdate from './Components/PeopleUpdate';
 import FleetUpdate from './Components/FleetComponents/FleetUpdate';
+import Dashboard from './Components/Dashboard';
+import LandingComponent from './Components/PriceComparison/LandingComponent'
 const appRouter = createBrowserRouter([
   {
     path: '/',
@@ -41,6 +43,14 @@ const appRouter = createBrowserRouter([
         path: "/fleet/update/",
         element: <FleetUpdate />,
       },
+      {
+        path: "/fleet/dashboard/",
+        element: <Dashboard />
+      },
+      {
+        path: "/price/",
+        element: <LandingComponent />
+      }
     ]
   },
   

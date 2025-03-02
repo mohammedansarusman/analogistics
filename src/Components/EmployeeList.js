@@ -15,7 +15,7 @@ import { addFilterEmployeeRecords } from "../Store/registrationSlice";
 
 const EmployeeList = () => {
   const dispatch = useDispatch();
-  useEmployeeData();
+  const result = useEmployeeData();
   const employeeData = useSelector(
     (store) => store.registration.employeeRecords
   );
@@ -39,16 +39,17 @@ const EmployeeList = () => {
     displaySort === "descending" 
       ? updatedName.sort((a,b)=>a.fullName.localeCompare(b.fullName))
       : updatedName.sort((a,b)=>b.fullName.localeCompare(a.fullName))
-    console.log(updatedName);
     dispatch(addFilterEmployeeRecords(updatedName));
   }
-
-  if (employeeData === "" || employeeData.length === 0) {
+  
+  if (result) {
     return <ContenLoading />;
   }
+  
+
 
   return (
-    <div className="w-full absolute left-0 top-[13%] lg:top-[12.5%] bg-white">
+    <div className="w-full min-h-screen absolute left-0 top-[12.5%] lg:top-[12.5%]">
       <header className="w-full h-[60px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
         <h1>Employee List</h1>
       </header>

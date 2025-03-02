@@ -55,6 +55,8 @@ const EmployeeDetails = (props) => {
     const db = getDatabase(app);
     const employeeRef = ref(db, `register/employe/${firebaseId}`);
     remove(employeeRef);
+    console.log("delete button pressed")
+    alert("delete employee");
     // navigate('/people/list/');
   };
 
