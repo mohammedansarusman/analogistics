@@ -7,15 +7,39 @@ import PorscheCars from "./PorscheCars";
 import VolkswagenCars from "./VolkswagenCars";
 import AudiCars from "./AudiCars";
 import { useSelector, useDispatch } from "react-redux";
+import { setPorscheFlag, setVolkswagenFlag, setAudiFlag } from "../../Store/priceSlice";
+import { useState } from "react";
 const LandingComponent = () => {
-  const brands = [porscheLogo, vwLogo, audiLogo];
+  const [brandIndex, setBrandIndex] = useState(null);
+  const brands = [
+    {logo:porscheLogo, name:"porsche"},
+    {logo:vwLogo, name:"vw"},
+    {logo:audiLogo, name:"audi"}
+  ];
+  const handleClick =(brandName,i)=>{
+    console.log("index:",i)
+    setBrandIndex(i);
+    if(brandName==="porsche"){
+      dispatch(setPorscheFlag(true));
+      dispatch(setVolkswagenFlag(false));
+      dispatch(setAudiFlag(false));
+    }else if(brandName==="vw"){
+      dispatch(setPorscheFlag(false));
+      dispatch(setVolkswagenFlag(true));
+      dispatch(setAudiFlag(false));
+    }else{
+      dispatch(setPorscheFlag(false));
+      dispatch(setVolkswagenFlag(false));
+      dispatch(setAudiFlag(true));
+    }
+
+  }
+  
   const dispatch = useDispatch();
   const porscheStatus = useSelector((store) => store.price.porscheFlag);
   const volkswagenStatus = useSelector((store) => store.price.volkswagenFlag);
   const audiStatus = useSelector((store) => store.price.audiFlag);
-  const handleClick = (brand) => {
-    console.log("brand:",brand);
-  }
+
   return (
     <div className="w-full absolute left-0 top-[12.5%] lg:top-[12.3%] ">
       <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
@@ -23,13 +47,18 @@ const LandingComponent = () => {
       </header>
       <div className="w-[100%] flex flex-col justify-start items-center pt-[100px] gap-1 cursor-pointer">
         <h1 className="text-gray-500">Select any brand</h1>
-        {brands.map((item) => (
+        {brands.map((brand,index) => (
           <div
-            onClick={()=>handleClick(item)}
-            key={item}
-            className="bg-green-400 w-[300px] h-[150px] flex items-center justify-center hover:bg-green-500 transition-all duration-1000"
+            onClick={()=>handleClick(brand.name,index)}
+            key={brand.name}
+            className={`${index === brandIndex ? "bg-red-400" : "bg-gray-500"} w-[300px] h-[150px] flex items-center justify-center transition-all duration-1000`}
           >
-            <img alt="brand-logo" src={item} className="w-[150px]"></img>
+            {console.log("logo:",brand.logo)}
+            <img 
+              alt={brand.name} 
+              src={brand.logo} 
+              className="w-[150px] ">
+            </img>
           </div>
         ))}
 
