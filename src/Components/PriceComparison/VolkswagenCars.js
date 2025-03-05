@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import gti from "../../Images/VwCars/gti.webp";
 import golfr from "../../Images/VwCars/golfr.webp";
 import tiguan from "../../Images/VwCars/tiguan.webp";
@@ -8,6 +8,7 @@ import teramont from "../../Images/VwCars/teramont.webp";
 import touareg from "../../Images/VwCars/touareg.webp";
 
 const VolkswagenCars = () => {
+  const [model,setModel] = useState(null)
   const vw = [
     { logo: gti, name: "Golf 8 GTI" },
     { logo: golfr, name: "Golf R" },
@@ -17,14 +18,20 @@ const VolkswagenCars = () => {
     { logo: teramont, name: "Teramont" },
     { logo: amarok, name: "Amarok" },
   ];
+  const handleClick =(index)=>{
+    setModel(index);
+  }
   return (
     <div className="flex w-[90%] justify-around overflow-x-scroll">
       <div className="flex py-[10px] gap-5">
-        {vw.map((item) => (
+        {vw.map((item,index) => (
           <div className="flex flex-col">
             <div
+              onClick={()=>handleClick(index)}
               key={item.logo}
-              className="w-[150px] h-[150px] flex items-center justify-center rounded-full transition-all duration-1000 hover:border-2 hover:border-gray-500"
+              className={`w-[150px] h-[150px] flex items-center justify-center rounded-full 
+              transition-all duration-1000 
+              ${model === index ? "border-2 border-black" : "border-2 border-transparent"}`}
             >
               <img
                 alt="vw-cars"

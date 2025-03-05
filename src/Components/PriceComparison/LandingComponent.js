@@ -71,7 +71,10 @@ const LandingComponent = () => {
         {porscheStatus && <PorscheCars />}
         {volkswagenStatus && <VolkswagenCars />}
         {audiStatus && <AudiCars />}
+        <div className="bg-red-400 w-[80%] h-[50px]"></div>
+
       </div>
+      {/* <footer className="w-full h-[30px] text-3xl bg-gray-500 text-white flex justify-center items-center py-7 fixed bottom-0 z-10"></footer> */}
     </div>
   );
 };
