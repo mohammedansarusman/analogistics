@@ -17,15 +17,18 @@ const PorscheCars = () => {
   ];
   const handleClick =(index)=>{
     setModel(index);
+    window.scrollBy({
+      top:window.innerHeight*0.99,
+      behavior:"smooth",
+    });
   }
   return (
     <div className="flex w-[90%] justify-around overflow-x-scroll px-4">
       <div className="flex py-[10px]  gap-5">
         {porsche.map((item,index) => (
-          <div className="flex flex-col">
+          <div className="flex flex-col" key={item.name}>
             <div
               onClick={()=>handleClick(index)}
-              key={item.name}
               className={`w-[120px] h-[120px] flex items-center justify-center rounded-full 
               transition-all duration-1000 
               ${model === index ? "border-2 border-black" : "border-2 border-transparent"}`}

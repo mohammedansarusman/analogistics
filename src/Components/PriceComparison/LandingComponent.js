@@ -2,12 +2,13 @@ import React from "react";
 import porscheLogo from "../../Images/Brands/porsche.png";
 import vwLogo from "../../Images/Brands/volkswagen.png";
 import audiLogo from "../../Images/Brands/audi.png";
+import PriceAnalysis from "./PriceAnalysis";
 
 import PorscheCars from "./PorscheCars";
 import VolkswagenCars from "./VolkswagenCars";
 import AudiCars from "./AudiCars";
 import { useSelector, useDispatch } from "react-redux";
-import { setPorscheFlag, setVolkswagenFlag, setAudiFlag } from "../../Store/priceSlice";
+import { setPorscheFlag, setVolkswagenFlag, setAudiFlag, setBrand } from "../../Store/priceSlice";
 import { useState } from "react";
 const LandingComponent = () => {
   const [brandIndex, setBrandIndex] = useState(null);
@@ -17,20 +18,22 @@ const LandingComponent = () => {
     {logo:audiLogo, name:"audi"}
   ];
   const handleClick =(brandName,i)=>{
-    console.log("index:",i)
     setBrandIndex(i);
     if(brandName==="porsche"){
       dispatch(setPorscheFlag(true));
       dispatch(setVolkswagenFlag(false));
       dispatch(setAudiFlag(false));
+      dispatch(setBrand(brandName));
     }else if(brandName==="vw"){
       dispatch(setPorscheFlag(false));
       dispatch(setVolkswagenFlag(true));
       dispatch(setAudiFlag(false));
+      dispatch(setBrand(brandName));
     }else{
       dispatch(setPorscheFlag(false));
       dispatch(setVolkswagenFlag(false));
       dispatch(setAudiFlag(true));
+      dispatch(setBrand(brandName));
     }
 
   }
@@ -71,7 +74,7 @@ const LandingComponent = () => {
         {porscheStatus && <PorscheCars />}
         {volkswagenStatus && <VolkswagenCars />}
         {audiStatus && <AudiCars />}
-        <div className="bg-red-400 w-[80%] h-[50px]"></div>
+        {(porscheStatus || volkswagenStatus || audiStatus) && <PriceAnalysis />}
 
       </div>
       {/* <footer className="w-full h-[30px] text-3xl bg-gray-500 text-white flex justify-center items-center py-7 fixed bottom-0 z-10"></footer> */}
