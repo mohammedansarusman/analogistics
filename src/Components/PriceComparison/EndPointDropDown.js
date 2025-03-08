@@ -1,27 +1,27 @@
 import React from "react";
-import { startingLocations } from "../../Utils/constants";
+import { endLocations } from "../../Utils/constants";
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
-import { setStart } from "../../Store/priceSlice";
+import { setEnd } from "../../Store/priceSlice";
 
-const StartingPointDropdown = () => {
-  const start = useSelector((store) => store.price.start);
+const EndPointDropDown = () => {
+  const end = useSelector((store) => store.price.end);
   const dispatch = useDispatch();
   
   const handleChange = (e) => {
-    dispatch(setStart(e));
+    dispatch(setEnd(e));
   };
 
   return (
     <div className="w-[80%]">
       <label htmlFor="startingPoint" className="font-bold opacity-80">
-        Starting Point<span className="text-red-500">*</span>
+        End Point<span className="text-red-500">*</span>
       </label>
       <Select
-        options={startingLocations}
+        options={endLocations}
         className="w-full px-1 py-2 text-black text-start "
-        placeholder="Select Start Point"
-        value={start}
+        placeholder="Select End Point"
+        value={end}
         onChange={handleChange}
         // onBlur={handleBlur}
         styles={{
@@ -41,4 +41,4 @@ const StartingPointDropdown = () => {
   );
 };
 
-export default StartingPointDropdown;
+export default EndPointDropDown;

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import StartingPointDropdown from "./StartingPointDropdown"
+import EndPointDropDown from "./EndPointDropDown"
 
 const PriceAnalysis = () => {
   const brandStatus = useSelector((store) => store.price.brand);
@@ -53,6 +54,7 @@ const PriceAnalysis = () => {
       <div className="font-bold text-2xl text-gray-600 ">{typeStatus}</div>
       <div className="text-2xl font-light text-gray-600 py-3">{truckStatus}</div>
       <StartingPointDropdown />    
+      <EndPointDropDown />
 
     </div>
   );

@@ -10,7 +10,7 @@ const priceSlice = createSlice({
     type:null,
     truckSize:null,
     start:"",
-    end:null,
+    end:"",
   
   },
   reducers: {
