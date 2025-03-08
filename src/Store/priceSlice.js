@@ -8,6 +8,10 @@ const priceSlice = createSlice({
     audiFlag: false,
     brand:null,
     type:null,
+    truckSize:null,
+    start:"",
+    end:null,
+  
   },
   reducers: {
     setPorscheFlag: (state, action) => {
@@ -25,8 +29,17 @@ const priceSlice = createSlice({
     setType:(state,action)=>{
       state.type = action.payload;
     },
+    setTruckSize:(state,action)=>{
+      state.truckSize = action.payload;
+    },
+    setStart:(state,action)=>{
+      state.start = action.payload;
+    },
+    setEnd:(state,action)=>{
+      state.end = action.payload;
+    },
   },
 });
 
 export default priceSlice.reducer;
-export const { setPorscheFlag, setVolkswagenFlag, setAudiFlag, setBrand, setType } = priceSlice.actions;
+export const { setPorscheFlag, setVolkswagenFlag, setAudiFlag, setBrand, setType, setTruckSize, setStart, setEnd } = priceSlice.actions;

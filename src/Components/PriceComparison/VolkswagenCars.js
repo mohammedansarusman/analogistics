@@ -6,8 +6,10 @@ import troc from "../../Images/VwCars/troc.webp";
 import amarok from "../../Images/VwCars/amarok.webp";
 import teramont from "../../Images/VwCars/teramont.webp";
 import touareg from "../../Images/VwCars/touareg.webp";
-
+import { useDispatch } from "react-redux";
+import { setType, setTruckSize } from "../../Store/priceSlice";
 const VolkswagenCars = () => {
+  const dispatch = useDispatch();
   const [model,setModel] = useState(null)
   const vw = [
     { logo: gti, name: "Golf 8 GTI" },
@@ -18,8 +20,15 @@ const VolkswagenCars = () => {
     { logo: teramont, name: "Teramont" },
     { logo: amarok, name: "Amarok" },
   ];
-  const handleClick =(index)=>{
+  const handleClick =(index,item)=>{
+    dispatch(setTruckSize("Standard Truck Required"))
     setModel(index);
+    dispatch(setType(item.name));
+    setModel(index);
+    window.scrollBy({
+      top:window.innerHeight*0.99,
+      behavior:"smooth",
+    });
   }
   return (
     <div className="flex w-[90%] justify-around overflow-x-scroll">
@@ -27,7 +36,7 @@ const VolkswagenCars = () => {
         {vw.map((item,index) => (
           <div className="flex flex-col">
             <div
-              onClick={()=>handleClick(index)}
+              onClick={()=>handleClick(index,item)}
               key={item.logo}
               className={`w-[150px] h-[150px] flex items-center justify-center rounded-full 
               transition-all duration-1000 

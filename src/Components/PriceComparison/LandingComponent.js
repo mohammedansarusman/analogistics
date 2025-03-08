@@ -8,7 +8,7 @@ import PorscheCars from "./PorscheCars";
 import VolkswagenCars from "./VolkswagenCars";
 import AudiCars from "./AudiCars";
 import { useSelector, useDispatch } from "react-redux";
-import { setPorscheFlag, setVolkswagenFlag, setAudiFlag, setBrand } from "../../Store/priceSlice";
+import { setPorscheFlag, setVolkswagenFlag, setAudiFlag, setBrand, setType, setTruckSize } from "../../Store/priceSlice";
 import { useState } from "react";
 const LandingComponent = () => {
   const [brandIndex, setBrandIndex] = useState(null);
@@ -24,16 +24,25 @@ const LandingComponent = () => {
       dispatch(setVolkswagenFlag(false));
       dispatch(setAudiFlag(false));
       dispatch(setBrand(brandName));
+      dispatch(setType(null));
+      dispatch(setTruckSize(null));
+
     }else if(brandName==="vw"){
       dispatch(setPorscheFlag(false));
       dispatch(setVolkswagenFlag(true));
       dispatch(setAudiFlag(false));
       dispatch(setBrand(brandName));
+      dispatch(setType(null));
+      dispatch(setTruckSize(null));
+
     }else{
       dispatch(setPorscheFlag(false));
       dispatch(setVolkswagenFlag(false));
       dispatch(setAudiFlag(true));
       dispatch(setBrand(brandName));
+      dispatch(setType(null));
+      dispatch(setTruckSize(null));
+
     }
 
   }

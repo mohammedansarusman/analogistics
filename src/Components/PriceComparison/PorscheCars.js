@@ -5,7 +5,10 @@ import cayenne from "../../Images/PorscheCars/cayenne.jpg";
 import macan from "../../Images/PorscheCars/macan.jpg";
 import panamera from "../../Images/PorscheCars/panamera.jpg";
 import taycan from "../../Images/PorscheCars/taycan.jpg";
+import { useDispatch } from "react-redux";
+import { setType,setTruckSize } from "../../Store/priceSlice";
 const PorscheCars = () => {
+  const dispatch = useDispatch();
   const [model,setModel] = useState(null)
   const porsche = [
     { logo: carerra1, name: "718" },
@@ -15,7 +18,13 @@ const PorscheCars = () => {
     { logo: panamera, name: "Panamera" },
     { logo: taycan, name: "Taycan" },
   ];
-  const handleClick =(index)=>{
+  const handleClick =(index,item)=>{
+    if(item.name === "Taycan" || item.name === "911" || item.name === "718"){
+      dispatch(setTruckSize("Flat Bed Truck Required"))
+    }else{
+      dispatch(setTruckSize("Standard Truck Required"))
+    }
+    dispatch(setType(item.name));
     setModel(index);
     window.scrollBy({
       top:window.innerHeight*0.99,
@@ -28,7 +37,7 @@ const PorscheCars = () => {
         {porsche.map((item,index) => (
           <div className="flex flex-col" key={item.name}>
             <div
-              onClick={()=>handleClick(index)}
+              onClick={()=>handleClick(index,item)}
               className={`w-[120px] h-[120px] flex items-center justify-center rounded-full 
               transition-all duration-1000 
               ${model === index ? "border-2 border-black" : "border-2 border-transparent"}`}
