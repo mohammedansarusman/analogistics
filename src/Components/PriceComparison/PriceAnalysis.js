@@ -2,11 +2,15 @@ import React from "react";
 import { useSelector } from "react-redux";
 import StartingPointDropdown from "./StartingPointDropdown"
 import EndPointDropDown from "./EndPointDropDown"
-
+import { dataset } from "../../Utils/constants";
+import usePriceComparison from "../CustomHooks/usePriceComparison"
 const PriceAnalysis = () => {
   const brandStatus = useSelector((store) => store.price.brand);
   const typeStatus = useSelector((store) => store.price.type);
   const truckStatus = useSelector((store) => store.price.truckSize);
+  const start = useSelector((store) => store.price.start);
+  const end = useSelector((store) => store.price.end);
+  const result = usePriceComparison();
   return (
     <div className="bg-gray-100 w-[80%] h-[500px] flex flex-col items-center">
       <header className="py-[20px]">
@@ -53,8 +57,13 @@ const PriceAnalysis = () => {
       </div>
       <div className="font-bold text-2xl text-gray-600 ">{typeStatus}</div>
       <div className="text-2xl font-light text-gray-600 py-3">{truckStatus}</div>
-      <StartingPointDropdown />    
-      <EndPointDropDown />
+      {truckStatus && <StartingPointDropdown />    }
+      {truckStatus && <EndPointDropDown />}
+      
+      {/* {console.log("dataset",dataset)} */}
+      {/* {dataset.filter(data=>data.start === start.value && data.end === end.value && data.truckType === truckStatus)} */}
+      {/* {dataset.map(data=>console.log(data))} */}
+
 
     </div>
   );
