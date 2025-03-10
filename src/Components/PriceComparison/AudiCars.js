@@ -35,10 +35,10 @@ const AudiCars = () => {
     <div className="flex w-[90%] justify-around overflow-x-scroll">
       <div className="flex py-[10px] gap-5">
         {audi.map((item,index) => (
-          <div className="flex flex-col">
+          <div key={index}className="flex flex-col">
+               
             <div
               onClick={()=>handleClick(index,item)}
-              key={item.name}
               className={`w-[150px] h-[150px] flex items-center justify-center rounded-full 
               transition-all duration-1000 
               ${model === index ? "border-2 border-black" : "border-2 border-transparent"}`}

@@ -4,6 +4,12 @@ import StartingPointDropdown from "./StartingPointDropdown"
 import EndPointDropDown from "./EndPointDropDown"
 import { dataset } from "../../Utils/constants";
 import usePriceComparison from "../CustomHooks/usePriceComparison"
+import aaa from "../../Images/Supplier/aaa_logo.png";
+import amct from "../../Images/Supplier/amct_logo.png";
+import emirates from "../../Images/Supplier/emirates_logo.svg"
+
+
+
 const PriceAnalysis = () => {
   const brandStatus = useSelector((store) => store.price.brand);
   const typeStatus = useSelector((store) => store.price.type);
@@ -12,7 +18,7 @@ const PriceAnalysis = () => {
   const end = useSelector((store) => store.price.end);
   const result = usePriceComparison();
   return (
-    <div className="bg-gray-100 w-[80%] h-[500px] flex flex-col items-center">
+    <div className="bg-gray-100 w-[80%] flex flex-col items-center">
       <header className="py-[20px]">
         <h1 className="text-4xl text-gray-500">Price Analysis</h1>
       </header>
@@ -47,7 +53,7 @@ const PriceAnalysis = () => {
             width="69"
             xmlns="http://www.w3.org/2000/svg"
             fill="#000"
-            fill-rule="evenodd"
+            // fill-rule="evenodd"
             
             // viewBox="0 0 24 69"
           >
@@ -59,12 +65,22 @@ const PriceAnalysis = () => {
       <div className="text-2xl font-light text-gray-600 py-3">{truckStatus}</div>
       {truckStatus && <StartingPointDropdown />    }
       {truckStatus && <EndPointDropDown />}
-      
-      {/* {console.log("dataset",dataset)} */}
-      {/* {dataset.filter(data=>data.start === start.value && data.end === end.value && data.truckType === truckStatus)} */}
-      {/* {dataset.map(data=>console.log(data))} */}
+      {result.length === 1 && (<div className="w-full flex flex-col items-center py-[50px] gap-3">
+        <div className=" bg-gray-400 w-[150px] h-[150px] flex justify-center items-center">
+          <img src={aaa} className="object-contain w-[120px] h-[120px]"></img>
+        </div>
+        <p>{"AED "+result[0].aaaPrice}</p>
+        <div className="bg-gray-400 w-[150px] h-[150px] flex justify-center items-center">
+          <img src={amct} className="object-fit w-[120px] h-[120px]"></img>
+        </div>
+        <p>{"AED "+result[0].amctPrice}</p>
+        <div className="bg-gray-400 w-[150px] h-[150px] flex justify-center items-center">
+          <img src={emirates} className="object-contain w-[120px] h-[120px]"></img>
+        </div>
+        <p>{"AED "+result[0].emiratesPrice}</p>
 
 
+      </div>)}
     </div>
   );
 };

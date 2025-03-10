@@ -14,6 +14,8 @@ const usePriceComparison = () =>{
     // console.log("data-",dataset);
     const filteredResult = dataset.filter((data)=>data.start === start.value && data.end === end.value && data.truckType === truckStatus)
     console.log("filtered result", filteredResult);
+    console.log(filteredResult.length); //
+    return filteredResult; 
 
     // perform calculations and return results
     //...
