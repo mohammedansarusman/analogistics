@@ -20,7 +20,7 @@ export const endLocations = [
   { value: "sharjah", label: "Sharjah"},
   { value: "khorfakkan", label: "Khorfakkan"},
   { value: "kalba", label: "Kalba"},
-  { value: "Ajman", label: "Ajman"},
+  { value: "ajman", label: "Ajman"},
   { value: "rak", label: " Ras Al Khaimah"},
   { value: "fujairah", label: "Fujairah"},
   { value: "uaq", label: "Umm Al Quwain"},

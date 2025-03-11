@@ -1,26 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import StartingPointDropdown from "./StartingPointDropdown"
-import EndPointDropDown from "./EndPointDropDown"
-import { dataset } from "../../Utils/constants";
-import usePriceComparison from "../CustomHooks/usePriceComparison"
+import StartingPointDropdown from "./StartingPointDropdown";
+import EndPointDropDown from "./EndPointDropDown";
+import usePriceComparison from "../CustomHooks/usePriceComparison";
 import aaa from "../../Images/Supplier/aaa_logo.png";
 import amct from "../../Images/Supplier/amct_logo.png";
-import emirates from "../../Images/Supplier/emirates_logo.svg"
-
-
+import emirates from "../../Images/Supplier/emirates_logo.svg";
 
 const PriceAnalysis = () => {
   const brandStatus = useSelector((store) => store.price.brand);
   const typeStatus = useSelector((store) => store.price.type);
   const truckStatus = useSelector((store) => store.price.truckSize);
-  const start = useSelector((store) => store.price.start);
-  const end = useSelector((store) => store.price.end);
+  // const start = useSelector((store) => store.price.start);
+  // const end = useSelector((store) => store.price.end);
   const result = usePriceComparison();
   return (
     <div className="bg-gray-100 w-[80%] flex flex-col items-center">
       <header className="py-[20px]">
-        <h1 className="text-4xl text-gray-500">Price Analysis</h1>
+        <h1 className="text-2xl font-semibold text-gray-500">
+          Supplier Price Comparison
+        </h1>
       </header>
       <div className="w-[200px] h-[70px] flex justify-center items-center">
         {brandStatus === "porsche" && (
@@ -54,7 +53,6 @@ const PriceAnalysis = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="#000"
             // fill-rule="evenodd"
-            
             // viewBox="0 0 24 69"
           >
             <path d="M56.927 0a11.798 11.798 0 00-7.495 2.671A11.906 11.906 0 0041.9 0a11.719 11.719 0 00-7.494 2.671C32.347 1.006 29.745 0 26.91 0a11.798 11.798 0 00-7.494 2.671C17.358 1.006 14.756 0 11.92 0 5.32 0 0 5.303 0 11.884c0 6.58 5.32 11.884 11.921 11.884 2.835 0 5.475-1.007 7.495-2.671 2.058 1.664 4.66 2.67 7.494 2.67 2.835 0 5.475-1.006 7.495-2.67a11.906 11.906 0 007.533 2.67c2.874 0 5.475-1.006 7.533-2.67 2.058 1.664 4.66 2.67 7.495 2.67 6.601 0 11.921-5.302 11.921-11.883C68.848 5.342 63.528 0 56.927 0zm-7.495 17.226a9.126 9.126 0 01-1.708-5.342c0-1.974.621-3.832 1.708-5.342a9.126 9.126 0 011.709 5.342c0 2.013-.66 3.832-1.709 5.342zm-15.027 0a9.126 9.126 0 01-1.709-5.342c0-1.974.621-3.832 1.709-5.342a9.126 9.126 0 011.708 5.342c0 2.013-.66 3.832-1.708 5.342zm-15.028 0a9.126 9.126 0 01-1.709-5.342c0-1.974.622-3.832 1.709-5.342a9.126 9.126 0 011.708 5.342c0 2.013-.66 3.832-1.708 5.342zM2.602 11.884c0-5.071 4.116-9.213 9.242-9.213a9.22 9.22 0 015.63 1.897c-1.592 2.013-2.524 4.529-2.524 7.316 0 2.748.932 5.303 2.524 7.316-1.553 1.2-3.495 1.897-5.63 1.897-5.087 0-9.242-4.103-9.242-9.213zM21.24 19.2c1.592-2.013 2.524-4.529 2.524-7.316 0-2.749-.932-5.303-2.524-7.316 1.553-1.2 3.495-1.897 5.63-1.897 2.136 0 4.078.697 5.63 1.897-1.591 2.013-2.523 4.529-2.523 7.316 0 2.748.932 5.303 2.524 7.316-1.553 1.2-3.495 1.897-5.63 1.897-2.136 0-4.078-.697-5.631-1.897zm15.028 0c1.592-2.013 2.524-4.529 2.524-7.316 0-2.749-.932-5.303-2.524-7.316 1.553-1.2 3.494-1.897 5.63-1.897a9.22 9.22 0 015.63 1.897c-1.591 2.013-2.523 4.529-2.523 7.316 0 2.748.932 5.303 2.524 7.316-1.554 1.2-3.495 1.897-5.63 1.897a9.22 9.22 0 01-5.631-1.897zm20.658 1.897a9.22 9.22 0 01-5.63-1.897c1.591-2.013 2.523-4.529 2.523-7.316 0-2.749-.932-5.303-2.524-7.316 1.554-1.2 3.495-1.897 5.63-1.897 5.088 0 9.243 4.103 9.243 9.213 0 5.11-4.155 9.213-9.242 9.213z"></path>
@@ -62,25 +60,56 @@ const PriceAnalysis = () => {
         )}
       </div>
       <div className="font-bold text-2xl text-gray-600 ">{typeStatus}</div>
-      <div className="text-2xl font-light text-gray-600 py-3">{truckStatus}</div>
-      {truckStatus && <StartingPointDropdown />    }
-      {truckStatus && <EndPointDropDown />}
-      {result.length === 1 && (<div className="w-full flex flex-col items-center py-[50px] gap-3">
-        <div className=" bg-gray-400 w-[150px] h-[150px] flex justify-center items-center">
-          <img src={aaa} className="object-contain w-[120px] h-[120px]"></img>
-        </div>
-        <p>{"AED "+result[0].aaaPrice}</p>
-        <div className="bg-gray-400 w-[150px] h-[150px] flex justify-center items-center">
-          <img src={amct} className="object-fit w-[120px] h-[120px]"></img>
-        </div>
-        <p>{"AED "+result[0].amctPrice}</p>
-        <div className="bg-gray-400 w-[150px] h-[150px] flex justify-center items-center">
-          <img src={emirates} className="object-contain w-[120px] h-[120px]"></img>
-        </div>
-        <p>{"AED "+result[0].emiratesPrice}</p>
+      <div className="text-2xl font-light text-gray-600 py-3">
+        {truckStatus}
+      </div>
+      <div className="flex flex-col w-full items-center md:flex md:flex-row md:justify-around md:px-5">
+        {truckStatus && <StartingPointDropdown />}
+        {truckStatus && <EndPointDropDown />}
+      </div>
 
-
-      </div>)}
+      <div className="w-full flex flex-col items-center py-[50px] gap-3 text-gray-500 md:flex md:flex-row md:justify-around">
+        <div className="flex flex-col items-center">
+          <div className=" bg-gray-400 w-[150px] h-[150px] flex justify-center items-center">
+            <img src={aaa} className="object-contain w-[120px] h-[120px]" alt="aaa-logo"></img>
+          </div>
+          {result.length === 1 && (
+            <p className="text-xl font-semibold">
+              {result[0].aaaPrice
+                ? "AED " + result[0].aaaPrice
+                : "Price is not available"}
+            </p>
+          )}
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="bg-gray-400 w-[150px] h-[150px] flex justify-center items-center">
+            <img src={amct} className="object-fit w-[120px] h-[120px]" alt="amct-logo"></img>
+          </div>
+          {result.length === 1 && (
+            <p className="text-xl font-semibold">
+              {result[0].amctPrice
+                ? "AED " + result[0].amctPrice
+                : "Price is not available"}
+            </p>
+          )}
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="bg-gray-400 w-[150px] h-[150px] flex justify-center items-center">
+            <img
+              src={emirates}
+              alt="emirates-logo"
+              className="object-contain w-[120px] h-[120px]"
+            ></img>
+          </div>
+          {result.length === 1 && (
+            <p className="text-xl font-semibold">
+              {result[0].emiratesPrice
+                ? "AED " + result[0].emiratesPrice
+                : "Price is not available"}
+            </p>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
