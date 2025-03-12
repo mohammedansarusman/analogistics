@@ -6,6 +6,7 @@ import { changeBar } from './Store/navigationSlice';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Dashboard from './Components/Dashboard';
+import Login from "./Login";
 
 
 function App() {
@@ -21,11 +22,12 @@ function App() {
   
   return (
     <div className={`App w-full h-[100vh] relative  ${toggleBar ? 'bg-gray-300' : 'bg-white'}`}>
-      <NavigationBar />
+      <Login />
+      {/* <NavigationBar /> */}
       {/* Here the hamburger menubar clicked then navigation bar will pop-up */}
-      {toggleBar && <NavigationBarSmall />} 
+      {/* {toggleBar && <NavigationBarSmall />}  */}
       {/* <Dashboard /> */}
-      <Outlet />  {/* This component will render the route component based on the current URL */}
+      {/* <Outlet /> */}
     </div>
   );
 }
