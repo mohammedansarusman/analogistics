@@ -21,7 +21,7 @@ function App() {
   },[])
   
   return (
-    <div className={`App w-full h-[100vh] relative  ${toggleBar ? 'bg-gray-300' : 'bg-white'}`}>
+    <div className={`App w-full min-h-screen relative  ${toggleBar ? 'bg-gray-300' : 'bg-white'}`}>
       <Login />
       {/* <NavigationBar /> */}
       {/* Here the hamburger menubar clicked then navigation bar will pop-up */}

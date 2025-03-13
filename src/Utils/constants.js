@@ -6,6 +6,11 @@ export const vehicleTypes = [
   { value: "van", label: "Van"},
 ];
 
+export const user = {
+  name:process.env.REACT_APP_USERNAME,
+  pass:process.env.REACT_APP_PASSWORD,
+}  
+
 export const startingLocations = [
   { value: "fujairah", label: "Fujairah Showroom / Workshop" },
   { value: "sharjah", label: "Sharjah Showroom / Workshop"},
