@@ -18,7 +18,7 @@ const RegisterOHCExpiry = () => {
   };
   const message = useDateValidity(ohcExpiry);
   return (
-    <div className="flex flex-col items-start w-1/2 gap-1">
+    <div className="flex flex-col items-start w-full gap-1">
       <label for="ohcExpiry" className="font-bold opacity-80">
         OHC Expiry<span className="text-red-500">*</span>
       </label>
@@ -29,8 +29,10 @@ const RegisterOHCExpiry = () => {
         onBlur={handleBlur}
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
-        className="w-full text-black border border-gray-300 border-1 outline-none pl-2 bg-white rounded-md h-[40px] focus:ring-1 focus:ring-gray-300 focus:ring-offset-4"
+        className=" text-black pl-2 w-full"
+        wrapperClassName="date-picker-style"
       />
+      <div className='w-full h-[1px] bg-gray-500'></div>
       <div className="h-[20px]">
         {flagOHC && <p className="text-red-500 text-xs">{message}</p>}
       </div>

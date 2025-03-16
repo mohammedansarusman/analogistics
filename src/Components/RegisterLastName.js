@@ -30,8 +30,9 @@ const RegisterLastName = () => {
         value={lastName}
         onChange={handleName}
         onBlur={handleBlur}
-        className="w-full text-black border border-gray-300 border-1 outline-none pl-2 bg-white rounded-md h-[40px] focus:ring-1 focus:ring-gray-300 focus:ring-offset-4"
+        className="w-full outline-4 outline-gray-500 bg-transparent" 
       />
+      <div className='w-full h-[1px] bg-gray-500'></div>
       <div className="h-[20px]">
         {flagLastName && <p className="text-red-500 text-xs">{message}</p>}
       </div>

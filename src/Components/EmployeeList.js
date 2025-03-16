@@ -49,7 +49,7 @@ const EmployeeList = () => {
 
 
   return (
-    <div className="w-full min-h-screen absolute left-0 top-[12.5%] lg:top-[12.5%]">
+    <div className="w-full absolute left-0 top-[100px]">
       <header className="w-full h-[60px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
         <h1>Employee List</h1>
       </header>

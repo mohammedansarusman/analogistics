@@ -7,7 +7,7 @@ import { RiShipFill } from "react-icons/ri";
 
 const DashboardEmployeesSummary = () => {
   return (
-    <div className="h-[350px]  bg-gray-200 justify-center px-1 text-gray-500 flex flex-col py-2">
+    <div className=" bg-gray-200 h-[80%] px-[20px] text-gray-500 flex flex-col justify-center">
       <div className="w-[100%] flex justify-end text-xl">
         <h1>Expiring Passport</h1>
       </div>

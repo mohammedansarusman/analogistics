@@ -22,7 +22,7 @@ const RegisterPortExpiry = () => {
 
 
   return (
-    <div className="flex flex-col items-start w-1/2 gap-1">
+    <div className="flex flex-col items-start w-full gap-1">
       <label for="portExpiry" className="font-bold opacity-80">
         Port Expiry<span className="text-red-500">*</span>
       </label>
@@ -33,8 +33,10 @@ const RegisterPortExpiry = () => {
         placeholderText="DD/MM/YYYY"
         value={portExpiry}
         onBlur={handleBlur}
-        className="w-full text-black border border-gray-300 border-1 outline-none pl-2 bg-white rounded-md h-[40px] focus:ring-1 focus:ring-gray-300 focus:ring-offset-4"
+        className=" text-black pl-2 w-full"
+        wrapperClassName="date-picker-style"
       />
+      <div className='w-full h-[1px] bg-gray-500'></div>
       <div className="h-[20px]">
         {flagPort && <p className="text-red-500 text-xs">{message}</p>}
       </div>

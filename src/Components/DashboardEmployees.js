@@ -4,8 +4,8 @@ import { IoIosPeople } from "react-icons/io";
 
 const DashboardEmployees = () => {
   return (
-    <div className="h-[100px] bg-violet-600 text-white flex flex-col justify-center px-2">
-      <div className="w-[100%] flex justify-end text-2xl">
+    <div className="h-[20%] bg-violet-600 text-white flex flex-col justify-center px-[20px]">
+      <div className="w-[100%] flex justify-end text-xl">
         <h1>Employees</h1>
       </div>
       <div className="w-[100%] flex justify-between items-center text-5xl font-bold">

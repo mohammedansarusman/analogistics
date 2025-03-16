@@ -2,20 +2,24 @@ import { useRef } from "react";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { user } from "../src/Utils/constants"
+import { useDispatch } from "react-redux";
+import { setSign } from "./Store/navigationSlice";
 
 
 const Login = () => {
+  const dispatch = useDispatch();
   const userrefer = useRef(null);
   const passwordRefer = useRef(null);
   const handleClick = () => {
     if (userrefer.current.value === user.name && passwordRefer.current.value === user.pass) {
-      alert("Logged in successfully");
+      dispatch(setSign(false));
+      // alert("Logged in successfully");
     } else {
       alert("Invalid credentials");
     }
   };
   return (
-    <main className="bg-cyan-100 w-full min-h-screen flex justify-center items-center">
+    <main className="bg-cyan-900 w-full min-h-screen flex justify-center items-center">
       <div className="bg-white w-[500px] min-h-[500px] rounded-lg py-[5%] flex flex-col items-center justify-center gap-10">
         <header>
             <h1 className="text-xl text-center font-semibold text-gray-600">FleetFlow</h1>
@@ -30,7 +34,7 @@ const Login = () => {
                     <FaUser />
                 </div>
                 <div className="w-5/6 flex justify-center items-center rounded-r-lg">
-                    <input ref = {userrefer} type="text" name="username" id="username" placeholder="Enter user name" className="w-[100%] h-full px-2 rounded-r-lg"/>
+                    <input ref = {userrefer} type="text" name="username" id="username" autoComplete="username" placeholder="Enter user name" className="w-[100%] h-full px-2 rounded-r-lg"/>
                 </div>
             </div>
             <label className="text-left" htmlFor="password">Password</label>
@@ -40,7 +44,12 @@ const Login = () => {
                   <FaLock />
                 </div>
                 <div className="w-5/6 flex justify-center items-center rounded-r-lg">
-                    <input ref = {passwordRefer} type="password" name="password" id="password" placeholder="***********" className="w-[100%] h-full px-2 rounded-r-lg"/>
+                    <input 
+                      ref = {passwordRefer} 
+                      type="password" 
+                      name="password" id="password" autoComplete="current-password"
+                      placeholder="***********" 
+                      className="w-[100%] h-full px-2 rounded-r-lg"/>
                 </div>
             </div>
         </form>

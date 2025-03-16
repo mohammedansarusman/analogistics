@@ -44,7 +44,7 @@ const appRouter = createBrowserRouter([
         element: <FleetUpdate />,
       },
       {
-        path: "/fleet/dashboard/",
+        path: "/dashboard/",
         element: <Dashboard />
       },
       {

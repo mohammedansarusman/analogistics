@@ -56,7 +56,7 @@ const NavigationBarSmall = () => {
             <div className="flex flex-col items-center pt-7 text-gray-500 text-md gap-2 font-semibold">
 {/* Home menu in side navigation bar */}
                 <div className="w-[90%] flex justify-start py-1 pl-2 rounded-md hover:bg-gray-100" onClick={handleHome}>
-                    <Link to="/"><h1>Home</h1></Link>
+                    <Link to="/dashboard/"><h1>Home</h1></Link>
                 </div>
 {/* People menu in side navigation bar */}
                 <div

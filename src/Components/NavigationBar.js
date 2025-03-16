@@ -11,6 +11,8 @@ import { useState } from "react";
 import MenuNavigation from "./MenuNavigation";
 import FleetMenuNavigation from "./FleetComponents/FleetMenuNavigation";
 import { Link } from "react-router-dom";
+import { setSign } from "../Store/navigationSlice";
+
 // Parent componenet - <App />
 
 
@@ -49,12 +51,14 @@ const NavigationBar = () => {
       trip: false,
     })
   }
-
+  const handleButton = () =>{
+    dispatch(setSign(true));
+  }
   return (
     // {/* Navigation bar */}
     <div className="bg-gray-800 h-[100px] flex items-center fixed z-30 w-[100%]">
       <div className="w-[40%] flex items-center gap-3 px-5 ">
-        {/* render if the screen width is small */}
+        {/* render if the screen width is small, mention lg:hidden in below code */}
         <GiHamburgerMenu
           className="cursor-pointer text-white size-6 hover:bg-gray-500 lg:hidden"
           onClick={handleHamburgerButton}
@@ -64,7 +68,7 @@ const NavigationBar = () => {
       </div>
       <nav className="w-[60%] flex items-center justify-end gap-5 px-6 py-3">
         <div className="hidden lg:text-white lg:flex lg:justify-evenly lg:w-[70%] lg:font-bold">
-          <Link to="/">
+          <Link to="/dashboard">
             <div className="p-2 hover:text-cyan-500">Home</div>
           </Link> 
           {/* People menu from Navigation bar */}
@@ -110,7 +114,13 @@ const NavigationBar = () => {
               </div> }
           </div>
         </div>
-        <div className="flex gap-5 justify-end lg:w-[30%]">
+        <div className="flex gap-1 justify-center items-center sm:gap-2 lg:w-[30%] 2xl:gap-3">
+          <button 
+            className="text-white font-semibold px-[10px] text-sm hover:text-cyan-500 py-[10px] bg-slate-700 rounded-full"
+            onClick={handleButton}
+          >
+            Sign Out
+          </button>
           <MdOutlineLightMode className="text-white size-6" />
           <GrLanguage className="text-white size-6" />
         </div>

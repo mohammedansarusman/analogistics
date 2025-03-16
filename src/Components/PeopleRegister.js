@@ -1,9 +1,6 @@
 import React from "react";
 import { changeBar } from "../Store/navigationSlice";
 import { useDispatch, useSelector } from "react-redux";
-import DatePickerPassVisa from "./DatePickerPassVisa";
-import DatePickerOHCRTA from "./DatePickerOHCRTA";
-import DatePickerFirePort from "./DatePickerFirePort";
 import RegisterName from "./RegisterName";
 import RegisterMiddleName from "./RegisterMiddleName";
 import RegisterLastName from "./RegisterLastName";
@@ -13,6 +10,12 @@ import { useState } from "react";
 import RegisterSaveClose from "./RegisterSaveClose";
 import useEmployeeData from './CustomHooks/useEmployeeData'
 import { useLocation } from "react-router-dom";
+import RegisterPassportExpiry from "./RegisterPassportExpiry";
+import RegisterVisaExpiry from "./RegisterVisaExpiry";
+import RegisterOHCExpiry from "./RegisterOHCExpiry";
+import RegisterRTAExpiry from "./RegisterRTAExpiry";
+import RegisterFireSafety from "./RegisterFireSafety";
+import RegisterPortExpiry from "./RegisterPortExpiry";
 
 const PeopleRegister = () => {
   const dispatch = useDispatch();
@@ -25,35 +28,54 @@ const PeopleRegister = () => {
   const [message, setMessage] = useState(false);
   dispatch(changeBar(false));
   return (
-    <div className="w-full absolute left-0 top-[12.5%] lg:top-[12.3%] ">
-      <div className="w-full flex flex-col items-center pb-5 relative h-[135vh] lg:h-[100vh]">
-        { message &&  <RegisterSuccessMessage /> }
+    <div className="w-full absolute left-0 top-[100px]">
+      <div className="w-full flex flex-col items-center relative">
+        {message && <RegisterSuccessMessage />}
         <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
           <h1>Employee Registration</h1>
         </header>
-        <div
-          className="flex flex-col items-start w-[90%]  border-2 border-cyan-500 p-5 rounded-xl mt-[80px]"
-        >
-          <div className="w-full lg:flex lg:gap-5 lg:items-center">
-            {/* First name field */}
-            <RegisterName />
-            {/* Middle name field */}
-            <RegisterMiddleName />
+        <div className="flex flex-col items-start w-[90%] border-2 border-cyan-500 p-5 rounded-xl mt-[100px] ">
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              <RegisterName />
+            </div>
+            <div className="lg:w-[45%]">
+              <RegisterMiddleName />
+            </div>
           </div>
-          <div className="w-full lg:flex lg:gap-5 lg:items-center">
-            {/* Laste Name field */}
-            <RegisterLastName />
-            {/* Employee id field */}
-            <RegisterEmployeId data = {employeeData}/>
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              <RegisterLastName />
+            </div>
+            <div className="lg:w-[45%]">
+              <RegisterEmployeId data={employeeData} />
+            </div>
           </div>
-          {/* passport and visa expiry date picker component */}
-          <DatePickerPassVisa />
-          {/* OHC and RTA expiry */}
-          <DatePickerOHCRTA />
-          {/* Fire and Safety and Port Expiry */}
-          <DatePickerFirePort />
-          {/* Save and Close Button */}
-          <RegisterSaveClose dataMessage = {setMessage} /> 
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              <RegisterPassportExpiry />
+            </div>
+            <div className="lg:w-[45%]">
+              <RegisterVisaExpiry />
+            </div>
+          </div>
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              <RegisterOHCExpiry />
+            </div>
+            <div className="lg:w-[45%]">
+              <RegisterRTAExpiry />
+            </div>
+          </div>
+          <div className="w-full lg:flex lg:justify-between">
+            <div className="lg:w-[45%]">
+              <RegisterFireSafety />
+            </div>
+            <div className="lg:w-[45%]">
+              <RegisterPortExpiry />
+            </div>
+          </div>
+          <RegisterSaveClose dataMessage={setMessage} />
         </div>
       </div>
     </div>

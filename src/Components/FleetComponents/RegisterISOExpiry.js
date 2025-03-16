@@ -37,7 +37,6 @@ const RegisterISOExpiry = () => {
         wrapperClassName="date-picker-style"
       />
       <div className="w-full h-[1px] bg-gray-500"></div>
-
       <div className="h-[20px]">
         {flag && <p className="text-red-500 text-xs">{message}</p>}
       </div>

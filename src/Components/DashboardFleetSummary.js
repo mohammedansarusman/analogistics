@@ -10,7 +10,7 @@ import { FcInspection } from "react-icons/fc";
 
 const DashboardFleetSummary = () => {
   return (
-    <div className="h-[300px] lg:h-[350px] bg-gray-200 justify-center px-2 text-gray-500 flex flex-col py-2">
+    <div className=" bg-gray-200 h-[80%] justify-center px-[20px] text-gray-500 flex flex-col py-2">
       <div className="w-[100%] flex justify-end text-xl">
         <h1>Registration Expiry</h1>
       </div>

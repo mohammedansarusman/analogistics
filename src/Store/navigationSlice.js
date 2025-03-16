@@ -7,6 +7,7 @@ const navigationSlice = createSlice({
         displayEmployees:"grid",
         sortEmployees:'ascending',
         displayFleet:"list",
+        sign: true,
     },
     reducers: {
         changeBar: (state, action) => {
@@ -21,11 +22,14 @@ const navigationSlice = createSlice({
         changeFleetDisplay: (state, action) => {
             state.displayFleet = action.payload;
         },
+        setSign:(state,action)=>{
+            state.sign = action.payload;
+        }
     }
 })
 
 export default navigationSlice.reducer;
-export const { changeBar, changeDisplay, changeSort, changeFleetDisplay } = navigationSlice.actions;
+export const { changeBar, changeDisplay, changeSort, changeFleetDisplay, setSign } = navigationSlice.actions;
 
 
 // Usage: This slice is using to activate the navigation slider. when the screen is mobile view the user wants to experience 
