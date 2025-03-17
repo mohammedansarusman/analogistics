@@ -16,10 +16,25 @@ import RegisterOHCExpiry from "./RegisterOHCExpiry";
 import RegisterRTAExpiry from "./RegisterRTAExpiry";
 import RegisterFireSafety from "./RegisterFireSafety";
 import RegisterPortExpiry from "./RegisterPortExpiry";
+import { addFirstName, addMiddleName, addLastName,
+  addEmployeId, addPassportExpiry,addVisaExpiry,
+  addOHCExpiry,addFireExpiry, addPortExpiry, addRTAExpiry} from "../Store/registrationSlice";
+
+
 
 const PeopleRegister = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  dispatch(addFirstName(""));
+  dispatch(addMiddleName(""));
+  dispatch(addLastName(""));
+  dispatch(addEmployeId(""));
+  dispatch(addPassportExpiry(null));
+  dispatch(addVisaExpiry(null));
+  dispatch(addOHCExpiry(null));
+  dispatch(addFireExpiry(null));
+  dispatch(addPortExpiry(null));
+  dispatch(addRTAExpiry(null));
   // the reason behind calling  useEmployeeData here is to use check the employee id in the <RegisterEmployeeId /> component
   useEmployeeData();
   const employeeData = useSelector(

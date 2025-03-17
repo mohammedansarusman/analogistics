@@ -113,7 +113,7 @@ const PeopleUpdateSaveClose = (props) => {
       handleReset();
       //  reset validation message to blank
       handleValidationMessage();
-      navigate("/");
+      navigate("/price/");
   };
 
   return (

@@ -111,7 +111,7 @@ console.log("isform",isFormValid);
       handleReset();
       //  reset validation message to blank
       handleValidationMessage();
-      navigate("/");
+      navigate("/dashboard/");
   };
 
   return (

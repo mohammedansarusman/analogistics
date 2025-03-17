@@ -32,7 +32,7 @@ const RegisterPassportExpiry = () => {
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
         onBlur={handleBlur}
-        className=" text-black pl-2 w-full"
+        className=" text-black w-full"
         wrapperClassName="date-picker-style"
       />
       <div className='w-full h-[1px] bg-gray-500'></div>

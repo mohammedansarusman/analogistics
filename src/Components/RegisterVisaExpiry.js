@@ -31,7 +31,7 @@ const RegisterVisaExpiry = () => {
         onBlur={handleBlur}
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
-        className=" text-black pl-2 w-full"
+        className=" text-black w-full"
         wrapperClassName="date-picker-style"
       />
       <div className='w-full h-[1px] bg-gray-500'></div>

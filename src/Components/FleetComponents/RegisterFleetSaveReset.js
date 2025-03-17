@@ -109,7 +109,7 @@ const RegisterFleetSaveReset = (props) => {
       handleReset();
       //  reset validation message to blank
       handleValidationMessage();
-      navigate("/");
+      navigate("/dashboard");
   };
 
   return (
