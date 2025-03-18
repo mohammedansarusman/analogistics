@@ -8,11 +8,17 @@ import { addEmployeeRecords, addFilterEmployeeRecords } from "../../Store/regist
 
 const useEmployeeData = () => {
   const dispatch = useDispatch();
+  // the purpose of using deleteCount, if you delete any record
+  // from register/employee firebase database the employee list component should be re-render.
+  // deleteCount value change then the fetchData async function will call and render the latest data.
   const deleteCount = useSelector((store)=>store.registration.deleteCount);
+
+  // the loading value is returning from this custom hook ( useEmployeeData )
+  // When <FleetList /> called the custom hook will execute and return true. if the valur is true then Shimmer effect will be applied
+  // the async function will be executed then the loading state value become false. 
   const [loading, setLoading] = useState(true);
+  
   const fetchData = async() =>{
-    console.log("async called");
-    console.log("deleteCount: " + deleteCount)
     const db = getDatabase(app);
     const employeeRef = ref(db, "register/employe");  
     const snapshot = await get(employeeRef);
@@ -22,11 +28,9 @@ const useEmployeeData = () => {
       if(snapshot.exists()){
         const empRecord = snapshot.val();
         const empArray = Object.entries(empRecord); // key and pair will convert as array
-        
         const data = empArray.map((employees)=>{
           return {firebaseId: employees[0],...employees[1]};
         })   
-          
         dispatch(addEmployeeRecords(data));  
         dispatch(addFilterEmployeeRecords(data));
       }else{
@@ -41,7 +45,6 @@ const useEmployeeData = () => {
       
   }
   useEffect(()=>{
-    console.log("fetchData called, deleteCount:", deleteCount);
     fetchData();
   },[deleteCount]); 
   

@@ -1,20 +1,23 @@
 import React from "react";
 import { format } from "date-fns";
-import { changeFleetDisplay} from "../../Store/navigationSlice";
+// import { changeFleetDisplay} from "../../Store/navigationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addDeleteCount } from "../../Store/registrationSlice";
 
 import { 
   addPlateNo, addVehicleType, addManufacturer, addRegistrationExpiry, addInsuranceExpiry,
   addAdvertisementExpiry, addISOExpiry, addChassisNo, addSpareKey, addFireBaseId, 
   addPlateSwitch, addChassisSwitch
  } from "../../Store/fleetRegistrationSlice";
-
-
+ 
+ import app from "../fireBaseConfig";
+ import { getDatabase, ref, remove } from "firebase/database";
 
 const FleetDetails = (props) => {
   const dispatch = useDispatch();
   const layout = useSelector((store) => store.navigation.displayFleet);
+  const deleteCount = useSelector(store=>store.registration.deleteCount);
   const navigate = useNavigate();
   
 
@@ -38,6 +41,15 @@ const FleetDetails = (props) => {
     dispatch(addChassisSwitch(false));
     navigate("/fleet/update/");
   } 
+
+  const handleDelete = () => {
+    dispatch(addDeleteCount(deleteCount+1));
+    const db = getDatabase(app);
+    const fleetRef = ref(db, `register/fleet/${firebaseId}`);
+    remove(fleetRef);
+    console.log("firebase db",firebaseId);
+    console.log("delete count in fleetdetails", deleteCount)
+  }
 
   const currentDate = new Date();
   return (
@@ -87,7 +99,7 @@ const FleetDetails = (props) => {
         </button>
         <button
           className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-red-600 hover:bg-red-700"
-          // onClick={handleDelete}
+          onClick={handleDelete}
         >
           Delete
         </button>

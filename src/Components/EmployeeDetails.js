@@ -19,21 +19,10 @@ import { getDatabase, ref, remove } from "firebase/database";
 const EmployeeDetails = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {
-    first,
-    middle,
-    last,
-    id,
-    passport,
-    ohc,
-    fire,
-    visa,
-    rta,
-    port,
-    firebaseId,
+  const {first,middle,last,id,passport,
+    ohc,fire,visa,rta,port,firebaseId,
   } = props.data;
   const currentDate = new Date();
-  // const [firbaseId] = useState(firebaseId);
   const handleUpdate = () => {
     dispatch(addFirstName(first));
     dispatch(addMiddleName(middle));
@@ -47,7 +36,6 @@ const EmployeeDetails = (props) => {
     dispatch(addFireExpiry(fire));
     dispatch(addFireBaseId(firebaseId));
     dispatch(addEmpidSwitch(false));
-    // validationSwitch - turn off
     navigate("/people/update/");
   };
   const handleDelete = (firbaseId) => {
@@ -55,8 +43,7 @@ const EmployeeDetails = (props) => {
     const db = getDatabase(app);
     const employeeRef = ref(db, `register/employe/${firebaseId}`);
     remove(employeeRef);
-    console.log("delete button pressed")
-    alert("delete employee");
+    
     // navigate('/people/list/');
   };
 
