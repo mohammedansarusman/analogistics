@@ -3,8 +3,13 @@ import DashboardEmployees from "./DashboardEmployees";
 import DashboardFleet from "./DashboardFleet";
 import DashboardEmployeesSummary from "./DashboardEmployeesSummary";
 import DashboardFleetSummary from "./DashboardFleetSummary";
+import useEmployeeData from "./CustomHooks/useEmployeeData";
+import useFleetData from "./CustomHooks/useFleetData";
+
 
 const Dashboard = () => {
+  useEmployeeData();
+  useFleetData();
   return (
     <div className="w-full h-full absolute left-0 top-0 flex flex-col items-center pt-[100px]">
       <div className="w-full flex flex-col items-center">

@@ -18,7 +18,6 @@ import RegisterPortExpiry from "./RegisterPortExpiry";
 
 const PeopleUpdate = () => {
   const dispatch = useDispatch();
-
   useEmployeeData();
   const employeeData = useSelector(
     (store) => store.registration.employeeRecords

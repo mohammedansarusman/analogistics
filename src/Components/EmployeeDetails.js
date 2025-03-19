@@ -38,7 +38,7 @@ const EmployeeDetails = (props) => {
     dispatch(addEmpidSwitch(false));
     navigate("/people/update/");
   };
-  const handleDelete = (firbaseId) => {
+  const handleDelete = () => {
     dispatch(addDeleteCount((prevState) => prevState + 1));
     const db = getDatabase(app);
     const employeeRef = ref(db, `register/employe/${firebaseId}`);

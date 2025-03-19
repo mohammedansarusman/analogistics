@@ -32,12 +32,12 @@ const FleetList = () => {
   }
 
   return (
-    <div className="w-full absolute left-0 top-[13%] lg:top-[12.3%] bg-white">
-      <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7">
+    <div className="w-full absolute left-0 top-[100px]">
+      <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
         <h1>Fleet List</h1>
         {console.log("count ", deleteCount)}
       </header>
-      <div className="w-[100%] flex justify-center items-center py-[10px] sm:justify-end sm:pr-[20px] gap-[20px]">
+      <div className="w-[100%] flex justify-center items-center py-[10px] pt-[70px] sm:justify-end sm:pr-[20px] gap-[20px]">
         {<FleetSearchBar fleetRecords={fleetData} />}
         <div
           className="hidden md:block hover:bg-gray-500 transition-all duration-1000 hover:rounded-full p-[10px] hover:text-white"
