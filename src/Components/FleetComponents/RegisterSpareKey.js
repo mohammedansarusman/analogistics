@@ -7,12 +7,14 @@ const RegisterSpareKey = () => {
   const dispatch = useDispatch();
   const spareKey = useSelector((store) => store.fleetRegistration.spareKey);
   const flag = useSelector((store) => store.fleetRegistration.validSpareKey);
+  const mode = useSelector((store)=>store.navigation.mode);
+  
   const handleChange = (e) => dispatch(addSpareKey(e.target.value.toUpperCase()));
   const handleBlur = () => dispatch(addValidSpareKey(true));
   const message = useTextValidity(spareKey);
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">
-      <label htmlFor="spareKey" className="font-bold opacity-80">
+      <label htmlFor="spareKey" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
         Spare Key<span className="text-red-500">*</span>
       </label>
       <input
@@ -22,8 +24,8 @@ const RegisterSpareKey = () => {
         placeholder="Available / Not available"
         onChange={handleChange}
         value={spareKey}
-        onBlur={ handleBlur }
-        className="w-full outline-4 outline-gray-500 bg-transparent"
+        className={`w-full  bg-transparent focus:outline-none focus:ring-2 ${mode === "light" ? " focus:ring-gray-400 text-black" : "focus:ring-gray-600 text-white"}`}
+
       />
       <div className="w-full h-[1px] bg-gray-500"></div>
       <div className="h-[20px]">

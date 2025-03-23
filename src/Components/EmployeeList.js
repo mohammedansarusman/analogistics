@@ -25,6 +25,7 @@ const EmployeeList = () => {
   const deleteCount = useSelector((store) => store.registration.deleteCount);
   const display = useSelector((store) => store.navigation.displayEmployees);
   const displaySort = useSelector((store) => store.navigation.sortEmployees);
+  const mode = useSelector(store=>store.navigation.mode);
   
   useEffect(()=>{
     dispatch(changeBar(false));
@@ -49,7 +50,7 @@ const EmployeeList = () => {
 
 
   return (
-    <div className="w-full absolute left-0 top-[100px]">
+    <div className={`w-full min-h-screen absolute left-0 top-[100px] ${mode === "light" ? "bg-white" : "bg-gray-800"}`}>
       <header className="w-full h-[60px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
         <h1>Employee List</h1>
       </header>
@@ -66,7 +67,10 @@ const EmployeeList = () => {
                      transition-all duration-500 ease-in-out"
           onClick={ handleLayout }
         >
-          {display === "grid" ? <FaListUl /> : <SlGrid />}
+          {display === "grid" ? 
+            <FaListUl className={`${mode === 'light' ? "text-gray-600" : "text-gray-300"}`}/> : 
+            <SlGrid className={`${mode === 'light' ? "text-gray-600" : "text-gray-300"}`}/>
+          }
         </div>
         {/* Sort Ascending and descending order of names */}
         <div
@@ -75,7 +79,10 @@ const EmployeeList = () => {
                         transition-all duration-500 ease-in-out"
           onClick={handleSort}
         >
-          {displaySort === 'ascending' ? <FaSortAmountDownAlt /> : <FaSortAmountUp />}
+          {displaySort === 'ascending' ? 
+            <FaSortAmountDownAlt className={`${mode === 'light' ? "text-gray-600" : "text-gray-300"}`}/> : 
+            <FaSortAmountUp className={`${mode === 'light' ? "text-gray-600" : "text-gray-300"}`}/>
+          }
         </div>
       </div>
 

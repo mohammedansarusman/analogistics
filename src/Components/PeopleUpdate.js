@@ -22,10 +22,11 @@ const PeopleUpdate = () => {
   const employeeData = useSelector(
     (store) => store.registration.employeeRecords
   );
+  const mode = useSelector(store=>store.navigation.mode);
   const [message, setMessage] = useState(false);
   dispatch(changeBar(false));
   return (
-    <div className="w-full absolute left-0 top-[100px]">
+    <div className={`w-full min-h-screen absolute left-0 top-[100px] ${mode === "light" ? "bg-white" : "bg-gray-800"}`}>
       <div className="w-full flex flex-col items-center relative">
         {message && <RegisterSuccessMessage />}
         <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">

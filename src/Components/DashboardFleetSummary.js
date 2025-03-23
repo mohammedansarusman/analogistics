@@ -7,9 +7,9 @@ import { useSelector } from "react-redux";
 
 
 const DashboardFleetSummary = () => {
+  
   const currentDate = new Date();
   const data = useSelector((store) => store.fleetRegistration.fleetRecord);
-  console.log("data: ",data)
   const noExpiryMulkiya = data.filter((record)=>{
     return new Date(record.rta) < new Date(currentDate);
   });
@@ -22,9 +22,11 @@ const DashboardFleetSummary = () => {
   const noExpiryISO = data.filter((record)=>{
     return new Date(record.iso) < new Date(currentDate);
   });
+  const mode = useSelector(store=>store.navigation.mode);
+
 
   return (
-    <div className=" bg-gray-200 h-[80%] justify-center px-[20px] text-gray-500 flex flex-col py-2">
+    <div className={`${mode === 'light' ? "bg-gray-200" : "bg-gray-600 text-white"} h-[80%] px-[20px] py-[20px] text-gray-500 flex flex-col justify-center`}>
       <div className="w-[100%] flex justify-end text-xl">
         <h1>Registration Expiry</h1>
       </div>

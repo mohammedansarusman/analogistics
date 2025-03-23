@@ -12,6 +12,8 @@ const RegisterVehicleType = () => {
   const dispatch = useDispatch();
   const vehicleType = useSelector((store) => store.fleetRegistration.vehicleType);
   const flag = useSelector((store) => store.fleetRegistration.validVehicleType);
+  const mode = useSelector((store)=>store.navigation.mode);
+  
   const handleBlur = () => {
     dispatch(addValidVehicleType(true));
   };
@@ -21,13 +23,13 @@ const RegisterVehicleType = () => {
   const message = useVehicleTypeValidity(vehicleType);
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">
-      <label htmlFor="vehicleType" className="font-bold opacity-80">
+      <label htmlFor="vehicleType" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
         Vehicle Type<span className="text-red-500">*</span>
       </label>
 
       <Select
         options={vehicleTypes}
-        className="w-full px-1 py-2 text-black text-start "
+        className={`w-full px-1 py-2 text-black text-start `}
         placeholder="Search Vehicle Type"
         value={vehicleType} // value prop should be an object of the selected option
         onChange={handleChange}
@@ -40,6 +42,11 @@ const RegisterVehicleType = () => {
             // fontFamily: 'Poppins',
             // fontSize: '14px',
             borderRadius: "2px",
+            backgroundColor:mode === "light" ? "white" : "#1F2937",
+          }),
+          singleValue: (base) => ({
+            ...base,
+            color: mode === "light" ? "black" : "white", 
           }),
           menu: (base) => ({
             ...base,

@@ -6,11 +6,13 @@ import troc from "../../Images/VwCars/troc.webp";
 import amarok from "../../Images/VwCars/amarok.webp";
 import teramont from "../../Images/VwCars/teramont.webp";
 import touareg from "../../Images/VwCars/touareg.webp";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setType, setTruckSize } from "../../Store/priceSlice";
 const VolkswagenCars = () => {
   const dispatch = useDispatch();
   const [model,setModel] = useState(null)
+  const mode = useSelector(store=>store.navigation.mode);
+
   const vw = [
     { logo: gti, name: "Golf 8 GTI" },
     { logo: golfr, name: "Golf R" },
@@ -48,7 +50,7 @@ const VolkswagenCars = () => {
                 className="w-[150px] h-[150px] rounded-full object-contain hover:scale-110 transition-all duration-700 "
               ></img>
             </div>
-            <h1 className="text-gray-500">{item.name}</h1>
+            <h1 className={`${mode === 'light' ? "text-gray-500" : "text-white"}`}>{item.name}</h1>
           </div>
         ))}
       </div>

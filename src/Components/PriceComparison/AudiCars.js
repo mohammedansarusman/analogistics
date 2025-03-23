@@ -5,11 +5,13 @@ import rs3 from "../../Images/AudiCars/rs3.webp";
 import rsEtron from "../../Images/AudiCars/rsEtron.webp";
 import rsq8 from "../../Images/AudiCars/rsq8.webp";
 import sq6 from "../../Images/AudiCars/sq6.webp";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setType, setTruckSize } from "../../Store/priceSlice";
 const AudiCars = () => {
   const dispatch = useDispatch();
-  const [model,setModel] = useState(null)
+  const [model,setModel] = useState(null);
+  const mode = useSelector(store=>store.navigation.mode);
+
   const audi = [
     { logo: a5, name: "A5 Sedan" },
     { logo: q6, name: "Q6 e-tron" },
@@ -49,7 +51,7 @@ const AudiCars = () => {
                 className="w-[150px] h-[150px] rounded-full object-contain hover:scale-110 transition-all duration-700 "
               ></img>
             </div>
-            <h1 className="text-gray-500">{item.name}</h1>
+            <h1 className={`${mode === 'light' ? "text-gray-500" : "text-white"}`}>{item.name}</h1>
           </div>
         ))}
       </div>

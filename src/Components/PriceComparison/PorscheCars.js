@@ -5,11 +5,14 @@ import cayenne from "../../Images/PorscheCars/cayenne.jpg";
 import macan from "../../Images/PorscheCars/macan.jpg";
 import panamera from "../../Images/PorscheCars/panamera.jpg";
 import taycan from "../../Images/PorscheCars/taycan.jpg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setType,setTruckSize } from "../../Store/priceSlice";
+
 const PorscheCars = () => {
   const dispatch = useDispatch();
   const [model,setModel] = useState(null)
+  const mode = useSelector(store=>store.navigation.mode);
+
   const porsche = [
     { logo: carerra1, name: "718" },
     { logo: carerra2, name: "911" },
@@ -40,7 +43,7 @@ const PorscheCars = () => {
               onClick={()=>handleClick(index,item)}
               className={`w-[120px] h-[120px] flex items-center justify-center rounded-full 
               transition-all duration-1000 
-              ${model === index ? "border-2 border-black" : "border-2 border-transparent"}`}
+              ${model === index ? "border-2 border-gray-500" : "border-2 border-transparent"}`}
 
             >
               <img
@@ -49,7 +52,7 @@ const PorscheCars = () => {
                 className="w-[100px] h-[100px] object-full rounded-full hover:scale-110 transition-all duration-700 "
               ></img>
             </div>
-            <h1 className="text-gray-500">{item.name}</h1>
+            <h1 className={`${mode === 'light' ? "text-gray-500" : "text-white"}`}>{item.name}</h1>
           </div>
         ))}
       </div>

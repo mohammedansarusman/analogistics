@@ -49,7 +49,7 @@ const EmployeeDetails = (props) => {
 
   return (
     <div className="w-full flex flex-col items-center py-5 relative">
-      <div className="w-[90%] h-[30px] bg-cyan-100 p-5 flex justify-between items-center mt-2 hover:bg-cyan-200">
+      <div className="w-[90%] h-[30px] bg-cyan-500 p-5 flex justify-between items-center mt-2 ">
         <h1 className="font-thin">{id}</h1>
         <h1 className="font-bold opacity-70">
           {first + " " + middle + " " + last}
@@ -135,7 +135,7 @@ const EmployeeDetails = (props) => {
           Update
         </button>
         <button
-          className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-red-600 hover:bg-red-700"
+          className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-pink-800 hover:bg-pink-900"
           onClick={handleDelete}
         >
           Delete

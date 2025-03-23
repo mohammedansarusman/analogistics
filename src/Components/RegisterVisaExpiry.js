@@ -11,6 +11,7 @@ const RegisterVisaExpiry = () => {
   const dispatch = useDispatch();
   const visaExpiry = useSelector((store) => store.registration.visaExpiry);
   const flagVisa = useSelector((store) => store.registration.validVisaExpiry);
+  const mode = useSelector((store)=>store.navigation.mode);
 
   const handleDateChangeVisa = (date) => {
     date && dispatch(addVisaExpiry(date.getTime())); // dispatch action to update the state in the store.
@@ -21,7 +22,7 @@ const RegisterVisaExpiry = () => {
   const message = useDateValidity(visaExpiry);
   return (
     <div className="flex flex-col items-start w-full gap-1">
-      <label htmlFor="visaExpiry" className="font-bold opacity-80">
+      <label htmlFor="visaExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
         Visa Expiry<span className="text-red-500">*</span>
       </label>
       <DatePicker
@@ -31,7 +32,7 @@ const RegisterVisaExpiry = () => {
         onBlur={handleBlur}
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
-        className=" text-black w-full"
+        className={`w-full bg-gray-800 focus:outline-none focus:ring-2 ${mode === "light" ? " focus:ring-gray-400 text-black bg-white" : "focus:ring-gray-600 text-white bg-gray-800"}`}
         wrapperClassName="date-picker-style"
       />
       <div className='w-full h-[1px] bg-gray-500'></div>

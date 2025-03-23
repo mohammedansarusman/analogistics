@@ -101,6 +101,7 @@ const PeopleUpdateSaveClose = (props) => {
       dataMessage(true); // Show success message.
       setTimeout(() => {
         dataMessage(false);
+        navigate("/people/employeeList");
       }, 3000);
       
       handleReset();

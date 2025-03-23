@@ -7,6 +7,8 @@ const RegisterLastName = () => {
   const dispatch = useDispatch();
   const flagLastName = useSelector((store)=>store.registration.validLastName)
   const lastName = useSelector((store)=>store.registration.lastName)
+  const mode = useSelector((store)=>store.navigation.mode);
+
   const message = useNameValidity(lastName);
   message === null ? dispatch(addSaveLastName(true)) : dispatch(addSaveLastName(false)); 
   
@@ -20,7 +22,7 @@ const RegisterLastName = () => {
 
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">
-      <label htmlFor="lastName" className="block font-bold opacity-80">
+      <label htmlFor="lastName" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
         Last Name<span className="text-red-500">*</span>
       </label>
       <input
@@ -30,7 +32,7 @@ const RegisterLastName = () => {
         value={lastName}
         onChange={handleName}
         onBlur={handleBlur}
-        className="w-full outline-4 outline-gray-500 bg-transparent" 
+        className={`w-full  bg-transparent focus:outline-none focus:ring-2 ${mode === "light" ? " focus:ring-gray-400 text-black" : "focus:ring-gray-600 text-white"}`}
       />
       <div className='w-full h-[1px] bg-gray-500'></div>
       <div className="h-[20px]">

@@ -9,6 +9,7 @@ const RegisterRTAExpiry = () => {
   const dispatch = useDispatch();
   const rtaExpiry = useSelector((store)=>store.registration.rtaExpiry);
   const flagRTA = useSelector((store)=>store.registration.validRTAExpiry)
+  const mode = useSelector((store)=>store.navigation.mode);
 
   const handleDateChangeRTA = (date) => {
     date && dispatch(addRTAExpiry(date.getTime()));  // dispatch action to update the state in the store.
@@ -20,7 +21,7 @@ const RegisterRTAExpiry = () => {
 
   return (
     <div className="flex flex-col items-start w-full gap-1">
-      <label for="rtaExpiry" className="font-bold opacity-80">
+      <label for="rtaExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
         RTA Expiry<span className="text-red-500">*</span>
       </label>
       <DatePicker
@@ -30,7 +31,7 @@ const RegisterRTAExpiry = () => {
         dateFormat="dd-MM-yyyy"
         placeholderText="DD/MM/YYYY"
         value = { rtaExpiry}
-        className=" text-black w-full"
+        className={`w-full bg-gray-800 focus:outline-none focus:ring-2 ${mode === "light" ? " focus:ring-gray-400 text-black bg-white" : "focus:ring-gray-600 text-white bg-gray-800"}`}
         wrapperClassName="date-picker-style"
       />
       <div className='w-full h-[1px] bg-gray-500'></div>

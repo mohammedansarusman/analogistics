@@ -16,6 +16,7 @@ import RegisterSuccessMessage from "../RegisterSuccessMessage";
 
 const FleetRegister = () => {
   const dispatch = useDispatch();
+  const mode = useSelector(store=>store.navigation.mode);
   const records = useSelector((store)=>store.fleetRegistration.fleetRecord)
 
   const [message, setMessage] = useState(false);
@@ -23,7 +24,7 @@ const FleetRegister = () => {
   useFleetData(); 
   dispatch(changeBar(false)); // the side navigation bar will close once the fleet registration click.
   return (
-    <div className="w-full absolute left-0 top-[100px]">
+    <div className={`w-full min-h-screen absolute left-0 top-[100px] ${mode === "light" ? "bg-white" : "bg-gray-800"}`}>
       <div className="w-full flex flex-col items-center relative">
         { message &&  <RegisterSuccessMessage /> }
         {/* Heading - FLEET REGISTRATION */}

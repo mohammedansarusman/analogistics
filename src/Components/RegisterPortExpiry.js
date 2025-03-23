@@ -11,6 +11,7 @@ const RegisterPortExpiry = () => {
   const dispatch = useDispatch();
   const portExpiry = useSelector((store)=>store.registration.portExpiry);
   const flagPort = useSelector((store)=>store.registration.validPortExpiry)
+  const mode = useSelector((store)=>store.navigation.mode);
 
   const handleDateChangePort = (date) => {
     date && dispatch(addPortExpiry(date.getTime()));  // dispatch action to update the state in the store.
@@ -23,7 +24,7 @@ const RegisterPortExpiry = () => {
 
   return (
     <div className="flex flex-col items-start w-full gap-1">
-      <label for="portExpiry" className="font-bold opacity-80">
+      <label for="portExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
         Port Expiry<span className="text-red-500">*</span>
       </label>
       <DatePicker
@@ -33,7 +34,7 @@ const RegisterPortExpiry = () => {
         placeholderText="DD/MM/YYYY"
         value={portExpiry}
         onBlur={handleBlur}
-        className=" text-black w-full"
+        className={`w-full bg-gray-800 focus:outline-none focus:ring-2 ${mode === "light" ? " focus:ring-gray-400 text-black bg-white" : "focus:ring-gray-600 text-white bg-gray-800"}`}
         wrapperClassName="date-picker-style"
       />
       <div className='w-full h-[1px] bg-gray-500'></div>

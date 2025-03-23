@@ -7,6 +7,7 @@ const DashboardFleet = () => {
   const noOfVehilces = useSelector((store)=>store.fleetRegistration.fleetRecord);
   return (
     <div className="h-[20%] py-[50px] bg-green-600 text-white flex flex-col justify-center px-[20px]">
+      {console.log("DashboardFleet called")}
       <div className="w-[100%] flex justify-end text-2xl">
         <h1>Fleet</h1>
       </div>

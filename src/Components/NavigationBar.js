@@ -5,18 +5,23 @@ import { IoMdArrowDropdown } from "react-icons/io";
 
 import { GrLanguage } from "react-icons/gr";
 import logoImage from "../Images/fleetflow.webp"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeBar } from "../Store/navigationSlice";
 import { useState } from "react";
 import MenuNavigation from "./MenuNavigation";
 import FleetMenuNavigation from "./FleetComponents/FleetMenuNavigation";
 import { Link } from "react-router-dom";
 import { setSign } from "../Store/navigationSlice";
+import OthersNavigation from "./OthersNavigation";
+import { setMode } from "../Store/navigationSlice";
+import { MdDarkMode } from "react-icons/md";
+
 
 // Parent componenet - <App />
 
 
 const NavigationBar = () => {
+  const mode = useSelector(store=>store.navigation.mode)
   const [showDropdown, setShowDropdown] = useState({people:false, fleet:false, trip:false});
   const dispatch = useDispatch();
 
@@ -54,6 +59,9 @@ const NavigationBar = () => {
   const handleButton = () =>{
     dispatch(setSign(true));
   }
+  const handleMode = () =>{
+    dispatch(setMode(mode === "light"? "dark" : "light"));
+  }
   return (
     // {/* Navigation bar */}
     <div className="bg-gray-800 h-[100px] flex items-center fixed z-30 w-[100%]">
@@ -77,11 +85,12 @@ const NavigationBar = () => {
             onMouseLeave={handleMouseLeave}
             className="flex hover:text-cyan-500 relative cursor-pointer p-2">People <IoMdArrowDropdown size={25} />
             { showDropdown.people && 
-              <div className="bg-white absolute
-                                top-10 left-1/2 transform -translate-x-1/2 
-                                w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300
-                                text-black pt-4 flex justify-center
-                                ">
+              <div className={`${mode === 'light' ? "bg-white shadow-gray-600" : "bg-gray-600 text-white shadow-black"} absolute 
+              top-10 left-1/2 transform -translate-x-1/2 
+              w-[150px] h-[200px] rounded-lg
+              text-black pt-4 flex justify-center 
+              shadow-xl 
+            `}>
                 <MenuNavigation />
               </div>}
           </div>
@@ -92,36 +101,43 @@ const NavigationBar = () => {
             className="flex items-center hover:text-cyan-500 relative cursor-pointer p-2 ">Fleet <IoMdArrowDropdown size={25} 
           />
             { showDropdown.fleet && 
-              <div className="bg-white absolute 
+              <div className={`${mode === 'light' ? "bg-white shadow-gray-600" : "bg-gray-600 text-white shadow-black"} absolute 
                                 top-10 left-1/2 transform -translate-x-1/2 
-                                w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300
-                                text-black pt-4 flex justify-center
-                              ">
+                                w-[150px] h-[200px] rounded-lg
+                                text-black pt-4 flex justify-center 
+                                shadow-xl 
+                              `}>
                   <FleetMenuNavigation />              
                 </div> }
           </div>
           <div 
             onMouseEnter={ handleTrip }
             onMouseLeave={handleMouseLeave}
-            className="flex items-center hover:text-cyan-500 relative p-2">Trip <IoMdArrowDropdown size={25} />
+            className="flex items-center hover:text-cyan-500 relative p-2">Others <IoMdArrowDropdown size={25} />
             { showDropdown.trip && 
-              <div className="bg-white absolute 
+              <div className={`${mode === 'light' ? "bg-white shadow-gray-600" : "bg-gray-600 text-white shadow-black"} absolute 
                                 top-10 left-1/2 transform -translate-x-1/2 
-                                w-[150px] h-[200px] rounded-lg shadow-xl shadow-gray-300
-                                text-black pt-4 flex justify-center
-                                ">
-                  <FleetMenuNavigation />              
+                                w-[150px] h-[200px] rounded-lg
+                                text-black pt-4 flex justify-center 
+                                shadow-xl 
+                              `}>
+                  <OthersNavigation />
               </div> }
           </div>
         </div>
-        <div className="flex gap-1 justify-center items-center sm:gap-2 lg:w-[30%] 2xl:gap-3">
+        <div className="flex gap-1 justify-center items-center sm:gap-2 lg:w-[30%] lg:gap-[20px]">
           <button 
             className="text-white font-semibold px-[10px] text-sm hover:text-cyan-500 py-[10px] bg-slate-700 rounded-full"
             onClick={handleButton}
           >
             Sign Out
           </button>
-          <MdOutlineLightMode className="text-white size-6" />
+          <div 
+            className="cursor-pointer" 
+            onClick={handleMode}
+          >
+            {mode === "light" ? <MdOutlineLightMode className="text-white size-6" />: <MdDarkMode className="text-white size-6" />}
+          </div>
           <GrLanguage className="text-white size-6" />
         </div>
       </nav>

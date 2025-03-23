@@ -30,6 +30,7 @@ const FleetUpdateSaveClose = (props) => {
       setTimeout(() => {
         dataMessage(false);
       }, 3000);
+      navigate("/fleet/fleetList")
     }
 
   },[dataMessage])

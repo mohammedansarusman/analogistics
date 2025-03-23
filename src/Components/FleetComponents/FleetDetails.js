@@ -1,6 +1,5 @@
 import React from "react";
 import { format } from "date-fns";
-// import { changeFleetDisplay} from "../../Store/navigationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addDeleteCount } from "../../Store/registrationSlice";
@@ -53,8 +52,8 @@ const FleetDetails = (props) => {
 
   const currentDate = new Date();
   return (
-    <div className={`flex flex-col items-center py-2 mt-2 opacity-70 ${layout === 'grid' ? "md:w-[70%]" : "md:w-1/2 lg:w-1/3"}`}>
-      <div className="w-[90%] bg-cyan-100 flex flex-col transition-all duration-1000 hover:bg-cyan-200 rounded-tl-lg rounded-tr-lg">
+    <div className={`flex flex-col items-center py-2 mt-2  ${layout === 'grid' ? "md:w-[70%]" : "md:w-1/2 lg:w-1/3"}`}>
+      <div className="w-[90%] bg-cyan-500 flex flex-col rounded-tl-lg rounded-tr-lg">
         <div className="flex justify-between items-center px-2">
           <p className="font-light">{vehicle.label}</p>
           <p className="text-xl">{plate}</p>
@@ -98,7 +97,7 @@ const FleetDetails = (props) => {
           Update
         </button>
         <button
-          className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-red-600 hover:bg-red-700"
+          className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-pink-800 hover:bg-red-900"
           onClick={handleDelete}
         >
           Delete

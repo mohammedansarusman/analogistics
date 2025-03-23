@@ -4,7 +4,7 @@ import { LiaCcVisa } from "react-icons/lia";
 import { TbRibbonHealth } from "react-icons/tb";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { RiShipFill } from "react-icons/ri";
-import { FaFireExtinguisher, FaFirefoxBrowser } from "react-icons/fa";
+import { FaFireExtinguisher } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 const DashboardEmployeesSummary = () => {
@@ -29,8 +29,11 @@ const DashboardEmployeesSummary = () => {
     return new Date(record.port) < new Date(currentDate);
   });
 
+  const mode = useSelector(store=>store.navigation.mode);
+
+
   return (
-    <div className=" bg-gray-200 h-[80%] px-[20px] py-[20px] text-gray-500 flex flex-col justify-center">
+    <div className={`${mode === 'light' ? "bg-gray-200" : "bg-gray-600 text-white"} h-[80%] px-[20px] py-[20px] text-gray-500 flex flex-col justify-center`}>
       <div className="w-[100%] flex justify-end text-xl">
         <h1>Passport Expiry</h1>
       </div>

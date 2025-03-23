@@ -20,6 +20,8 @@ const FleetList = () => {
   const filteredData = useSelector(
     (store) => store.fleetRegistration.filterFleetRecord
   );
+  const mode = useSelector(store=>store.navigation.mode);
+
   const layout = useSelector((store) => store.navigation.displayFleet);
   const handleLayout = () => {
     layout === "grid"
@@ -32,10 +34,9 @@ const FleetList = () => {
   }
 
   return (
-    <div className="w-full absolute left-0 top-[100px]">
+    <div className={`w-full min-h-screen absolute left-0 top-[100px] ${mode === "light" ? "bg-white" : "bg-gray-800"}`}>
       <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
         <h1>Fleet List</h1>
-        {console.log("count ", deleteCount)}
       </header>
       <div className="w-[100%] flex justify-center items-center py-[10px] pt-[70px] sm:justify-end sm:pr-[20px] gap-[20px]">
         {<FleetSearchBar fleetRecords={fleetData} />}
@@ -43,7 +44,10 @@ const FleetList = () => {
           className="hidden md:block hover:bg-gray-500 transition-all duration-1000 hover:rounded-full p-[10px] hover:text-white"
           onClick={handleLayout}
         >
-          {layout === "grid" ? <SlGrid /> : <FaListUl />}
+          {layout === "grid" ? 
+            <FaListUl className={`${mode === 'light' ? "text-gray-600" : "text-gray-300"}`}/> : 
+            <SlGrid className={`${mode === 'light' ? "text-gray-600" : "text-gray-300"}`}/>
+          }
         </div>
       </div>
       <div

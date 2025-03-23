@@ -4,7 +4,10 @@ import { addMiddleName } from "../Store/registrationSlice";
 
 
 const RegisterMiddleName = () => {
+  const firstName = useSelector((store)=>store.registration.firstName);
+
   const dispatch = useDispatch();
+  const mode = useSelector((store)=>store.navigation.mode);
   const middleName = useSelector((store)=>store.registration.middleName);
   const handleName = (e) => {
     dispatch(addMiddleName(e.target.value));  // dispatch action to update the state in the store.
@@ -14,7 +17,8 @@ const RegisterMiddleName = () => {
   };
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">
-      <label htmlFor="middleName" className="block font-bold opacity-80">
+      {console.log("first name-",firstName)}
+      <label htmlFor="middleName" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
         Middle Name
       </label>
       <input
@@ -24,7 +28,8 @@ const RegisterMiddleName = () => {
         value={middleName}
         onChange={handleName}
         onBlur={handleBlur}
-        className="w-full outline-4 outline-gray-500 bg-transparent" 
+        className={`w-full  bg-transparent focus:outline-none focus:ring-2 ${mode === "light" ? " focus:ring-gray-400 text-black" : "focus:ring-gray-600 text-white"}`}
+
       />
       <div className='w-full h-[1px] bg-gray-500'></div>
       <div className="h-[20px]">
