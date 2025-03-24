@@ -114,7 +114,7 @@ const PeopleUpdateSaveClose = (props) => {
       handleReset();
       //  reset validation message to blank
       handleValidationMessage();
-      navigate("/price/");
+      navigate("/people/employeeList");
   };
 
   return (

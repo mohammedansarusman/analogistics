@@ -58,8 +58,8 @@ const PriceAnalysis = () => {
           </svg>
         )}
       </div>
-      <div className="font-bold text-2xl text-gray-600 ">{typeStatus}</div>
-      <div className="text-2xl font-light text-gray-600 py-3">
+      <div className={`font-bold text-2xl ${mode==='light' ? "text-gray-600" : "text-white"}`}>{typeStatus}</div>
+      <div className="text-2xl  text-red-400 font-bold py-3">
         {truckStatus}
       </div>
       <div className="flex flex-col w-full items-center md:flex md:flex-row md:justify-around md:px-5">
@@ -73,7 +73,7 @@ const PriceAnalysis = () => {
             <img src={aaa} className="object-contain w-[120px] h-[120px]" alt="aaa-logo"></img>
           </div>
           {result.length === 1 && (
-            <p className="text-xl font-semibold">
+            <p className={`text-xl font-semibold ${mode === "light" ? "text-gray-800" : "text-white"}`}>
               {result[0].aaaPrice
                 ? "AED " + result[0].aaaPrice
                 : "Price is not available"}
@@ -85,7 +85,7 @@ const PriceAnalysis = () => {
             <img src={amct} className="object-fit w-[120px] h-[120px]" alt="amct-logo"></img>
           </div>
           {result.length === 1 && (
-            <p className="text-xl font-semibold">
+            <p className={`text-xl font-semibold ${mode === "light" ? "text-gray-800" : "text-white"}`}>
               {result[0].amctPrice
                 ? "AED " + result[0].amctPrice
                 : "Price is not available"}
@@ -101,7 +101,7 @@ const PriceAnalysis = () => {
             ></img>
           </div>
           {result.length === 1 && (
-            <p className="text-xl font-semibold">
+            <p className={`text-xl font-semibold ${mode === "light" ? "text-gray-800" : "text-white"}`}>
               {result[0].emiratesPrice
                 ? "AED " + result[0].emiratesPrice
                 : "Price is not available"}

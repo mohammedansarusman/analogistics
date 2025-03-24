@@ -43,7 +43,7 @@ const AudiCars = () => {
               onClick={()=>handleClick(index,item)}
               className={`w-[150px] h-[150px] flex items-center justify-center rounded-full 
               transition-all duration-1000 
-              ${model === index ? "border-2 border-black" : "border-2 border-transparent"}`}
+              ${model === index ? "border-2 border-gray-500" : "border-2 border-transparent"}`}
             >
               <img
                 alt="audi-cars"

@@ -113,7 +113,7 @@ const NavigationBar = () => {
           <div 
             onMouseEnter={ handleTrip }
             onMouseLeave={handleMouseLeave}
-            className="flex items-center hover:text-cyan-500 relative p-2">Others <IoMdArrowDropdown size={25} />
+            className="flex items-center hover:text-cyan-500 relative p-2">Trip<IoMdArrowDropdown size={25} />
             { showDropdown.trip && 
               <div className={`${mode === 'light' ? "bg-white shadow-gray-600" : "bg-gray-600 text-white shadow-black"} absolute 
                                 top-10 left-1/2 transform -translate-x-1/2 

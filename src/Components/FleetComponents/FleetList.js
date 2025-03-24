@@ -56,7 +56,7 @@ const FleetList = () => {
         } md:justify-center`}
       >
         {filteredData.length === 0 ? (
-          <div className="w-[100%] h-[50px] text-black flex justify-center items-center">
+          <div className={`w-[100%] h-[50px] ${mode === 'light' ? "text-black" : "text-white"} flex justify-center items-center`}>
             <h1>No records found</h1>
           </div>
         ) : null}
