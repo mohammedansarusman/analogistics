@@ -190,4 +190,28 @@ export const dataset = [
   {start: "rashidiya", end: "western", truckType: "Flat Bed Truck Required", amctPrice:175, aaaPrice:225, emiratesPrice:110, carsPrice:null},
   {start: "rashidiya", end: "hatta", truckType: "Flat Bed Truck Required", amctPrice:250, aaaPrice:490, emiratesPrice:500, carsPrice:null},
 
-]
+];
+
+export const language = {
+  hi:{
+    home:"होम",
+    people:"लोग",
+    fleet:"फ़्लीट",
+    trip:"ट्रिप",
+    signout:""
+  },
+  en:{
+    home:"Home",
+    people:"People",
+    fleet:"Fleet",
+    trip:"Trip",
+    signout:"Sign Out"
+  },
+  ma:{
+    home:"മുഖ്യപേജ്",
+    people:"പീപ്പിൾ ",
+    fleet:"ഫ്ലീറ്റ്",
+    trip:"ട്രിപ്പ്",
+    signout:"സൈൻ ഔട്ട്"
+  }
+};

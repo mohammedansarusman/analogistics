@@ -36,6 +36,8 @@ const NavigationBarSmall = () => {
     setTripMenu(!tripMenu);
     setPeopleMenu(false);
     setFleetMenu(false);
+    // dispatch(changeBar(false));
+
   };
   const handleHome = () => {
     setTripMenu(false);

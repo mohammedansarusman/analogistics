@@ -11,7 +11,6 @@ const OthersNavigation = () => {
           <h1 className={`w-[100%] text-left pl-2 py-1  ${mode === "light" ? "hover:bg-gray-200" : "hover:bg-gray-500 hover:text-white" }`}>Price Comparision</h1>
       </Link>
     </div>
-    // ${mode === "light" ? "bg-white" : "bg-gray-600"}
   );
 };
 

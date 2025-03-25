@@ -19,6 +19,7 @@ import {
   setEnd,
 } from "../../Store/priceSlice";
 import { useState } from "react";
+import { changeBar } from "../../Store/navigationSlice";
 const LandingComponent = () => {
   const mode = useSelector(store=>store.navigation.mode);
   const [brandIndex, setBrandIndex] = useState(null);
@@ -63,6 +64,8 @@ const LandingComponent = () => {
   const porscheStatus = useSelector((store) => store.price.porscheFlag);
   const volkswagenStatus = useSelector((store) => store.price.volkswagenFlag);
   const audiStatus = useSelector((store) => store.price.audiFlag);
+  dispatch(changeBar(false));
+
 
   useEffect(()=>{
     return () =>{

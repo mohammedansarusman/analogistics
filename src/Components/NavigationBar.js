@@ -15,6 +15,8 @@ import { setSign } from "../Store/navigationSlice";
 import OthersNavigation from "./OthersNavigation";
 import { setMode } from "../Store/navigationSlice";
 import { MdDarkMode } from "react-icons/md";
+import { language } from "../Utils/constants";
+
 
 
 // Parent componenet - <App />
@@ -22,6 +24,7 @@ import { MdDarkMode } from "react-icons/md";
 
 const NavigationBar = () => {
   const mode = useSelector(store=>store.navigation.mode)
+  const lang = useSelector(store=>store.navigation.lang)
   const [showDropdown, setShowDropdown] = useState({people:false, fleet:false, trip:false});
   const dispatch = useDispatch();
 
@@ -77,13 +80,13 @@ const NavigationBar = () => {
       <nav className="w-[60%] flex items-center justify-end gap-5 px-6 py-3">
         <div className="hidden lg:text-white lg:flex lg:justify-evenly lg:w-[70%] lg:font-bold">
           <Link to="/dashboard">
-            <div className="p-2 hover:text-cyan-500">Home</div>
+            <div className="p-2 hover:text-cyan-500">{language[lang].home}</div>
           </Link> 
           {/* People menu from Navigation bar */}
           <div 
             onMouseEnter={handlePeople}
             onMouseLeave={handleMouseLeave}
-            className="flex hover:text-cyan-500 relative cursor-pointer p-2">People <IoMdArrowDropdown size={25} />
+            className="flex hover:text-cyan-500 relative cursor-pointer p-2">{language[lang].people}<IoMdArrowDropdown size={25} />
             { showDropdown.people && 
               <div className={`${mode === 'light' ? "bg-white shadow-gray-600" : "bg-gray-600 text-white shadow-black"} absolute 
               top-10 left-1/2 transform -translate-x-1/2 
@@ -98,7 +101,7 @@ const NavigationBar = () => {
           <div 
             onMouseEnter = { handleFleet}
             onMouseLeave={handleMouseLeave}
-            className="flex items-center hover:text-cyan-500 relative cursor-pointer p-2 ">Fleet <IoMdArrowDropdown size={25} 
+            className="flex items-center hover:text-cyan-500 relative cursor-pointer p-2 ">{language[lang].fleet} <IoMdArrowDropdown size={25} 
           />
             { showDropdown.fleet && 
               <div className={`${mode === 'light' ? "bg-white shadow-gray-600" : "bg-gray-600 text-white shadow-black"} absolute 
@@ -113,7 +116,7 @@ const NavigationBar = () => {
           <div 
             onMouseEnter={ handleTrip }
             onMouseLeave={handleMouseLeave}
-            className="flex items-center hover:text-cyan-500 relative p-2">Trip<IoMdArrowDropdown size={25} />
+            className="flex items-center hover:text-cyan-500 relative p-2">{language[lang].trip}<IoMdArrowDropdown size={25} />
             { showDropdown.trip && 
               <div className={`${mode === 'light' ? "bg-white shadow-gray-600" : "bg-gray-600 text-white shadow-black"} absolute 
                                 top-10 left-1/2 transform -translate-x-1/2 
@@ -125,12 +128,12 @@ const NavigationBar = () => {
               </div> }
           </div>
         </div>
-        <div className="flex gap-1 justify-center items-center sm:gap-2 lg:w-[30%] lg:gap-[20px]">
+        <div className="flex gap-[16px] justify-center items-center sm:gap-2 lg:w-[30%] lg:gap-[20px]">
           <button 
             className="text-white font-semibold px-[10px] text-sm hover:text-cyan-500 py-[10px] bg-slate-700 rounded-full"
             onClick={handleButton}
           >
-            Sign Out
+            {language[lang].signout}
           </button>
           <div 
             className="cursor-pointer" 
