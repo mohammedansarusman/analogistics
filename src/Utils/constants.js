@@ -191,6 +191,11 @@ export const dataset = [
   {start: "rashidiya", end: "hatta", truckType: "Flat Bed Truck Required", amctPrice:250, aaaPrice:490, emiratesPrice:500, carsPrice:null},
 
 ];
+export const basha = [
+  {value:'en', name:'English'},
+  {value:'ma', name:'മലയാളം '},
+  {value:'hi', name:'हिन्दी'},
+]
 
 export const language = {
   hi:{
@@ -198,20 +203,44 @@ export const language = {
     people:"लोग",
     fleet:"फ़्लीट",
     trip:"ट्रिप",
-    signout:""
+    signout:"साइन आउट",
+    dashboard:"डैशबोर्ड",
+    employees:"कर्मचारी",
+    passportExpiry:"पासपोर्ट की समाप्ति",
+    visaExpiry:"वीज़ा समाप्ति",
+    ohcExpiry:"ओएचसी समाप्ति",
+    odpExpiry:"ओडीसी समाप्ति",
+    fireSafetyExpiry:"अग्नि एवं सुरक्षा समाप्ति",
+    portPassExpiry:"पोर्ट पास की समाप्ति",
   },
   en:{
     home:"Home",
     people:"People",
     fleet:"Fleet",
     trip:"Trip",
-    signout:"Sign Out"
+    signout:"Sign Out",
+    dashboard:"Dashboard",
+    employees:"Employees",
+    passportExpiry:"Passport Expiry",
+    visaExpiry:"Visa Expiry",
+    ohcExpiry:"OHC Expiry",
+    odpExpiry:"ODP Expiry",
+    fireSafetyExpiry:"Fire & Safety Expiry",
+    portPassExpiry:"Port Pass Expiry",
   },
   ma:{
     home:"മുഖ്യപേജ്",
     people:"പീപ്പിൾ ",
     fleet:"ഫ്ലീറ്റ്",
     trip:"ട്രിപ്പ്",
-    signout:"സൈൻ ഔട്ട്"
+    signout:"സൈൻ ഔട്ട്",
+    dashboard:"ഡാഷ്ബോർഡ്",
+    employees:"ജീവനക്കാർ",
+    passportExpiry:"പാസ്പോർട്ട് കാലാവധി",
+    visaExpiry:"വിസ കാലാവധി",
+    ohcExpiry:"OHC കാലാവധി",
+    odpExpiry:"ODP കാലാവധി",
+    fireSafetyExpiry:"ഫയർ ആൻഡ് സേഫ്റ്റി കാലാവധി",
+    portPassExpiry:"പോർട്ട് പാസ് കാലാവധി",
   }
 };

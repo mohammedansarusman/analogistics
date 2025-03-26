@@ -9,7 +9,8 @@ const navigationSlice = createSlice({
         displayFleet:"list",
         sign: true,
         mode:"light",
-        lang:"ma",
+        lang:"en",
+        languageWindow:false,
     },
     reducers: {
         changeBar: (state, action) => {
@@ -33,11 +34,14 @@ const navigationSlice = createSlice({
         setLang:(state,action)=>{
             state.lang = action.payload;
         },
+        setLanguageWindow:(state,action)=>{
+            state.languageWindow = action.payload;
+        },
     }
 })
 
 export default navigationSlice.reducer;
-export const { changeBar, changeDisplay, changeSort, changeFleetDisplay, setSign, setMode, setLang } = navigationSlice.actions;
+export const { changeBar, changeDisplay, changeSort, changeFleetDisplay, setSign, setMode, setLang, setLanguageWindow } = navigationSlice.actions;
 
 
 // Usage: This slice is using to activate the navigation slider. when the screen is mobile view the user wants to experience 

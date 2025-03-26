@@ -7,10 +7,14 @@ import useEmployeeData from "./CustomHooks/useEmployeeData";
 import useFleetData from "./CustomHooks/useFleetData";
 import ContentLoading from "./ContenLoading";
 import { useSelector } from "react-redux";
+import { language } from "../Utils/constants";
+
 
 
 const Dashboard = () => {
   const mode = useSelector(store=>store.navigation.mode)
+  const lang = useSelector(store=>store.navigation.lang)
+
   const val1 = useEmployeeData();
   const val2 = useFleetData();
   if(val1 === true  || val2 === true) {
@@ -21,7 +25,7 @@ const Dashboard = () => {
     <div className={`w-full absolute left-0 top-0 flex flex-col items-center pt-[100px] ${mode === 'light' ? "bg-white" : "bg-gray-800"}`}>
       <div className="w-full flex flex-col items-center">
         <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed">
-          <h1>D A S H B O A R D</h1>
+          <h1>{language[lang].dashboard}</h1>
         </header>
       </div>
       <div

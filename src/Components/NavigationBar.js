@@ -13,9 +13,10 @@ import FleetMenuNavigation from "./FleetComponents/FleetMenuNavigation";
 import { Link } from "react-router-dom";
 import { setSign } from "../Store/navigationSlice";
 import OthersNavigation from "./OthersNavigation";
-import { setMode } from "../Store/navigationSlice";
+import { setMode, setLanguageWindow, setLang } from "../Store/navigationSlice";
 import { MdDarkMode } from "react-icons/md";
 import { language } from "../Utils/constants";
+import { basha } from "../Utils/constants";
 
 
 
@@ -27,6 +28,7 @@ const NavigationBar = () => {
   const lang = useSelector(store=>store.navigation.lang)
   const [showDropdown, setShowDropdown] = useState({people:false, fleet:false, trip:false});
   const dispatch = useDispatch();
+  const languageBar = useSelector(store => store.navigation.languageWindow);
 
   const handleHamburgerButton = () => {
     dispatch(changeBar(true))
@@ -64,6 +66,15 @@ const NavigationBar = () => {
   }
   const handleMode = () =>{
     dispatch(setMode(mode === "light"? "dark" : "light"));
+  }
+  const handleLanguage = (e) =>{
+    dispatch(setLanguageWindow(false));
+    console.log("value language",e)
+    dispatch(setLang(e));
+    
+  }
+  const handleLanguageWindow =()=>{
+    dispatch(setLanguageWindow(true));
   }
   return (
     // {/* Navigation bar */}
@@ -128,20 +139,39 @@ const NavigationBar = () => {
               </div> }
           </div>
         </div>
-        <div className="flex gap-[16px] justify-center items-center sm:gap-2 lg:w-[30%] lg:gap-[20px]">
+        <div className="flex gap-[16px] justify-center items-center sm:gap-2 lg:w-[30%] lg:gap-[20px] relative">
+          {languageBar && <div className="absolute right-0 top-0 w-[150px] bg-gray-700 text-white text-sm font-bold rounded-md py-[5px] flex flex-col gap-2">
+              {basha.map(
+                language=>
+                  <p 
+                    key={language.value} 
+                    className="rounded-md hover:bg-gray-600 py-[5px]"
+                    onClick={()=>handleLanguage(language.value)}
+                  >
+                    {language.name}
+                  </p>
+              )}
+          </div>}
+          
+          {/* sign out button */}
           <button 
             className="text-white font-semibold px-[10px] text-sm hover:text-cyan-500 py-[10px] bg-slate-700 rounded-full"
             onClick={handleButton}
           >
             {language[lang].signout}
           </button>
+          {/* dark/light mode */}
           <div 
             className="cursor-pointer" 
             onClick={handleMode}
           >
             {mode === "light" ? <MdOutlineLightMode className="text-white size-6" />: <MdDarkMode className="text-white size-6" />}
           </div>
-          <GrLanguage className="text-white size-6" />
+          {/* language dropdown */}
+          <GrLanguage 
+            className="text-white size-6"
+            onClick={handleLanguageWindow}
+          />
         </div>
       </nav>
     </div>
