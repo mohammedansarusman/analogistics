@@ -5,7 +5,7 @@ const registrationSlice = createSlice({
     firstName: "",
     middleName: "",
     lastName: "",
-    employeId: "",
+    employeId:"",
     passportExpiry: null,
     visaExpiry: null,
     ohcExpiry: null,

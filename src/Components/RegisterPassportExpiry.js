@@ -7,12 +7,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import {useDateValidity} from './CustomHooks/useDateValidity'
 import { addPassportExpiry, addValidPassportExpiry } from "../Store/registrationSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { language } from "../Utils/constants";
 
 const RegisterPassportExpiry = () => {
   const dispatch = useDispatch();
   const passportExpiry = useSelector((store)=>store.registration.passportExpiry);
   const flagPassport = useSelector((store)=>store.registration.validPassportExpiry);
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
 
 
   const handleDateChange = (date) => {
@@ -24,8 +26,8 @@ const RegisterPassportExpiry = () => {
   const message = useDateValidity(passportExpiry)
   return (
     <div className="flex flex-col items-start w-full gap-1">
-      <label for="passExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        Passport Expiry<span className="text-red-500">*</span>
+      <label htmlFor="passExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
+        {language[lang].passportExpiry}<span className="text-red-500">*</span>
       </label>
       <DatePicker
         selected={passportExpiry}

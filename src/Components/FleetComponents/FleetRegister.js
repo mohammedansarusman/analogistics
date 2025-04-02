@@ -13,11 +13,13 @@ import RegisterSpareKey from "./RegisterSpareKey";
 import RegisterFleetSaveReset from "./RegisterFleetSaveReset";
 import useFleetData from '../CustomHooks/useFleetData'
 import RegisterSuccessMessage from "../RegisterSuccessMessage";
+import { language } from "../../Utils/constants";
 
 const FleetRegister = () => {
   const dispatch = useDispatch();
   const mode = useSelector(store=>store.navigation.mode);
-  const records = useSelector((store)=>store.fleetRegistration.fleetRecord)
+  const records = useSelector((store)=>store.fleetRegistration.fleetRecord);
+  const lang = useSelector(store=>store.navigation.lang)
 
   const [message, setMessage] = useState(false);
   // the reason behind calling  useFleetData here is to check the plate no/chassis is already existing in firebase
@@ -29,17 +31,20 @@ const FleetRegister = () => {
         { message &&  <RegisterSuccessMessage /> }
         {/* Heading - FLEET REGISTRATION */}
         <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
-          <h1>Fleet Registration</h1>
+          <h1>{language[lang].fleetRegistration}</h1>
         </header>
         {/* Fleet registration  form - plate , chassis, vehicle type etc .. */}
         <div className="flex flex-col items-start w-[90%]  border-2 border-cyan-500 p-5 rounded-xl mt-[100px] ">
           <div className="w-full lg:flex lg:justify-between">
             <div className="lg:w-[45%]">
               {/* Plate number */}
+              {/* The puropse of 'records' is to bring unique plate number */}
+
               <RegisterPlateNo data = { records }/>
             </div>
             <div className="lg:w-[45%]">
               {/* Chassis number */}
+              {/* The puropse of 'records' is to bring unique chassis number */}
               <RegisterChassisNo data = { records }/> 
             </div>
           </div>

@@ -69,7 +69,6 @@ const NavigationBar = () => {
   }
   const handleLanguage = (e) =>{
     dispatch(setLanguageWindow(false));
-    console.log("value language",e)
     dispatch(setLang(e));
     
   }

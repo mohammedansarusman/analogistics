@@ -15,6 +15,7 @@ import RegisterOHCExpiry from "./RegisterOHCExpiry";
 import RegisterRTAExpiry from "./RegisterRTAExpiry";
 import RegisterFireSafety from "./RegisterFireSafety";
 import RegisterPortExpiry from "./RegisterPortExpiry";
+import UpdateEmployeeId from "./UpdateEmployeeId";
 
 const PeopleUpdate = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,8 @@ const PeopleUpdate = () => {
               <RegisterLastName />
             </div>
             <div className="lg:w-[45%]">
-              <RegisterEmployeId data={employeeData} />
+              {/* <RegisterEmployeId data={employeeData} /> */}
+              <UpdateEmployeeId />
             </div>
           </div>
           <div className="w-full lg:flex lg:justify-between">

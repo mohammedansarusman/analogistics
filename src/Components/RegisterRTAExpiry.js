@@ -4,12 +4,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import {useDateValidity} from './CustomHooks/useDateValidity'
 import { addRTAExpiry, addValidRTAExpiry } from "../Store/registrationSlice";
 import { useSelector, useDispatch } from "react-redux";
-
+import { language } from "../Utils/constants";
 const RegisterRTAExpiry = () => {
   const dispatch = useDispatch();
   const rtaExpiry = useSelector((store)=>store.registration.rtaExpiry);
   const flagRTA = useSelector((store)=>store.registration.validRTAExpiry)
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
 
   const handleDateChangeRTA = (date) => {
     date && dispatch(addRTAExpiry(date.getTime()));  // dispatch action to update the state in the store.
@@ -21,8 +22,8 @@ const RegisterRTAExpiry = () => {
 
   return (
     <div className="flex flex-col items-start w-full gap-1">
-      <label for="rtaExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        RTA Expiry<span className="text-red-500">*</span>
+      <label htmlFor="rtaExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
+        {language[lang].odpExpiry}<span className="text-red-500">*</span>
       </label>
       <DatePicker
         selected={rtaExpiry}

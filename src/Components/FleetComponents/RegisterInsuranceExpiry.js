@@ -8,6 +8,7 @@ import {
   addInsuranceExpiry,
   addValidInsuranceExpiry,
 } from "../../Store/fleetRegistrationSlice";
+import { language } from "../../Utils/constants";
 
 const RegisterInsuranceExpiry = () => {
   const selectedDate = useSelector(
@@ -17,6 +18,7 @@ const RegisterInsuranceExpiry = () => {
     (store) => store.fleetRegistration.validInsuranceExpiry
   );
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector(store => store.navigation.lang);
 
   const message = useDateValidity(selectedDate);
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const RegisterInsuranceExpiry = () => {
   return (
     <div className="flex flex-col items-start w-full gap-1">
       <label htmlFor="insuranceExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        Insurance Expiry<span className="text-red-500">*</span>
+        {language[lang].insuranceExpiry}<span className="text-red-500">*</span>
       </label>
       <DatePicker
         selected={selectedDate}

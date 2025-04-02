@@ -11,6 +11,8 @@ import { FaSortAmountDownAlt } from "react-icons/fa";
 import { FaSortAmountUp } from "react-icons/fa";
 import { changeDisplay, changeSort } from "../Store/navigationSlice";
 import { addFilterEmployeeRecords } from "../Store/registrationSlice";
+import { language } from "../Utils/constants";
+
 
 
 const EmployeeList = () => {
@@ -26,6 +28,8 @@ const EmployeeList = () => {
   const display = useSelector((store) => store.navigation.displayEmployees);
   const displaySort = useSelector((store) => store.navigation.sortEmployees);
   const mode = useSelector(store=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
+
   
   useEffect(()=>{
     dispatch(changeBar(false));
@@ -52,7 +56,7 @@ const EmployeeList = () => {
   return (
     <div className={`w-full min-h-screen absolute left-0 top-[100px] ${mode === "light" ? "bg-white" : "bg-gray-800"}`}>
       <header className="w-full h-[60px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
-        <h1>Employee List</h1>
+        <h1>{language[lang].employeeList}</h1>
       </header>
       <div className="w-full flex justify-center items-center px-5 pt-[70px] md:gap-4 lg:justify-end lg:gap-5  lg:items-center py-2">
         <div className="w-full flex justify-center lg:w-[30%]">

@@ -20,9 +20,11 @@ import {
 } from "../../Store/priceSlice";
 import { useState } from "react";
 import { changeBar } from "../../Store/navigationSlice";
+import { language } from "../../Utils/constants";
 const LandingComponent = () => {
   const mode = useSelector(store=>store.navigation.mode);
   const [brandIndex, setBrandIndex] = useState(null);
+  const lang = useSelector(store=>store.navigation.lang);
   const brands = [
     { logo: porscheLogo, name: "porsche" },
     { logo: vwLogo, name: "vw" },
@@ -82,11 +84,11 @@ const LandingComponent = () => {
   return (
     <div className={`w-full min-h-screen absolute left-0 top-[100px] pb-[50px] ${mode === "light" ? "bg-white" : "bg-gray-800"}`}>
       <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
-        <h1>Price Comparison</h1>
+        <h1>{language[lang].priceComparison}</h1>
       </header>
       <div className="w-[100%] flex flex-col justify-start items-center pt-[100px] gap-1 cursor-pointer">
         <h1 className={`${mode === "light" ? "text-gray-500" : "text-white"} font-semibold text-xl`}>
-          Select any brand
+          {language[lang].selectBrand}
         </h1>
         <div className="flex flex-col gap-2 md:flex md:flex-row md:w-full md:justify-center md:gap-2">
         {brands.map((brand, index) => (
@@ -109,7 +111,7 @@ const LandingComponent = () => {
 
         {(porscheStatus || volkswagenStatus || audiStatus) && (
           <h1 className={`${ mode === "light" ? "text-gray-500" : "text-white"} mt-[20px] text-xl font-semibold`}>
-            Select any car model from the brand
+            {language[lang].selectType}
           </h1>
         )}
 

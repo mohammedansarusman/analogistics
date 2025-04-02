@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addChassisNo, addValidChassisNo, addSaveChassisNo } from '../../Store/fleetRegistrationSlice'
 import { useChassisValidity } from '../CustomHooks/useChassisValidity'
+import { language } from "../../Utils/constants";
+
 
 const RegisterChassisNo = (props) => {
   const { data } = props;
@@ -9,16 +11,20 @@ const RegisterChassisNo = (props) => {
   const chassisNo = useSelector((store)=>store.fleetRegistration.chassisNo);
   const flag = useSelector((store)=>store.fleetRegistration.validChassisNo);
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector(store=>store.navigation.lang);
 
   const handleChange = (e)=> dispatch(addChassisNo(e.target.value.toUpperCase()))
   const handleBlur = ()=> dispatch(addValidChassisNo(true))
 
   const message = useChassisValidity(chassisNo, data);
-  message === null ? dispatch(addSaveChassisNo(true)) : dispatch(addSaveChassisNo(false));
+  useEffect(()=>{
+    message === null ? dispatch(addSaveChassisNo(true)) : dispatch(addSaveChassisNo(false));
+
+  },[message])
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">
         <label htmlFor="chassisNo" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-          Chassis Number<span className="text-red-500">*</span>
+          {language[lang].chassisNo}<span className="text-red-500">*</span>
         </label>
         <input 
             type="text" 

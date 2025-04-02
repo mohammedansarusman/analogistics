@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNameValidity } from "./CustomHooks/useNameValidity";
 import { useSelector, useDispatch } from "react-redux";
 import { addFirstName, addValidFirstName, addSaveFirstName } from "../Store/registrationSlice";
-
+import { language } from "../Utils/constants";
 const RegisterName = () => {
   const dispatch = useDispatch();
   const firstName = useSelector((store)=>store.registration.firstName);
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
   // validFirstName - is a redux state variable,the default value is false. the use of this-
   // state, when the useNameValidity custom hook will execute then return one message that will output in dom,
   // state became true.
   const flagFirstName = useSelector((store)=>store.registration.validFirstName);
   const message = useNameValidity(firstName);
   // save buttton will work once the saveFirstName state is true
-  message === null ? dispatch(addSaveFirstName(true)) : dispatch(addSaveFirstName(false)); 
+  useEffect(()=>{
+    message === null ? dispatch(addSaveFirstName(true)) : dispatch(addSaveFirstName(false)); 
+  },[message])
   
 
   const handleName = (e) => {
@@ -28,7 +31,7 @@ const RegisterName = () => {
     return (
       <div className="w-full flex flex-col items-start gap-[5px]">
         <label htmlFor="firstName" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-          First Name<span className="text-red-500">*</span>
+          {language[lang].firstName}<span className="text-red-500">*</span>
         </label>
         <input
           type="text"

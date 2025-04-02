@@ -6,18 +6,20 @@ import usePriceComparison from "../CustomHooks/usePriceComparison";
 import aaa from "../../Images/Supplier/aaa_logo.png";
 import amct from "../../Images/Supplier/amct_logo.png";
 import emirates from "../../Images/Supplier/emirates_logo.svg";
+import { language } from "../../Utils/constants";
 
 const PriceAnalysis = () => {
   const mode = useSelector(store=>store.navigation.mode);
   const brandStatus = useSelector((store) => store.price.brand);
   const typeStatus = useSelector((store) => store.price.type);
   const truckStatus = useSelector((store) => store.price.truckSize);
+  const lang = useSelector(store=>store.navigation.lang);
   const result = usePriceComparison();
   return (
     <div className={`${mode === "light" ? "bg-gray-100" : "bg-gray-500"} w-[80%] flex flex-col items-center`}>
       <header className="py-[20px]">
         <h1 className="text-2xl font-semibold text-gray-500">
-          Supplier Price Comparison
+          {language[lang].supplierPriceComparison}
         </h1>
       </header>
       <div className="w-[200px] h-[70px] flex justify-center items-center">

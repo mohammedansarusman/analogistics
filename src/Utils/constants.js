@@ -1,10 +1,25 @@
-export const vehicleTypes = [
+export const englishVehicleTypes = [
   { value: "heavytruck", label: "Heavy Truck" },
   { value: "lighttruck", label: "Light Truck" },
   { value: "bus", label: "Bus" },
   { value: "car", label: "Car" },
   { value: "van", label: "Van"},
 ];
+export const hindiVehicleTypes = [
+  { value: "hiheavytruck", label: "भारी ट्रक" },
+  { value: "hilighttruck", label: "हल्का ट्रक" },
+  { value: "hibus", label: "बस" },
+  { value: "hicar", label: "कार" },
+  { value: "hivan", label: "वैन"},
+];
+export const malayalamVehicleTypes = [
+  { value: "maheavytruck", label: "ഭാരമേറിയ ട്രക്ക്" },
+  { value: "malighttruck", label: "ലഘു ട്രക്ക്" },
+  { value: "mabus", label: "ബസ്" },
+  { value: "macar", label: "കാർ" },
+  { value: "mavan", label: ""},
+];
+
 
 export const user = {
   name:process.env.REACT_APP_USERNAME,
@@ -212,6 +227,36 @@ export const language = {
     odpExpiry:"ओडीसी समाप्ति",
     fireSafetyExpiry:"अग्नि एवं सुरक्षा समाप्ति",
     portPassExpiry:"पोर्ट पास की समाप्ति",
+    registrationExpiry:" पंजीकरण समाप्ति",
+    insuranceExpiry:"बीमा समाप्ति",
+    advertisementExpiry:"विज्ञापन समाप्ति",
+    isoExpiry:"आईएसओ प्रमाणन समाप्ति",
+    firstName:"प्रथम नाम",
+    middleName:"मध्य नाम",
+    lastName:"उपनाम",
+    employeeId:"कर्मचारी आईडी",
+    employeeRegistration:"कर्मचारी पंजीकरण",
+    save:"सहेजें",
+    close:"बंद करें",
+    employeeList:"कर्मचारी सूची",
+    searchEmployee:"नाम से खोजें..",
+    successMessage:"विवरण सफलतापूर्वक सहेजा गया...",
+    fleetRegistration:"बेड़े पंजीकरण",
+    plateNo:"प्लेट नंबर",
+    chassisNo:"चेसिस नंबर",
+    vehicleType:"वाहन प्रकार",
+    manufacturer:"निर्माता",
+    spareKey:"अतिरिक्त चाबी",
+    placeholderFleet:"कोई भी वाहन प्रकार चुनें...",
+    register:"रजिस्टर",
+    fleetList:"बेड़े की सूची",
+    priceComparison:"मूल्य तुलना",
+    update:"अद्यतन",
+    delete:"हटाना",
+    placeHolderFleetList:"प्लेट नंबर से खोजें...",
+    selectBrand:"कोई भी ब्रांड चुनें",
+    selectType:"ब्रांड से कोई भी कार मॉडल चुनें",
+    supplierPriceComparison:"आपूर्तिकर्ता मूल्य तुलना"
   },
   en:{
     home:"Home",
@@ -227,6 +272,36 @@ export const language = {
     odpExpiry:"ODP Expiry",
     fireSafetyExpiry:"Fire & Safety Expiry",
     portPassExpiry:"Port Pass Expiry",
+    registrationExpiry:"Registration Expiry",
+    insuranceExpiry:"Insurance Expiry",
+    advertisementExpiry:"Advertisement Expiry",
+    isoExpiry:"ISO Expiry",
+    firstName:"First Name",
+    middleName:"Middle Name",
+    lastName:"Last Name",
+    employeeId:"EmployeeId",
+    employeeRegistration:"Employee Registration",
+    save:"Save",
+    close:"Close",
+    employeeList:"Employee List",
+    searchEmployee:"Search by name...",
+    successMessage:"Data saved successfully...",
+    fleetRegistration:"Fleet Registration",
+    plateNo:"Plate No",
+    chassisNo:"Chassis No",
+    vehicleType:"Vehicle Type",
+    manufacturer:"Manufacturer",
+    spareKey:"Spare Key",
+    placeholderFleet:"Select any vehicle type...",
+    register:"Register",
+    fleetList:"Fleet List",
+    priceComparison:"Price Comparison",
+    update:"Update",
+    delete:"Delete",
+    placeHolderFleetList:"Search by Plate number...",
+    selectBrand:"Select any brand",
+    selectType:"Select any car model from the brand",
+    supplierPriceComparison:"Supplier Price Comparison",
   },
   ma:{
     home:"മുഖ്യപേജ്",
@@ -240,7 +315,48 @@ export const language = {
     visaExpiry:"വിസ കാലാവധി",
     ohcExpiry:"OHC കാലാവധി",
     odpExpiry:"ODP കാലാവധി",
-    fireSafetyExpiry:"ഫയർ ആൻഡ് സേഫ്റ്റി കാലാവധി",
+    fireSafetyExpiry:"ഫയർ & സേഫ്റ്റി കാലാവധി",
     portPassExpiry:"പോർട്ട് പാസ് കാലാവധി",
+    registrationExpiry:"രജിസ്ട്രേഷൻ കാലാവധി",
+    insuranceExpiry:"ഇൻഷുറൻസ് കാലാവധി",
+    advertisementExpiry:"പരസ്യ കാലാവധി",
+    isoExpiry:"ISO സർട്ടിഫിക്കറ്റ് കാലാവധി",
+    firstName:"ആദ്യ പേര്",
+    middleName:"മധ്യ പേര്",
+    lastName:"കുടുംബനാമം",
+    employeeId:"ജീവനക്കാരന്റെ ഐഡി",
+    employeeRegistration:"ജീവനക്കാരുടെ രജിസ്ട്രേഷൻ",
+    save:"സംരക്ഷിക്കുക",
+    close:"അടയ്ക്കുക",
+    employeeList:"ജീവനക്കാരുടെ ലിസ്റ്റ്",
+    searchEmployee:"പേരുപ്രകാരം തിരയുക...",
+    successMessage:"വിശദാംശങ്ങൾ വിജയകരമായി സംരക്ഷിച്ചു...",
+    fleetRegistration:"ഫ്ലീറ്റ് രജിസ്ട്രേഷൻ",
+    plateNo:"പ്ലേറ്റ് നമ്പർ",
+    chassisNo:"ചാസിസ് നമ്പർ",
+    vehicleType:"വാഹനം തരം",
+    manufacturer:"നിർമ്മാതാവ്",
+    spareKey:"അധിക കീ",
+    placeholderFleet:"ഏതെങ്കിലും വാഹന തരം തിരഞ്ഞെടുക്കുക...",
+    register:"രജിസ്റ്റർ",
+    fleetList:"വാഹനങ്ങളുടെ പട്ടിക",
+    priceComparison:'വില താരതമ്യം',
+    update:"അപ്ഡേറ്റ്",
+    delete:"ഡിലീറ്റ്",
+    placeHolderFleetList:"പ്ലേറ്റ് നമ്പർ പ്രകാരം തിരയുക...",
+    selectBrand:"ഏത് ബ്രാന്റും തിരഞ്ഞെടുക്കുക",
+    selectType:"ബ്രാൻഡിൽ നിന്ന് ഏതെങ്കിലും കാ‍ർ മോഡൽ തിരഞ്ഞെടുക്കുക",
+    supplierPriceComparison:"വിതരണക്കാരുടെ വില താരതമ്യം",
   }
 };
+
+  
+
+
+
+
+
+
+
+
+

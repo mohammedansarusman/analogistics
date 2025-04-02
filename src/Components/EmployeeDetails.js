@@ -1,7 +1,7 @@
 import React from "react";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addFirstName } from "../Store/registrationSlice";
 import { addMiddleName } from "../Store/registrationSlice";
 import { addLastName } from "../Store/registrationSlice";
@@ -16,9 +16,12 @@ import { addFireBaseId } from "../Store/registrationSlice";
 import { addDeleteCount, addEmpidSwitch } from "../Store/registrationSlice";
 import app from "./fireBaseConfig";
 import { getDatabase, ref, remove } from "firebase/database";
+import { language } from "../Utils/constants";
+
 const EmployeeDetails = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const lang = useSelector((store)=>store.navigation.lang);
   const {first,middle,last,id,passport,
     ohc,fire,visa,rta,port,firebaseId,
   } = props.data;
@@ -58,7 +61,7 @@ const EmployeeDetails = (props) => {
       <div className="w-[90%]  bg-gray-100 p-5 flex justify-between items-center mt-2">
         {/* pass + ohc + fire */}
         <div className="flex flex-col items-start opacity-70">
-          <h1 className="text-sm">Passport Expiry</h1>
+          <h1 className="text-sm">{language[lang].passportExpiry}</h1>
           <h1
             className={`text-md font-semibold ${
               new Date(passport) > new Date(currentDate)
@@ -69,7 +72,7 @@ const EmployeeDetails = (props) => {
             {format(new Date(passport), "dd-MM-yyyy")}
           </h1>
           <br></br>
-          <h1 className="text-sm">OHC Expiry</h1>
+          <h1 className="text-sm">{language[lang].ohcExpiry}</h1>
           <h1
             className={`text-md font-semibold ${
               new Date(ohc) > new Date(currentDate)
@@ -80,7 +83,7 @@ const EmployeeDetails = (props) => {
             {format(new Date(ohc), "dd-MM-yyyy")}
           </h1>
           <br></br>
-          <h1 className="text-sm">Fire & Safety Expiry</h1>
+          <h1 className="text-sm">{language[lang].fireSafetyExpiry}</h1>
           <h1
             className={`text-md font-semibold ${
               new Date(fire) > new Date(currentDate)
@@ -93,7 +96,7 @@ const EmployeeDetails = (props) => {
         </div>
         {/* visa + rta + port on another column */}
         <div className="flex flex-col items-end opacity-70">
-          <h1 className="text-sm">Visa Expiry</h1>
+          <h1 className="text-sm">{language[lang].visaExpiry}</h1>
           <h1
             className={`text-md font-semibold ${
               new Date(visa) > new Date(currentDate)
@@ -104,7 +107,7 @@ const EmployeeDetails = (props) => {
             {format(new Date(visa), "dd-MM-yyyy")}
           </h1>
           <br></br>
-          <h1 className="text-sm">RTA Expiry</h1>
+          <h1 className="text-sm">{language[lang].odpExpiry}</h1>
           <h1
             className={`text-md font-semibold ${
               new Date(rta) > new Date(currentDate)
@@ -115,7 +118,7 @@ const EmployeeDetails = (props) => {
             {format(new Date(rta), "dd-MM-yyyy")}
           </h1>
           <br></br>
-          <h1 className="text-sm">Port Expiry</h1>
+          <h1 className="text-sm">{language[lang].portPassExpiry}</h1>
           <h1
             className={`text-md font-semibold ${
               new Date(port) > new Date(currentDate)
@@ -132,13 +135,13 @@ const EmployeeDetails = (props) => {
           className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-cyan-600 hover:bg-cyan-700"
           onClick={handleUpdate}
         >
-          Update
+          {language[lang].update}
         </button>
         <button
           className="w-full text-white text-sm font-semibold py-2 px-5 rounded-md bg-pink-800 hover:bg-pink-900"
           onClick={handleDelete}
         >
-          Delete
+          {language[lang].delete}
         </button>
       </div>
     </div>

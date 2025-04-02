@@ -1,7 +1,8 @@
-import React from "react";
-import { vehicleTypes } from "../../Utils/constants";
+import React, { useEffect } from "react";
+import { englishVehicleTypes, hindiVehicleTypes, malayalamVehicleTypes } from "../../Utils/constants";
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
+import { language } from "../../Utils/constants";
 import {useVehicleTypeValidity} from '../CustomHooks/useVehicleTypeValidity'
 import {
   addVehicleType,
@@ -13,24 +14,31 @@ const RegisterVehicleType = () => {
   const vehicleType = useSelector((store) => store.fleetRegistration.vehicleType);
   const flag = useSelector((store) => store.fleetRegistration.validVehicleType);
   const mode = useSelector((store)=>store.navigation.mode);
-  
+  const lang = useSelector((store)=>store.navigation.lang);
+
   const handleBlur = () => {
     dispatch(addValidVehicleType(true));
   };
   const handleChange = (e) => {
+    // 'e' contains value and label - value:"lightTruck" and key:"Light Truck"
     dispatch(addVehicleType(e));
   };
   const message = useVehicleTypeValidity(vehicleType);
+  // useEffect(() => {
+  //   dispatch(addVehicleType(null)); // Reset the selected value
+  // }, [lang, dispatch]);
+
+
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">
       <label htmlFor="vehicleType" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        Vehicle Type<span className="text-red-500">*</span>
+        {language[lang].vehicleType}<span className="text-red-500">*</span>
       </label>
 
       <Select
-        options={vehicleTypes}
+        options={englishVehicleTypes}
         className={`w-full px-1 py-2 text-black text-start `}
-        placeholder="Search Vehicle Type"
+        placeholder={language[lang].placeholderFleet}
         value={vehicleType} // value prop should be an object of the selected option
         onChange={handleChange}
         onBlur={handleBlur}

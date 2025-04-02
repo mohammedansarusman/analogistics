@@ -7,12 +7,14 @@ import FleetSearchBar from "./FleetSearchBar";
 import ContenLoading from "../ContenLoading";
 import { FaListUl } from "react-icons/fa";
 import { SlGrid } from "react-icons/sl";
+import { language } from "../../Utils/constants";
 const FleetList = () => {
   const dispatch = useDispatch();
   const result = useFleetData();
 
   dispatch(changeBar(false));
   const deleteCount = useSelector((store) => store.registration.deleteCount);
+  const lang = useSelector((store)=> store.navigation.lang);
 
   // Fetch fleet data from Firebase and update the Redux store
   // This function should be called whenever the fleet data is updated in Firebase
@@ -36,7 +38,7 @@ const FleetList = () => {
   return (
     <div className={`w-full min-h-screen absolute left-0 top-[100px] ${mode === "light" ? "bg-white" : "bg-gray-800"}`}>
       <header className="w-full h-[30px] text-3xl bg-cyan-500 text-white flex justify-center items-center py-7 fixed z-10">
-        <h1>Fleet List</h1>
+        <h1>{language[lang].fleetList}</h1>
       </header>
       <div className="w-[100%] flex justify-center items-center py-[10px] pt-[70px] sm:justify-end sm:pr-[20px] gap-[20px]">
         {<FleetSearchBar fleetRecords={fleetData} />}

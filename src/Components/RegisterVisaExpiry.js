@@ -6,12 +6,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useDateValidity } from "./CustomHooks/useDateValidity";
 import { addVisaExpiry, addValidVisaExpiry } from "../Store/registrationSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { language } from "../Utils/constants";
 
 const RegisterVisaExpiry = () => {
   const dispatch = useDispatch();
   const visaExpiry = useSelector((store) => store.registration.visaExpiry);
   const flagVisa = useSelector((store) => store.registration.validVisaExpiry);
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
 
   const handleDateChangeVisa = (date) => {
     date && dispatch(addVisaExpiry(date.getTime())); // dispatch action to update the state in the store.
@@ -23,7 +25,7 @@ const RegisterVisaExpiry = () => {
   return (
     <div className="flex flex-col items-start w-full gap-1">
       <label htmlFor="visaExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        Visa Expiry<span className="text-red-500">*</span>
+        {language[lang].visaExpiry}<span className="text-red-500">*</span>
       </label>
       <DatePicker
         selected={visaExpiry}

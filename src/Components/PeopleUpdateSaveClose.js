@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import app from './fireBaseConfig';
 import {getDatabase, ref, set } from 'firebase/database';
 import { useEffect } from "react";
+import { language } from "../Utils/constants";
 
 
 // import { useState } from "react";
@@ -19,7 +20,6 @@ import { addPortExpiry,addRTAExpiry,
 import React from "react";
 
 const PeopleUpdateSaveClose = (props) => {
-  
   const {dataMessage} = props;
   useEffect(()=>{
     return()=>{
@@ -48,11 +48,12 @@ const PeopleUpdateSaveClose = (props) => {
   
   const approvedFirstName = useSelector((store) => store.registration.saveFirstName);
   const approvedLastName = useSelector((store) => store.registration.saveLastName);
-  const approvedEmployeId = useSelector((store) => store.registration.saveEmployeId);
+  // const approvedEmployeId = useSelector((store) => store.registration.saveEmployeId);
 
-  const isFormValid = approvedFirstName && approvedLastName && approvedEmployeId && passportExpiry && visaExpiry &&
+  const isFormValid = approvedFirstName && approvedLastName  && passportExpiry && visaExpiry &&
                         ohcExpiry && rtaExpiry && fireExpiry && portExpiry;
-  
+                    
+  const lang = useSelector((store) => store.navigation.lang);
 
 
   const handleReset = () => {
@@ -82,7 +83,7 @@ const PeopleUpdateSaveClose = (props) => {
   const handleSave = () => {
     
     if (isFormValid) {
-    
+
       // Save data to the firebase realtime database
       const db = getDatabase(app);
       const employeeRef = ref(db,"register/employe/"+fireBaseId);
@@ -123,13 +124,13 @@ const PeopleUpdateSaveClose = (props) => {
         onClick={handleSave}
         className="bg-cyan-500 px-[20px] py-[10px] rounded-full text-white font-bold hover:bg-cyan-600"
       >
-        Save
+        {language[lang].update}
       </button>
       <button
         className="bg-cyan-500 px-[20px] py-[10px] rounded-full text-white font-bold hover:bg-cyan-600"
         onClick={handleClose}
       >
-        Close
+        {language[lang].close}
       </button>
     </div>
   );

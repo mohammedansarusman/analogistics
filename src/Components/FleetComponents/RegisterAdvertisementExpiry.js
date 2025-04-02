@@ -8,6 +8,7 @@ import {
   addAdvertisementExpiry,
   addValidAdvertisementExpiry,
 } from "../../Store/fleetRegistrationSlice";
+import { language } from "../../Utils/constants";
 
 const RegisterAdvertisementExpiry = () => {
   const selectedDate = useSelector(
@@ -17,6 +18,7 @@ const RegisterAdvertisementExpiry = () => {
     (store) => store.fleetRegistration.validAdvertisementExpiry
   );
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector(store => store.navigation.lang);
 
   const message = useDateValidity(selectedDate);
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const RegisterAdvertisementExpiry = () => {
   return (
     <div className="flex flex-col items-start w-full gap-1">
       <label htmlFor="AdvertisementExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        Advertisement Expiry<span className="text-red-500">*</span>
+        {language[lang].advertisementExpiry}<span className="text-red-500">*</span>
       </label>
       <DatePicker
         selected={selectedDate}

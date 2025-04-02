@@ -17,6 +17,7 @@ import { addPortExpiry,addRTAExpiry,
   addValidRTAExpiry,  addValidFireExpiry, addValidPortExpiry } from "../Store/registrationSlice";
 
 import React from "react";
+import { language } from "../Utils/constants";
 
 const RegisterSaveClose = (props) => {
   
@@ -44,6 +45,7 @@ const RegisterSaveClose = (props) => {
   const rtaExpiry = useSelector((store) => store.registration.rtaExpiry);
   const fireExpiry = useSelector((store) => store.registration.fireExpiry);
   const portExpiry = useSelector((store) => store.registration.portExpiry);
+  const lang = useSelector((store)=>store.navigation.lang);
   
   //  the starting approved variable are true then only the save will work. 
   const approvedFirstName = useSelector((store) => store.registration.saveFirstName);
@@ -76,9 +78,7 @@ const RegisterSaveClose = (props) => {
     dispatch(addValidFireExpiry(false));
     dispatch(addValidPortExpiry(false));
   }
-console.log("isform",isFormValid);
   const handleSave = () => {
-    
     if (isFormValid) {
       // Save data to the firebase realtime database
       const db = getDatabase(app);
@@ -120,13 +120,13 @@ console.log("isform",isFormValid);
         onClick={handleSave}
         className="bg-cyan-500 px-[20px] py-[10px] rounded-full text-white font-bold hover:bg-cyan-600"
       >
-        Save
+        {language[lang].save}
       </button>
       <button
         className="bg-cyan-500 px-[20px] py-[10px] rounded-full text-white font-bold hover:bg-cyan-600"
         onClick={handleClose}
       >
-        Close
+        {language[lang].close}
       </button>
     </div>
   );

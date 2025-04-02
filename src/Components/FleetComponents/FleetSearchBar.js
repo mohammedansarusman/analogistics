@@ -2,13 +2,14 @@ import React, {useState} from 'react'
 import { FaSearch } from "react-icons/fa";
 import { addFilterFleetRecord } from '../../Store/fleetRegistrationSlice';
 import { useDispatch, useSelector } from'react-redux';
-
+import { language } from '../../Utils/constants';
 
 const FleetSearchBar = (props) => {
   const dispatch = useDispatch();
     const { fleetRecords } = props;
     const [plate, setPlate] = useState("");
     const mode = useSelector(store=>store.navigation.mode);
+    const lang = useSelector((store)=>store.navigation.lang);
 
     const handleChange = (e) => {
       setPlate(e.target.value);
@@ -25,7 +26,7 @@ const FleetSearchBar = (props) => {
         <input 
           className={`w-[80%] focus:outline-none ${ mode==="light" ? "text-black bg-white" : "text-white bg-gray-800" }`} 
           type='text' 
-          placeholder='Search by plate number' 
+          placeholder={language[lang].placeHolderFleetList}
           onChange={handleChange}
           value={plate}
         />

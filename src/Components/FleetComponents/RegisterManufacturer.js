@@ -5,6 +5,7 @@ import {
   addValidManufacturer, addSaveManufacturer
 } from "../../Store/fleetRegistrationSlice";
 import { useTextValidity } from "../CustomHooks/useTextValidity";
+import { language } from "../../Utils/constants";
 
 const RegisterManufacturer = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const RegisterManufacturer = () => {
     (store) => store.fleetRegistration.validManufacturer
   );
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
 
   const handleChange = (e) => dispatch(addManufacturer(e.target.value.toUpperCase()));
   const handleBlur = () => dispatch(addValidManufacturer(true));
@@ -24,7 +26,7 @@ const RegisterManufacturer = () => {
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">
       <label htmlFor="manufacture" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        Manufacturer<span className="text-red-500">*</span>
+        {language[lang].manufacturer}<span className="text-red-500">*</span>
       </label>
       <input
         type="text"

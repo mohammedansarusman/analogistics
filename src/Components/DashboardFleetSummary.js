@@ -4,10 +4,11 @@ import { FaCarCrash } from "react-icons/fa";
 import { RiAdvertisementLine } from "react-icons/ri";
 import { FcInspection } from "react-icons/fc";
 import { useSelector } from "react-redux";
+import { language } from "../Utils/constants";
 
 
 const DashboardFleetSummary = () => {
-  
+  const lang = useSelector(store=>store.navigation.lang)
   const currentDate = new Date();
   const data = useSelector((store) => store.fleetRegistration.fleetRecord);
   const noExpiryMulkiya = data.filter((record)=>{
@@ -28,28 +29,28 @@ const DashboardFleetSummary = () => {
   return (
     <div className={`${mode === 'light' ? "bg-gray-200" : "bg-gray-600 text-white"} h-[80%] px-[20px] py-[20px] text-gray-500 flex flex-col justify-center`}>
       <div className="w-[100%] flex justify-end text-xl">
-        <h1>Registration Expiry</h1>
+        <h1>{language[lang].registrationExpiry}</h1>
       </div>
       <div className="w-[100%] flex justify-between text-4xl">
         <FaIdCard />
         <h1>{noExpiryMulkiya.length}</h1>
       </div>
       <div className="w-[100%] flex justify-end text-xl">
-        <h1>Insurance Expiry</h1>
+        <h1>{language[lang].insuranceExpiry}</h1>
       </div>
       <div className="w-[100%] flex justify-between text-4xl">
         <FaCarCrash />
         <h1>{noExpiryInsurance.length}</h1>
       </div>
       <div className="w-[100%] flex justify-end text-xl">
-        <h1>Advertisement Expiry</h1>
+        <h1>{language[lang].advertisementExpiry}</h1>
       </div>
       <div className="w-[100%] flex justify-between text-4xl">
         <RiAdvertisementLine />
         <h1>{noExpiryAdvertisement.length}</h1>
       </div>
       <div className="w-[100%] flex justify-end text-xl">
-        <h1>ISO Expiry</h1>
+        <h1>{language[lang].isoExpiry}</h1>
       </div>
       <div className="w-[100%] flex justify-between text-4xl">
         <FcInspection />

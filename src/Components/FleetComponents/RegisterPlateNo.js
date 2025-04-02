@@ -2,6 +2,8 @@ import React from 'react'
 import {usePlateValidity} from '../CustomHooks/usePlateValidity'
 import { useSelector, useDispatch } from 'react-redux';
 import { addPlateNo, addValidPlateNo, addSavePlateNo } from '../../Store/fleetRegistrationSlice';
+import { language } from "../../Utils/constants";
+import { useEffect } from 'react';
 
 
 const RegisterPlateNo = (props) => {
@@ -10,6 +12,7 @@ const RegisterPlateNo = (props) => {
   const plate = useSelector((store)=>store.fleetRegistration.plateNo);
   const flag = useSelector((store)=>store.fleetRegistration.validPlateNo);
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
   
   const handlePlate=(e)=>{
     dispatch(addPlateNo(e.target.value.toUpperCase()));
@@ -18,13 +21,16 @@ const RegisterPlateNo = (props) => {
     dispatch(addValidPlateNo(true));
   };
   const message = usePlateValidity(plate,data);
+  useEffect(()=>{
+      message === null? dispatch(addSavePlateNo(true)) : dispatch(addSavePlateNo(false));
+    },[message]);
   message === null? dispatch(addSavePlateNo(true)): dispatch(addSavePlateNo(false));
   
 
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">
         <label htmlFor="plateNo" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-          Plate No<span className="text-red-500">*</span>
+          {language[lang].plateNo}<span className="text-red-500">*</span>
         </label>
         <input 
             type="text" 

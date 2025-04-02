@@ -8,6 +8,7 @@ import MenuNavigation from "./MenuNavigation";
 import { Link } from "react-router-dom";
 import FleetMenuNavigation from "./FleetComponents/FleetMenuNavigation";
 import OthersNavigation from "./OthersNavigation";
+import { language } from "../Utils/constants";
 
 
 // Parent componenet - <App />
@@ -16,6 +17,7 @@ const NavigationBarSmall = () => {
   const [fleetMenu, setFleetMenu] = useState(false);
   const [tripMenu, setTripMenu] = useState(false);
   const mode = useSelector((store) => store.navigation.mode);
+  const lang = useSelector((store) => store.navigation.lang);
 
   const dispatch = useDispatch();
   const handleCloseButton = () => {
@@ -64,7 +66,7 @@ const NavigationBarSmall = () => {
           onClick={handleHome}
         >
           <Link to="/dashboard/">
-            <h1>Home</h1>
+            <h1>{language[lang].home}</h1>
           </Link>
         </div>
         {/* People menu in side navigation bar */}
@@ -72,7 +74,7 @@ const NavigationBarSmall = () => {
           className={`w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100 cursor-pointer ${mode === "light" ? "hover:bg-gray-100" : "hover:bg-gray-600 hover:text-white"}`}
           onClick={handlePeople}
         >
-          <h1>People</h1>
+          <h1>{language[lang].people}</h1>
           {!peopleMenu ? (
             <MdKeyboardArrowRight size={20} />
           ) : (
@@ -85,7 +87,7 @@ const NavigationBarSmall = () => {
           className={`w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100 cursor-pointer ${mode === "light" ? "hover:bg-gray-100" : "hover:bg-gray-600 hover:text-white"}`}
           onClick={handleFleet}
         >
-          <h1>Fleet</h1>
+          <h1>{language[lang].fleet}</h1>
           {!fleetMenu ? (
             <MdKeyboardArrowRight size={20} />
           ) : (
@@ -98,7 +100,7 @@ const NavigationBarSmall = () => {
           className={`w-[90%] flex justify-between items-center py-1 pl-2 rounded-md hover:bg-gray-100 cursor-pointer ${mode === "light" ? "hover:bg-gray-100" : "hover:bg-gray-600 hover:text-white"}`}
           onClick={handleTrip}
         >
-          <h1>Trip</h1>
+          <h1>{language[lang].trip}</h1>
           {!tripMenu ? (
             <MdKeyboardArrowRight size={20} />
           ) : (

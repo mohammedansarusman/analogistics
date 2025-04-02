@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import {useDateValidity} from './CustomHooks/useDateValidity'
 import { addPortExpiry, addValidPortExpiry } from "../Store/registrationSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { language } from "../Utils/constants";
 
 
 const RegisterPortExpiry = () => {
@@ -12,6 +13,7 @@ const RegisterPortExpiry = () => {
   const portExpiry = useSelector((store)=>store.registration.portExpiry);
   const flagPort = useSelector((store)=>store.registration.validPortExpiry)
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
 
   const handleDateChangePort = (date) => {
     date && dispatch(addPortExpiry(date.getTime()));  // dispatch action to update the state in the store.
@@ -24,8 +26,8 @@ const RegisterPortExpiry = () => {
 
   return (
     <div className="flex flex-col items-start w-full gap-1">
-      <label for="portExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        Port Expiry<span className="text-red-500">*</span>
+      <label htmlFor="portExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
+        {language[lang].portPassExpiry}<span className="text-red-500">*</span>
       </label>
       <DatePicker
         selected={portExpiry}

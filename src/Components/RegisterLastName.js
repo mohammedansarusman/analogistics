@@ -2,15 +2,20 @@ import React from "react";
 import { useNameValidity } from "./CustomHooks/useNameValidity";
 import { useDispatch, useSelector } from "react-redux";
 import { addLastName, addValidLastName, addSaveLastName } from "../Store/registrationSlice";
+import { language } from "../Utils/constants";
+import { useEffect } from "react";
 
 const RegisterLastName = () => {
   const dispatch = useDispatch();
   const flagLastName = useSelector((store)=>store.registration.validLastName)
   const lastName = useSelector((store)=>store.registration.lastName)
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
 
   const message = useNameValidity(lastName);
-  message === null ? dispatch(addSaveLastName(true)) : dispatch(addSaveLastName(false)); 
+  useEffect(()=>{
+    message === null ? dispatch(addSaveLastName(true)) : dispatch(addSaveLastName(false)); 
+  },[message]);
   
   const handleName = (e) => {
     dispatch(addLastName(e.target.value))
@@ -23,7 +28,7 @@ const RegisterLastName = () => {
   return (
     <div className="w-full flex flex-col items-start gap-[5px]">
       <label htmlFor="lastName" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        Last Name<span className="text-red-500">*</span>
+        {language[lang].lastName}<span className="text-red-500">*</span>
       </label>
       <input
         type="text"

@@ -27,7 +27,7 @@ const Login = () => {
             <p className="font-light">Enter your user name and password to access your account</p>
         </header>
         <form className="w-3/4  flex flex-col">
-            <label className="text-left" htmlFor="username">User Name</label>
+            <label className="text-left" htmlFor="username" id="username">User Name</label>
             <div className="flex w-[100%] h-[40px] rounded-lg border-[1px] border-gray-400">
                 {/* user name Logo */}
                 <div className="w-1/6 rounded-l-lg flex justify-center items-center text-blue-600 border-r-[1px] border-gray-400">
@@ -37,7 +37,7 @@ const Login = () => {
                     <input ref = {userrefer} type="text" name="username" id="username" autoComplete="username" placeholder="Enter user name" className="w-[100%] h-full px-2 rounded-r-lg"/>
                 </div>
             </div>
-            <label className="text-left" htmlFor="password">Password</label>
+            <label className="text-left" htmlFor="password" id="password">Password</label>
             <div className="flex w-[100%] h-[40px] rounded-lg border-[1px] border-gray-400">
                 {/* Password Logo */}
                 <div className="w-1/6 rounded-l-lg flex justify-center items-center text-blue-600 border-r-[1px] border-gray-400">

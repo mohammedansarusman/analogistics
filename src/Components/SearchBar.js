@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import { FaSearch } from "react-icons/fa";
 import { addFilterEmployeeRecords } from '../Store/registrationSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { language } from "../Utils/constants";
+
 
 // parent component
 const SearchBar = (props) => {
@@ -9,6 +11,8 @@ const SearchBar = (props) => {
   const {employeeRecords} = props;
   const [fmlName, setFmlName] = useState("");
   const mode = useSelector(store=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
+
 
   const handleChange = (e) => {
     setFmlName(e.target.value);
@@ -26,7 +30,7 @@ const SearchBar = (props) => {
         <input 
           className={`w-[80%] focus:outline-none ${ mode==="light" ? "text-black bg-white" : "text-white bg-gray-800" }`} 
           type='text' 
-          placeholder='Search by Name'
+          placeholder={language[lang].searchEmployee}
           onChange={handleChange}
           value={fmlName}
         />

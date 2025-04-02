@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useDateValidity } from "./CustomHooks/useDateValidity";
 import { addFireExpiry, addValidFireExpiry } from "../Store/registrationSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { language } from "../Utils/constants";
 
 const RegisterFireSafety = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const RegisterFireSafety = () => {
   const fireExpiry = useSelector((store) => store.registration.fireExpiry);
   const flagFire = useSelector((store) => store.registration.validFireExpiry);
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
 
   const handleDateChangeFireNSafety = (date) => {
     date && dispatch(addFireExpiry(date.getTime())); // dispatch action to update the state in the store.
@@ -23,8 +25,8 @@ const RegisterFireSafety = () => {
 
   return (
     <div className="flex flex-col items-start w-full gap-1">
-      <label for="fireNsafetyExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        Fire & Safety Expiry<span className="text-red-500">*</span>
+      <label htmlFor="fireNsafetyExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
+      {language[lang].fireSafetyExpiry}<span className="text-red-500">*</span>
       </label>
       <DatePicker
         selected={fireExpiry}

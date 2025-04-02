@@ -8,13 +8,14 @@ import {
   addISOExpiry,
   addValidISOExpiry,
 } from "../../Store/fleetRegistrationSlice";
-
+import { language } from "../../Utils/constants";
 const RegisterISOExpiry = () => {
   const selectedDate = useSelector(
     (store) => store.fleetRegistration.ISOExpiry
   );
   const flag = useSelector((store) => store.fleetRegistration.validISOExpiry);
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector(store => store.navigation.lang);
   
   const message = useDateValidity(selectedDate);
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const RegisterISOExpiry = () => {
   return (
     <div className="flex flex-col items-start w-full gap-1 relative">
       <label htmlFor="ISOExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        ISO Certification Expiry<span className="text-red-500">*</span>
+        {language[lang].isoExpiry}<span className="text-red-500">*</span>
       </label>
       <DatePicker
         selected={selectedDate}

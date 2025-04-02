@@ -4,12 +4,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import {useDateValidity} from './CustomHooks/useDateValidity'
 import { useDispatch, useSelector } from "react-redux";
 import { addOHCExpiry, addValidOHCExpiry } from "../Store/registrationSlice";
-
+import { language } from "../Utils/constants";
 const RegisterOHCExpiry = () => {
   const dispatch = useDispatch();
   const flagOHC = useSelector((store)=>store.registration.validOHCExpiry)
   const ohcExpiry = useSelector((store)=>store.registration.ohcExpiry);
   const mode = useSelector((store)=>store.navigation.mode);
+  const lang = useSelector((store)=>store.navigation.lang);
 
   const handleDateChangeOHC = (date) => {
     date && dispatch(addOHCExpiry(date.getTime()));  // dispatch action to update the state in the store.
@@ -20,8 +21,8 @@ const RegisterOHCExpiry = () => {
   const message = useDateValidity(ohcExpiry);
   return (
     <div className="flex flex-col items-start w-full gap-1">
-      <label for="ohcExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
-        OHC Expiry<span className="text-red-500">*</span>
+      <label htmlFor="ohcExpiry" className={`font-bold opacity-80 ${mode === 'light' ? "text-black" : "text-gray-200"}`}>
+        {language[lang].ohcExpiry}<span className="text-red-500">*</span>
       </label>
       <DatePicker
         selected={ohcExpiry}
