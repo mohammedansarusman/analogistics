@@ -1,3 +1,4 @@
+// parent component is <App />
 import { useRef } from "react";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
@@ -12,8 +13,7 @@ const Login = () => {
   const passwordRefer = useRef(null);
   const handleClick = () => {
     if (userrefer.current.value === user.name && passwordRefer.current.value === user.pass) {
-      dispatch(setSign(false));
-      // alert("Logged in successfully");
+      dispatch(setSign(false));  /* the flag in App.js will change as false and navigation bar will open */
     } else {
       alert("Invalid credentials");
     }

@@ -79,7 +79,7 @@ const NavigationBar = () => {
     // {/* Navigation bar */}
     <div className="bg-gray-800 h-[100px] flex items-center fixed z-30 w-[100%]">
       <div className="w-[40%] flex items-center gap-3 px-5 ">
-        {/* render if the screen width is small, mention lg:hidden in below code */}
+{/* render if the screen width is small, mention lg:hidden in below code */}
         <GiHamburgerMenu
           className="cursor-pointer text-white size-6 hover:bg-gray-500 lg:hidden"
           onClick={handleHamburgerButton}

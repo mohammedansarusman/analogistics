@@ -3,9 +3,11 @@ import { endLocations } from "../../Utils/constants";
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
 import { setEnd } from "../../Store/priceSlice";
+import { language } from "../../Utils/constants";
 
 const EndPointDropDown = () => {
   const end = useSelector((store) => store.price.end);
+  const lang = useSelector((store) => store.navigation.lang);
   const dispatch = useDispatch();
   
   const handleChange = (e) => {
@@ -15,7 +17,7 @@ const EndPointDropDown = () => {
   return (
     <div className="w-[80%]">
       <label htmlFor="startingPoint" className="font-bold opacity-80">
-        End Point<span className="text-red-500">*</span>
+        {language[lang].endPoint}<span className="text-red-500">*</span>
       </label>
       <Select
         options={endLocations}

@@ -3,9 +3,11 @@ import { startingLocations } from "../../Utils/constants";
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
 import { setStart } from "../../Store/priceSlice";
+import { language } from "../../Utils/constants";
 
 const StartingPointDropdown = () => {
   const start = useSelector((store) => store.price.start);
+  const lang =  useSelector((store) =>store.navigation.lang);
   const dispatch = useDispatch();
   
   const handleChange = (e) => {
@@ -15,7 +17,7 @@ const StartingPointDropdown = () => {
   return (
     <div className="w-[80%]">
       <label htmlFor="startingPoint" className="font-bold opacity-80">
-        Starting Point<span className="text-red-500">*</span>
+        {language[lang].startPoint}<span className="text-red-500">*</span>
       </label>
       <Select
         options={startingLocations}

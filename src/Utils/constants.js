@@ -5,20 +5,20 @@ export const englishVehicleTypes = [
   { value: "car", label: "Car" },
   { value: "van", label: "Van"},
 ];
-export const hindiVehicleTypes = [
-  { value: "hiheavytruck", label: "भारी ट्रक" },
-  { value: "hilighttruck", label: "हल्का ट्रक" },
-  { value: "hibus", label: "बस" },
-  { value: "hicar", label: "कार" },
-  { value: "hivan", label: "वैन"},
-];
-export const malayalamVehicleTypes = [
-  { value: "maheavytruck", label: "ഭാരമേറിയ ട്രക്ക്" },
-  { value: "malighttruck", label: "ലഘു ട്രക്ക്" },
-  { value: "mabus", label: "ബസ്" },
-  { value: "macar", label: "കാർ" },
-  { value: "mavan", label: ""},
-];
+// export const hindiVehicleTypes = [
+//   { value: "hiheavytruck", label: "भारी ट्रक" },
+//   { value: "hilighttruck", label: "हल्का ट्रक" },
+//   { value: "hibus", label: "बस" },
+//   { value: "hicar", label: "कार" },
+//   { value: "hivan", label: "वैन"},
+// ];
+// export const malayalamVehicleTypes = [
+//   { value: "maheavytruck", label: "ഭാരമേറിയ ട്രക്ക്" },
+//   { value: "malighttruck", label: "ലഘു ട്രക്ക്" },
+//   { value: "mabus", label: "ബസ്" },
+//   { value: "macar", label: "കാർ" },
+//   { value: "mavan", label: ""},
+// ];
 
 
 export const user = {
@@ -256,7 +256,9 @@ export const language = {
     placeHolderFleetList:"प्लेट नंबर से खोजें...",
     selectBrand:"कोई भी ब्रांड चुनें",
     selectType:"ब्रांड से कोई भी कार मॉडल चुनें",
-    supplierPriceComparison:"आपूर्तिकर्ता मूल्य तुलना"
+    supplierPriceComparison:"आपूर्तिकर्ता मूल्य तुलना",
+    startPoint:"यात्रा प्रारंभिक स्थान",
+    endPoint:"यात्रा अंतिम बिंदु",
   },
   en:{
     home:"Home",
@@ -302,6 +304,8 @@ export const language = {
     selectBrand:"Select any brand",
     selectType:"Select any car model from the brand",
     supplierPriceComparison:"Supplier Price Comparison",
+    startPoint:"Trip starting point",
+    endPoint:"Trip end point",
   },
   ma:{
     home:"മുഖ്യപേജ്",
@@ -347,6 +351,8 @@ export const language = {
     selectBrand:"ഏത് ബ്രാന്റും തിരഞ്ഞെടുക്കുക",
     selectType:"ബ്രാൻഡിൽ നിന്ന് ഏതെങ്കിലും കാ‍ർ മോഡൽ തിരഞ്ഞെടുക്കുക",
     supplierPriceComparison:"വിതരണക്കാരുടെ വില താരതമ്യം",
+    startPoint:"യാത്ര ആരംഭ ബിന്ദു",
+    endPoint:"യാത്ര അവസാന ബിന്ദു",
   }
 };
 

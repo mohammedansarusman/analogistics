@@ -1,4 +1,5 @@
 import React from 'react';
+import { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -6,14 +7,16 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import appStore from './Store/appStore';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import PeopleRegister from './Components/PeopleRegister';
-import FleetRegister from './Components/FleetComponents/FleetRegister';
-import EmployeeList from './Components/EmployeeList';
-import FleetList from './Components/FleetComponents/FleetList';
-import PeopleUpdate from './Components/PeopleUpdate';
-import FleetUpdate from './Components/FleetComponents/FleetUpdate';
-import Dashboard from './Components/Dashboard';
-import LandingComponent from './Components/PriceComparison/LandingComponent'
+
+const LazyPeopleRegister = lazy(() => import('./Components/PeopleRegister'));
+const LazyFleetRegister = lazy(() => import('./Components/FleetComponents/FleetRegister'));
+const LazyEmployeeList = lazy(() => import('./Components/EmployeeList'));
+const LazyFleetList = lazy(() => import('./Components/FleetComponents/FleetList'));
+const LazyPeopleUpdate = lazy(() => import('./Components/PeopleUpdate'));
+const LazyFleetUpdate = lazy(() => import('./Components/FleetComponents/FleetUpdate'));
+const LazyDashboard = lazy(() => import('./Components/Dashboard'));
+const LazyLandingComponent = lazy(() => import('./Components/PriceComparison/LandingComponent'))
+
 const appRouter = createBrowserRouter([
   {
     path: '/',
@@ -21,35 +24,35 @@ const appRouter = createBrowserRouter([
     children:[
       {
         path:'/people/register',
-        element: <PeopleRegister />,
+        element: <Suspense fallback={<h1>loading...</h1>}><LazyPeopleRegister /></Suspense>,
       },
       {
         path: "/people/employeeList",
-        element: <EmployeeList />,
+        element: <Suspense fallback={<h1>loading...</h1>}><LazyEmployeeList /></Suspense>,
       },
       {
         path: "/people/update/",
-        element: <PeopleUpdate />,
+        element: <Suspense fallback={<h1>loading...</h1>}><LazyPeopleUpdate /></Suspense>,
       },
       {
         path:"/fleet/register",
-        element: <FleetRegister />,
+        element: <Suspense fallback={<h1>loading...</h1>}><LazyFleetRegister /></Suspense>,
       },
       {
         path: "/fleet/fleetList",
-        element: <FleetList />,
+        element: <Suspense fallback={<h1>loading...</h1>}><LazyFleetList /></Suspense>,
       },
       {
         path: "/fleet/update/",
-        element: <FleetUpdate />,
+        element: <Suspense fallback={<h1>loading...</h1>}><LazyFleetUpdate /></Suspense>,
       },
       {
         path: "/dashboard/",
-        element: <Dashboard />
+        element: <Suspense fallback={<h1>loading...</h1>}><LazyDashboard /></Suspense>,
       },
       {
         path: "/price/",
-        element: <LandingComponent />
+        element: <Suspense fallback={<h1>loading...</h1>}><LazyLandingComponent /></Suspense>,
       }
     ]
   },
